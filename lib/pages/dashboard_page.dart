@@ -3,6 +3,7 @@ import 'package:rent_app/models/car_model.dart';
 import 'package:rent_app/data/car_data.dart';
 import 'package:rent_app/data/brand_data.dart';
 import 'package:rent_app/widgets/brand_list.dart';
+import 'package:rent_app/widgets/car_card.dart';
 import 'package:rent_app/widgets/cars_list.dart';
 import 'package:rent_app/widgets/promo_banner.dart';
 import 'package:rent_app/config/app_colors.dart';
@@ -259,14 +260,14 @@ class _DashboardPageState extends State<DashboardPage> {
 
                     SizedBox(height: screenHeight * AppConstants.spacingLarge),
 
-                    // Available Cars
+                    // Best Selling Cars
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Mobil Tersedia',
+                            'Mobil Terlaris',
                             style: AppTextStyles.titleBlack(context),
                           ),
                           Text(
@@ -298,6 +299,53 @@ class _DashboardPageState extends State<DashboardPage> {
                           const PromoBanner(),
                         ],
                       ),
+                    ),
+
+                    SizedBox(height: screenHeight * 0.018),
+
+                    // Available Cars Grid
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Mobil Tersedia',
+                                style: AppTextStyles.titleBlack(context),
+                              ),
+                              Text(
+                                'Lihat Semua',
+                                style: AppTextStyles.linkText(context),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: screenHeight * 0.018),
+                        
+                        // Grid View
+                        GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: screenWidth * 0.06,
+                            mainAxisSpacing: screenWidth * 0.06,
+                            childAspectRatio: (screenWidth * 0.42) / (screenHeight * 0.24),
+                          ),
+                          itemCount: CarData.availableCars.length,
+                          itemBuilder: (context, index) {
+                            final car = CarData.availableCars[index];
+                            return CarCard(
+                              car: car,
+                              height: screenHeight * 0.24,
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
