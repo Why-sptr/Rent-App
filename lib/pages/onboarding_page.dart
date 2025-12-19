@@ -1,0 +1,145 @@
+import 'package:flutter/material.dart';
+import 'package:rent_app/pages/login_page.dart';
+import 'package:rent_app/pages/main_page.dart';
+import 'package:rent_app/config/app_colors.dart';
+import 'package:rent_app/config/app_constants.dart';
+import 'package:rent_app/config/app_text_styles.dart';
+
+class OnboardingPage extends StatelessWidget {
+  const OnboardingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.backgroundWhite,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Title Section with padding
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.06,
+                vertical: MediaQuery.of(context).size.height * 0.04,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Title
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    child: Text(
+                      'Apakah kamu ingin mobil untuk liburan?',
+                      style: AppTextStyles.header(context),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall),
+
+                  // Subtitle
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.65,
+                    child: Text(
+                      'Mobil seperti apa yang cocok kamu bawa untuk liburan bersama keluarga?',
+                      style: AppTextStyles.bodyMedium(context),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Image Section - Full width without padding
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                child: Image.asset(
+                  'assets/images/onboarding.png',
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
+
+            // Buttons Section with padding
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.06,
+                vertical: MediaQuery.of(context).size.height * 0.04,
+              ),
+              child: Column(
+                children: [
+                  // Mulai Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: AppColors.buttonGradient,
+                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          padding: EdgeInsets.symmetric(
+                            vertical: MediaQuery.of(context).size.height * 0.016,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                          ),
+                        ),
+                        child: Text(
+                          'Mulai',
+                          style: AppTextStyles.button(context),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+
+                  // Skip Button
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MainPage(),
+                          ),
+                        );
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                          vertical: MediaQuery.of(context).size.height * 0.016,
+                        ),
+                        side: const BorderSide(
+                          color: AppColors.textPrimary,
+                          width: 1.5,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                        ),
+                      ),
+                      child: Text(
+                        'Skip',
+                        style: AppTextStyles.button(context).copyWith(
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
