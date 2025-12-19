@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent_app/pages/main_page.dart';
+import 'package:rent_app/pages/forgot_password_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -498,17 +499,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
-
-                                        // Forgot Password
-                                        TextButton(
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Lupa kata sandi?',
-                                            style: AppTextStyles.bodySmall(context),
-                                          ),
-                                        ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
+                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                                         // Divider
                                         Row(

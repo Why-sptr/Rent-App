@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rent_app/pages/main_page.dart';
 import 'package:rent_app/pages/register_page.dart';
+import 'package:rent_app/pages/forgot_password_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -318,7 +319,14 @@ class _LoginPageState extends State<LoginPage> {
 
                                       // Forgot Password
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => const ForgotPasswordPage(),
+                                            ),
+                                          );
+                                        },
                                         child: Text(
                                           'Lupa kata sandi?',
                                           style: AppTextStyles.bodySmall(context),
