@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent_app/pages/main_page.dart';
+import 'package:rent_app/pages/register_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -63,20 +64,30 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(color: Colors.white70, fontSize: 14),
                         ),
                         const SizedBox(width: 8),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: AppConstants.paddingMedium,
-                            vertical: AppConstants.paddingXSmall,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
-                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                          ),
-                          child: const Text(
-                            'Mulai',
-                            style: TextStyle(
-                              color: AppColors.textWhite,
-                              fontWeight: FontWeight.w600,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegisterPage(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: AppConstants.paddingMedium,
+                              vertical: AppConstants.paddingXSmall,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
+                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                            ),
+                            child: const Text(
+                              'Daftar',
+                              style: TextStyle(
+                                color: AppColors.textWhite,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
