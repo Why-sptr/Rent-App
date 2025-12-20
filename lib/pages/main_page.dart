@@ -4,6 +4,7 @@ import 'package:rent_app/pages/profile_page.dart';
 import 'package:rent_app/pages/search_product_page.dart';
 import 'package:rent_app/pages/history_page.dart';
 import 'package:rent_app/config/app_colors.dart';
+import 'package:rent_app/config/app_constants.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -46,56 +47,111 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
+      extendBody: true,
       body: _pages[_currentIndex],
       bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.05,
+          vertical: MediaQuery.of(context).size.height * 0.02,
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.04,
+          vertical: MediaQuery.of(context).size.height * 0.012,
+        ),
         decoration: BoxDecoration(
+          color: AppColors.backgroundWhite,
+          borderRadius: BorderRadius.circular(AppConstants.borderRadiusCurved),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.1),
-              spreadRadius: 1,
-              blurRadius: 10,
-              offset: const Offset(0, -2),
+              color: Colors.black.withOpacity(0.08),
+              spreadRadius: 0,
+              blurRadius: 20,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColors.backgroundWhite,
-          selectedItemColor: AppColors.primaryBlue,
-          unselectedItemColor: Colors.grey[400],
-          selectedFontSize: 12,
-          unselectedFontSize: 12,
-          elevation: 0,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                _currentIndex == 0 ? Icons.home : Icons.home_outlined,
-              ),
-              label: 'Beranda',
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildNavItem(
+              icon: Icons.dashboard,
+              index: 0,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                _currentIndex == 1 ? Icons.search : Icons.search_outlined,
-              ),
-              label: 'Search',
+            _buildNavItem(
+              icon: Icons.search,
+              index: 1,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                _currentIndex == 2 ? Icons.history : Icons.history_outlined,
-              ),
-              label: 'Riwayat',
+            _buildNavItem(
+              icon: Icons.history,
+              index: 2,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                _currentIndex == 3 ? Icons.person : Icons.person_outline,
-              ),
-              label: 'Profile',
+            _buildNavItem(
+              icon: Icons.bolt,
+              index: 3,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem({
+    required IconData icon,
+    required int index,
+  }) {
+    final isSelected = _currentIndex == index;
+    
+    // Labels untuk setiap menu
+    final labels = ['Beranda', 'Search', 'Riwayat', 'Profile'];
+    
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _currentIndex = index;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        padding: EdgeInsets.symmetric(
+          horizontal: isSelected 
+              ? MediaQuery.of(context).size.width * 0.04 
+              : MediaQuery.of(context).size.width * 0.03,
+          vertical: MediaQuery.of(context).size.height * 0.012,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected 
+              ? AppColors.primaryBlue 
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(AppConstants.borderRadiusXLarge),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? AppColors.textWhite : AppColors.iconGrey,
+              size: MediaQuery.of(context).size.height * 0.026,
+            ),
+            AnimatedSize(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              child: isSelected
+                  ? Row(
+                      children: [
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.015),
+                        Text(
+                          labels[index],
+                          style: TextStyle(
+                            color: AppColors.textWhite,
+                            fontSize: MediaQuery.of(context).size.height * 0.014,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    )
+                  : const SizedBox.shrink(),
             ),
           ],
         ),

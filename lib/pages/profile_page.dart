@@ -13,11 +13,8 @@ import 'package:rent_app/config/app_text_styles.dart';
 
 class ProfilePage extends StatelessWidget {
   final VoidCallback onBackToDashboard;
-  
-  const ProfilePage({
-    super.key,
-    required this.onBackToDashboard,
-  });
+
+  const ProfilePage({super.key, required this.onBackToDashboard});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +32,14 @@ class ProfilePage extends StatelessWidget {
                 bottom: false,
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(
-                    MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
-                    MediaQuery.of(context).size.height * AppConstants.spacingLarge,
-                    MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
-                    MediaQuery.of(context).size.height * AppConstants.spacingXLarge,
+                    MediaQuery.of(context).size.width *
+                        AppConstants.widthPaddingLarge,
+                    MediaQuery.of(context).size.height *
+                        AppConstants.spacingLarge,
+                    MediaQuery.of(context).size.width *
+                        AppConstants.widthPaddingLarge,
+                    MediaQuery.of(context).size.height *
+                        AppConstants.spacingXLarge,
                   ),
                   child: Column(
                     children: [
@@ -49,18 +50,25 @@ class ProfilePage extends StatelessWidget {
                           GestureDetector(
                             onTap: onBackToDashboard,
                             child: Container(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
+                              padding: EdgeInsets.all(
+                                MediaQuery.of(context).size.width *
+                                    AppConstants.widthPaddingSmall,
+                              ),
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: AppColors.borderGrey.withOpacity(0.3),
                                   width: AppConstants.containerBorderWidth,
                                 ),
-                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                borderRadius: BorderRadius.circular(
+                                  AppConstants.borderRadiusMedium,
+                                ),
                               ),
                               child: Icon(
                                 Icons.arrow_back,
                                 color: AppColors.textWhite,
-                                size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
+                                size:
+                                    MediaQuery.of(context).size.height *
+                                    AppConstants.iconSizeMedium,
                               ),
                             ),
                           ),
@@ -73,30 +81,42 @@ class ProfilePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const NotificationPage(),
+                                  builder: (context) =>
+                                      const NotificationPage(),
                                 ),
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
+                              padding: EdgeInsets.all(
+                                MediaQuery.of(context).size.width *
+                                    AppConstants.widthPaddingSmall,
+                              ),
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: AppColors.borderGrey.withOpacity(0.3),
                                   width: AppConstants.containerBorderWidth,
                                 ),
-                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                borderRadius: BorderRadius.circular(
+                                  AppConstants.borderRadiusMedium,
+                                ),
                               ),
                               child: Icon(
                                 Icons.notifications_outlined,
                                 color: AppColors.textWhite,
-                                size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
+                                size:
+                                    MediaQuery.of(context).size.height *
+                                    AppConstants.iconSizeMedium,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
-                      
+                      SizedBox(
+                        height:
+                            MediaQuery.of(context).size.height *
+                            AppConstants.spacingLarge,
+                      ),
+
                       // Avatar / Foto Profile
                       Container(
                         decoration: BoxDecoration(
@@ -114,7 +134,9 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ),
                         child: CircleAvatar(
-                          radius: MediaQuery.of(context).size.width * AppConstants.heightAvatarRadius,
+                          radius:
+                              MediaQuery.of(context).size.width *
+                              AppConstants.heightAvatarRadius,
                           backgroundColor: Colors.grey[300],
                           child: ClipOval(
                             child: Image.asset(
@@ -125,7 +147,8 @@ class ProfilePage extends StatelessWidget {
                               errorBuilder: (context, error, stackTrace) {
                                 return Icon(
                                   Icons.person,
-                                  size: MediaQuery.of(context).size.width * 0.15,
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.15,
                                   color: Colors.grey[600],
                                 );
                               },
@@ -133,31 +156,53 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
-                      
+                      SizedBox(
+                        height:
+                            MediaQuery.of(context).size.height *
+                            AppConstants.spacingMedium,
+                      ),
+
                       // Nama
                       Text(
                         'Wahyu Cahyo Saputra',
                         style: AppTextStyles.title(context),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
-                      
+                      SizedBox(
+                        height:
+                            MediaQuery.of(context).size.height *
+                            AppConstants.spacingXSmall /
+                            2,
+                      ),
+
                       // NIM
                       Text(
                         '20 Tahun, Semarang',
                         style: AppTextStyles.subtitleWhite(context),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
-                      
+                      SizedBox(
+                        height:
+                            MediaQuery.of(context).size.height *
+                            AppConstants.spacingXLarge,
+                      ),
+
                       // (Prodi - Semester)
                       Container(
                         padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
-                          vertical: MediaQuery.of(context).size.height * AppConstants.paddingSmall / 1000,
+                          horizontal:
+                              MediaQuery.of(context).size.width *
+                              AppConstants.widthPaddingLarge,
+                          vertical:
+                              MediaQuery.of(context).size.height *
+                              AppConstants.paddingSmall /
+                              1000,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
-                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusXLarge),
+                          color: AppColors.textWhite.withValues(
+                            alpha: AppConstants.alphaButton,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            AppConstants.borderRadiusXLarge,
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -165,24 +210,38 @@ class ProfilePage extends StatelessWidget {
                             Icon(
                               Icons.card_membership_outlined,
                               color: AppColors.textWhite,
-                              size: MediaQuery.of(context).size.height * AppConstants.spacingLarge,
+                              size:
+                                  MediaQuery.of(context).size.height *
+                                  AppConstants.spacingLarge,
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width * AppConstants.spacingMedium),
+                            SizedBox(
+                              width:
+                                  MediaQuery.of(context).size.width *
+                                  AppConstants.spacingMedium,
+                            ),
                             Text(
                               'Platinum Membership',
                               style: AppTextStyles.labelMedium(context),
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
+                            SizedBox(
+                              width:
+                                  MediaQuery.of(context).size.width *
+                                  AppConstants.widthPaddingSmall,
+                            ),
                           ],
                         ),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
+                      SizedBox(
+                        height:
+                            MediaQuery.of(context).size.height *
+                            AppConstants.spacingXLarge,
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
-            
+
             // Content Section
             Container(
               decoration: const BoxDecoration(
@@ -192,17 +251,29 @@ class ProfilePage extends StatelessWidget {
                   topRight: Radius.circular(AppConstants.borderRadiusCurved),
                 ),
               ),
-              transform: Matrix4.translationValues(0, -AppConstants.curveLift, 0),
+              transform: Matrix4.translationValues(
+                0,
+                -AppConstants.curveLift,
+                0,
+              ),
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
-                  vertical: MediaQuery.of(context).size.height * AppConstants.spacingXLarge,
+                  horizontal:
+                      MediaQuery.of(context).size.width *
+                      AppConstants.widthPaddingLarge,
+                  vertical:
+                      MediaQuery.of(context).size.height *
+                      AppConstants.spacingXLarge,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
-                    
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height *
+                          AppConstants.spacingSmall,
+                    ),
+
                     // Statistics Cards
                     Row(
                       children: [
@@ -217,19 +288,30 @@ class ProfilePage extends StatelessWidget {
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
+                              padding: EdgeInsets.all(
+                                MediaQuery.of(context).size.width *
+                                    AppConstants.widthPaddingMedium,
+                              ),
                               decoration: BoxDecoration(
                                 gradient: AppColors.buttonGradient,
-                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
+                                borderRadius: BorderRadius.circular(
+                                  AppConstants.borderRadiusLarge,
+                                ),
                               ),
                               child: Column(
                                 children: [
                                   Icon(
                                     Icons.directions_car,
                                     color: AppColors.textWhite,
-                                    size: MediaQuery.of(context).size.height * AppConstants.iconSizeLarge,
+                                    size:
+                                        MediaQuery.of(context).size.height *
+                                        AppConstants.iconSizeLarge,
                                   ),
-                                  SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                        AppConstants.spacingSmall,
+                                  ),
                                   Text(
                                     '12',
                                     style: AppTextStyles.titleMedium(context),
@@ -237,8 +319,12 @@ class ProfilePage extends StatelessWidget {
                                   Text(
                                     'Mobil Disewa',
                                     style: TextStyle(
-                                      color: AppColors.textWhite.withValues(alpha: AppConstants.alphaHigh),
-                                      fontSize: MediaQuery.of(context).size.height * AppConstants.fontSizeXSmall,
+                                      color: AppColors.textWhite.withValues(
+                                        alpha: AppConstants.alphaHigh,
+                                      ),
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                          AppConstants.fontSizeXSmall,
                                     ),
                                   ),
                                 ],
@@ -246,7 +332,11 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
+                        SizedBox(
+                          width:
+                              MediaQuery.of(context).size.width *
+                              AppConstants.widthPaddingMedium,
+                        ),
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
@@ -258,24 +348,37 @@ class ProfilePage extends StatelessWidget {
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
+                              padding: EdgeInsets.all(
+                                MediaQuery.of(context).size.width *
+                                    AppConstants.widthPaddingMedium,
+                              ),
                               decoration: BoxDecoration(
                                 color: AppColors.backgroundGrey,
-                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
+                                borderRadius: BorderRadius.circular(
+                                  AppConstants.borderRadiusLarge,
+                                ),
                               ),
                               child: Column(
                                 children: [
                                   Icon(
                                     Icons.favorite,
                                     color: AppColors.iconPrimary,
-                                    size: MediaQuery.of(context).size.height * AppConstants.iconSizeLarge,
+                                    size:
+                                        MediaQuery.of(context).size.height *
+                                        AppConstants.iconSizeLarge,
                                   ),
-                                  SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height *
+                                        AppConstants.spacingSmall,
+                                  ),
                                   Text(
                                     '8',
                                     style: TextStyle(
                                       color: AppColors.textPrimary,
-                                      fontSize: MediaQuery.of(context).size.height * AppConstants.fontSizeXLarge,
+                                      fontSize:
+                                          MediaQuery.of(context).size.height *
+                                          AppConstants.fontSizeXLarge,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -290,18 +393,28 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    
-                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
-                    
+
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height *
+                          AppConstants.spacingXLarge,
+                    ),
+
                     // Menu List
                     Text(
                       'Pengaturan Akun',
                       style: AppTextStyles.titleBlack(context).copyWith(
-                        fontSize: MediaQuery.of(context).size.height * AppConstants.spacingLarge,
+                        fontSize:
+                            MediaQuery.of(context).size.height *
+                            AppConstants.spacingLarge,
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
-                    
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height *
+                          AppConstants.spacingMedium,
+                    ),
+
                     _buildMenuItem(
                       context,
                       icon: Icons.person_outline,
@@ -325,7 +438,8 @@ class ProfilePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ForgotPasswordPage(isFromProfile: true),
+                            builder: (context) =>
+                                const ForgotPasswordPage(isFromProfile: true),
                           ),
                         );
                       },
@@ -344,17 +458,27 @@ class ProfilePage extends StatelessWidget {
                         );
                       },
                     ),
-                    
-                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
-                    
+
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height *
+                          AppConstants.spacingLarge,
+                    ),
+
                     Text(
                       'Lainnya',
                       style: AppTextStyles.titleBlack(context).copyWith(
-                        fontSize: MediaQuery.of(context).size.height * AppConstants.spacingLarge,
+                        fontSize:
+                            MediaQuery.of(context).size.height *
+                            AppConstants.spacingLarge,
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
-                    
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height *
+                          AppConstants.spacingMedium,
+                    ),
+
                     _buildMenuItem(
                       context,
                       icon: Icons.history,
@@ -397,9 +521,13 @@ class ProfilePage extends StatelessWidget {
                         );
                       },
                     ),
-                    
-                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
-                    
+
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height *
+                          AppConstants.spacingXLarge,
+                    ),
+
                     // Logout
                     SizedBox(
                       width: double.infinity,
@@ -413,26 +541,32 @@ class ProfilePage extends StatelessWidget {
                         ),
                         label: Text(
                           'Keluar',
-                          style: AppTextStyles.button(context).copyWith(
-                            color: AppColors.redAccent,
-                          ),
+                          style: AppTextStyles.button(
+                            context,
+                          ).copyWith(color: AppColors.redAccent),
                         ),
                         style: OutlinedButton.styleFrom(
                           padding: EdgeInsets.symmetric(
-                            vertical: MediaQuery.of(context).size.height * 0.016,
+                            vertical:
+                                MediaQuery.of(context).size.height * 0.016,
                           ),
                           side: const BorderSide(
                             color: AppColors.redAccent,
                             width: AppConstants.buttonBorderWidth,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                            borderRadius: BorderRadius.circular(
+                              AppConstants.borderRadiusMedium,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    
-                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
+
+                    SizedBox(
+                      height:
+                          MediaQuery.of(context).size.height * 0.05,
+                    ),
                   ],
                 ),
               ),
@@ -451,7 +585,12 @@ class ProfilePage extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Container(
-      margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * AppConstants.paddingSmall / 1000),
+      margin: EdgeInsets.only(
+        bottom:
+            MediaQuery.of(context).size.height *
+            AppConstants.paddingSmall /
+            1000,
+      ),
       decoration: BoxDecoration(
         color: AppColors.backgroundGrey,
         borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -467,25 +606,15 @@ class ProfilePage extends StatelessWidget {
           child: Icon(
             icon,
             color: AppColors.iconPrimary,
-            size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
+            size:
+                MediaQuery.of(context).size.height *
+                AppConstants.iconSizeMedium,
           ),
         ),
-        title: Text(
-          title,
-          style: AppTextStyles.bodyLarge(context),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: AppTextStyles.subtitle(context),
-        ),
-        trailing: Icon(
-          Icons.chevron_right,
-          color: Colors.grey[400],
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
+        title: Text(title, style: AppTextStyles.bodyLarge(context)),
+        subtitle: Text(subtitle, style: AppTextStyles.subtitle(context)),
+        trailing: Icon(Icons.chevron_right, color: Colors.grey[400]),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       ),
     );
   }
@@ -498,15 +627,12 @@ class ProfilePage extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
           ),
-          title: Text(
-            'Keluar',
-            style: AppTextStyles.titleBlack(context),
-          ),
+          title: Text('Keluar', style: AppTextStyles.titleBlack(context)),
           content: Text(
             'Apakah Anda yakin ingin keluar dari aplikasi?',
-            style: AppTextStyles.bodyLarge(context).copyWith(
-              color: Colors.grey[700],
-            ),
+            style: AppTextStyles.bodyLarge(
+              context,
+            ).copyWith(color: Colors.grey[700]),
           ),
           actions: [
             TextButton(
@@ -515,24 +641,24 @@ class ProfilePage extends StatelessWidget {
               },
               child: Text(
                 'Batal',
-                style: AppTextStyles.bodyMedium(context).copyWith(
-                  color: Colors.grey[600],
-                ),
+                style: AppTextStyles.bodyMedium(
+                  context,
+                ).copyWith(color: Colors.grey[600]),
               ),
             ),
             Container(
               decoration: BoxDecoration(
                 gradient: AppColors.buttonGradient,
-                borderRadius: BorderRadius.circular(AppConstants.borderRadiusSmall),
+                borderRadius: BorderRadius.circular(
+                  AppConstants.borderRadiusSmall,
+                ),
               ),
               child: TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
                     (route) => false,
                   );
                 },
