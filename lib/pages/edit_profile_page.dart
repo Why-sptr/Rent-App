@@ -624,59 +624,80 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   children: [
                     // Batalkan Button
                     Expanded(
-                      child: OutlinedButton(
-                        onPressed: () => Navigator.pop(context),
-                        style: OutlinedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(
-                            vertical: MediaQuery.of(context).size.height * 0.016,
-                          ),
-                          side: const BorderSide(
-                            color: AppColors.textPrimary,
-                            width: 1.5,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundWhite,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: AppColors.primaryBlue,
+                            width: 2,
                           ),
                         ),
-                        child: Text(
-                          'Batalkan',
-                          style: AppTextStyles.button(context).copyWith(
-                            color: AppColors.textPrimary,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () => Navigator.pop(context),
+                            borderRadius: BorderRadius.circular(12),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.018),
+                              child: Center(
+                                child: Text(
+                                  'Batalkan',
+                                  style: TextStyle(
+                                    fontSize: MediaQuery.of(context).size.height * 0.0175,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.primaryBlue,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                     
                     // Simpan Button
                     Expanded(
                       child: Container(
                         decoration: BoxDecoration(
-                          gradient: AppColors.buttonGradient,
-                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: const Text('Profile berhasil disimpan!'),
-                                backgroundColor: Colors.green,
-                              ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                            padding: EdgeInsets.symmetric(
-                              vertical: MediaQuery.of(context).size.height * 0.016,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                            ),
+                          gradient: const LinearGradient(
+                            colors: [
+                              AppColors.gradientStart1,
+                              AppColors.gradientEnd1,
+                            ],
                           ),
-                          child: Text(
-                            'Simpan',
-                            style: AppTextStyles.button(context),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: Colors.transparent,
+                            width: 2,
+                          ),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Profile berhasil disimpan!'),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(12),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.018),
+                              child: Center(
+                                child: Text(
+                                  'Simpan',
+                                  style: TextStyle(
+                                    fontSize: MediaQuery.of(context).size.height * 0.0175,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.textWhite,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),

@@ -495,6 +495,10 @@ class HistoryDetailPage extends StatelessWidget {
                             ],
                           ),
                           borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: Colors.transparent,
+                            width: 2,
+                          ),
                         ),
                         child: Material(
                           color: Colors.transparent,

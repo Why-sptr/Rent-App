@@ -71,31 +71,43 @@ class OnboardingPage extends StatelessWidget {
                     width: double.infinity,
                     child: Container(
                       decoration: BoxDecoration(
-                        gradient: AppColors.buttonGradient,
-                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginPage(),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          padding: EdgeInsets.symmetric(
-                            vertical: MediaQuery.of(context).size.height * 0.016,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                          ),
+                        gradient: const LinearGradient(
+                          colors: [
+                            AppColors.gradientStart1,
+                            AppColors.gradientEnd1,
+                          ],
                         ),
-                        child: Text(
-                          'Mulai',
-                          style: AppTextStyles.button(context),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: Colors.transparent,
+                          width: 2,
+                        ),
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginPage(),
+                              ),
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(12),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.018),
+                            child: Center(
+                              child: Text(
+                                'Mulai',
+                                style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height * 0.0175,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textWhite,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -105,31 +117,40 @@ class OnboardingPage extends StatelessWidget {
                   // Skip Button
                   SizedBox(
                     width: double.infinity,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MainPage(),
-                          ),
-                        );
-                      },
-                      style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height * 0.016,
-                        ),
-                        side: const BorderSide(
-                          color: AppColors.textPrimary,
-                          width: 1.5,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.backgroundWhite,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: AppColors.primaryBlue,
+                          width: 2,
                         ),
                       ),
-                      child: Text(
-                        'Skip',
-                        style: AppTextStyles.button(context).copyWith(
-                          color: AppColors.textPrimary,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MainPage(),
+                              ),
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(12),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.018),
+                            child: Center(
+                              child: Text(
+                                'Skip',
+                                style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height * 0.0175,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.primaryBlue,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
