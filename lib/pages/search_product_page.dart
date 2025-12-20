@@ -6,6 +6,7 @@ import 'package:rent_app/widgets/car_card.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
+import 'package:rent_app/pages/brand_detail_page.dart';
 
 class SearchProductPage extends StatefulWidget {
   final String? searchType; // 'brands', 'best_selling', 'available', or null
@@ -137,48 +138,58 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   itemCount: BrandData.brands.length,
                   itemBuilder: (context, index) {
                     final brand = BrandData.brands[index];
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                        border: Border.all(
-                          color: Colors.grey[300]!,
-                          width: AppConstants.containerBorderWidth,
-                        ),
-                        color: AppColors.backgroundWhite,
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 8,
-                            offset: Offset(0, 3),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BrandDetailPage(brand: brand),
                           ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            brand['image']!,
-                            height: screenHeight * 0.08,
-                            fit: BoxFit.contain,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Icon(
-                                Icons.directions_car,
-                                size: screenHeight * 0.08,
-                                color: Colors.grey[400],
-                              );
-                            },
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                          border: Border.all(
+                            color: Colors.grey[300]!,
+                            width: AppConstants.containerBorderWidth,
                           ),
-                          SizedBox(height: screenHeight * 0.01),
-                          Text(
-                            brand['name']!,
-                            style: TextStyle(
-                              fontSize: screenHeight * AppConstants.fontSizeXSmall,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textBlack,
+                          color: AppColors.backgroundWhite,
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 8,
+                              offset: Offset(0, 3),
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              brand.image,
+                              height: screenHeight * 0.08,
+                              fit: BoxFit.contain,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Icon(
+                                  Icons.directions_car,
+                                  size: screenHeight * 0.08,
+                                  color: Colors.grey[400],
+                                );
+                              },
+                            ),
+                            SizedBox(height: screenHeight * 0.01),
+                            Text(
+                              brand.name,
+                              style: TextStyle(
+                                fontSize: screenHeight * AppConstants.fontSizeXSmall,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textBlack,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
