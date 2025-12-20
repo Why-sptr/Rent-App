@@ -3,6 +3,7 @@ import 'package:rent_app/models/car_model.dart';
 class CarData {
   static final List<CarModel> availableCars = [
     CarModel(
+      id: 'car_1',
       name: 'BYD Seal',
       location: 'Semarang',
       transmission: 'Matic',
@@ -12,6 +13,7 @@ class CarData {
       capacity: 5,
     ),
     CarModel(
+      id: 'car_2',
       name: 'Hyundai Plaiside',
       location: 'Semarang',
       transmission: 'Manual',
@@ -21,6 +23,7 @@ class CarData {
       capacity: 7,
     ),
     CarModel(
+      id: 'car_3',
       name: 'Honda HRV',
       location: 'Semarang',
       transmission: 'Matic',
@@ -30,6 +33,7 @@ class CarData {
       capacity: 5,
     ),
     CarModel(
+      id: 'car_4',
       name: 'Toyota Rush',
       location: 'Semarang',
       transmission: 'Manual',
@@ -40,3 +44,4 @@ class CarData {
     ),
   ];
 }
+

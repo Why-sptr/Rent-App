@@ -1,4 +1,5 @@
 class CarModel {
+  final String id;
   final String name;
   final String location;
   final String transmission;
@@ -8,6 +9,7 @@ class CarModel {
   final int capacity; // Orang
 
   CarModel({
+    required this.id,
     required this.name,
     required this.location,
     required this.transmission,

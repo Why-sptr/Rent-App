@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/pages/dashboard_page.dart';
 import 'package:rent_app/pages/profile_page.dart';
 import 'package:rent_app/pages/search_product_page.dart';
+import 'package:rent_app/pages/favorite_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 
 class MainPage extends StatefulWidget {
@@ -38,7 +39,7 @@ class _MainPageState extends State<MainPage> {
       onNavigateToProfile: _navigateToProfile,
     ),
     const SearchProductPage(isEmbedded: true),
-    const Center(child: Text('Lokasi Page')),
+    const FavoritePage(),
     ProfilePage(onBackToDashboard: _navigateToDashboard),
   ];
 
@@ -86,9 +87,9 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                _currentIndex == 2 ? Icons.location_on : Icons.location_on_outlined,
+                _currentIndex == 2 ? Icons.favorite : Icons.favorite_outline,
               ),
-              label: 'Lokasi',
+              label: 'Favorit',
             ),
             BottomNavigationBarItem(
               icon: Icon(

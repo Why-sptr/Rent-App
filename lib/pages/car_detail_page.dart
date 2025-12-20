@@ -7,14 +7,60 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:rent_app/widgets/spec_card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class CarDetailPage extends StatelessWidget {
+class CarDetailPage extends StatefulWidget {
   final CarModel car;
 
   const CarDetailPage({
     super.key,
     required this.car,
   });
+
+  @override
+  State<CarDetailPage> createState() => _CarDetailPageState();
+}
+
+class _CarDetailPageState extends State<CarDetailPage> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfFavorite();
+  }
+
+  Future<void> _checkIfFavorite() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final favoriteIds = prefs.getStringList('favoriteCarIds') ?? [];
+      setState(() {
+        isFavorite = favoriteIds.contains(widget.car.id);
+      });
+    } catch (e) {
+      print('Error checking favorite: $e');
+    }
+  }
+
+  Future<void> _toggleFavorite() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final favoriteIds = prefs.getStringList('favoriteCarIds') ?? [];
+      
+      if (isFavorite) {
+        favoriteIds.remove(widget.car.id);
+      } else {
+        favoriteIds.add(widget.car.id);
+      }
+      
+      await prefs.setStringList('favoriteCarIds', favoriteIds);
+      setState(() {
+        isFavorite = !isFavorite;
+      });
+    } catch (e) {
+      print('Error toggling favorite: $e');
+    }
+  }
 
   String _formatPrice(int price) {
     final s = price.toString().replaceAllMapped(
@@ -77,21 +123,24 @@ class CarDetailPage extends StatelessWidget {
                             color: AppColors.textBlack,
                           ),
                         ),
-                        // Filter Button
-                        Container(
-                          padding: EdgeInsets.all(screenWidth * 0.028),
-                          decoration: BoxDecoration(
-                            color: AppColors.backgroundWhite,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: Colors.grey[300]!,
-                              width: 1,
+                        // Heart Button
+                        GestureDetector(
+                          onTap: _toggleFavorite,
+                          child: Container(
+                            padding: EdgeInsets.all(screenWidth * 0.028),
+                            decoration: BoxDecoration(
+                              color: AppColors.backgroundWhite,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Colors.grey[300]!,
+                                width: 1,
+                              ),
                             ),
-                          ),
-                          child: Icon(
-                            Icons.tune,
-                            color: AppColors.textBlack,
-                            size: screenHeight * 0.022,
+                            child: Icon(
+                              isFavorite ? Icons.favorite : Icons.favorite_border,
+                              color: isFavorite ? Colors.red : AppColors.textBlack,
+                              size: screenHeight * 0.022,
+                            ),
                           ),
                         ),
                       ],
@@ -113,7 +162,7 @@ class CarDetailPage extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
-                      car.image,
+                      widget.car.image,
                       fit: BoxFit.contain,
                       errorBuilder: (context, error, stackTrace) {
                         return Center(
@@ -134,7 +183,7 @@ class CarDetailPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
                   child: Text(
-                    car.name,
+                    widget.car.name,
                     style: TextStyle(
                       fontSize: screenHeight * 0.024,
                       fontWeight: FontWeight.bold,
@@ -179,19 +228,19 @@ class CarDetailPage extends StatelessWidget {
                           SpecCard(
                             icon: Icons.settings_outlined,
                             label: 'Transmisi',
-                            value: car.transmission,
+                            value: widget.car.transmission,
                           ),
                           SizedBox(width: screenWidth * 0.03),
                           SpecCard(
                             icon: Icons.speed,
                             label: 'Maks. Kecepatan',
-                            value: '${car.maxSpeed}km/j',
+                            value: '${widget.car.maxSpeed}km/j',
                           ),
                           SizedBox(width: screenWidth * 0.03),
                           SpecCard(
                             icon: Icons.people_outline,
                             label: 'Kapasitas',
-                            value: '${car.capacity} Orang',
+                            value: '${widget.car.capacity} Orang',
                           ),
                         ],
                       ),
@@ -309,7 +358,7 @@ class CarDetailPage extends StatelessWidget {
                         ),
                         SizedBox(height: screenHeight * 0.006),
                         Text(
-                          '${_formatPrice(car.price)}/hari',
+                          '${_formatPrice(widget.car.price)}/hari',
                           style: TextStyle(
                             fontSize: screenHeight * 0.021,
                             fontWeight: FontWeight.bold,
@@ -337,7 +386,7 @@ class CarDetailPage extends StatelessWidget {
                           onTap: () {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Rental ${car.name} - Coming Soon!'),
+                                content: Text('Rental ${widget.car.name} - Coming Soon!'),
                                 backgroundColor: AppColors.primaryBlue,
                               ),
                             );

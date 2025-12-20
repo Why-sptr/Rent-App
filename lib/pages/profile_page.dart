@@ -4,6 +4,7 @@ import 'package:rent_app/pages/edit_profile_page.dart';
 import 'package:rent_app/pages/faq_page.dart';
 import 'package:rent_app/pages/about_app_page.dart';
 import 'package:rent_app/pages/notification_page.dart';
+import 'package:rent_app/pages/favorite_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -238,33 +239,43 @@ class ProfilePage extends StatelessWidget {
                         ),
                         SizedBox(width: screenWidth * AppConstants.widthPaddingMedium),
                         Expanded(
-                          child: Container(
-                            padding: EdgeInsets.all(screenWidth * AppConstants.widthPaddingMedium),
-                            decoration: BoxDecoration(
-                              color: AppColors.backgroundGrey,
-                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
-                            ),
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.favorite,
-                                  color: AppColors.iconPrimary,
-                                  size: screenHeight * AppConstants.iconSizeLarge,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const FavoritePage(),
                                 ),
-                                SizedBox(height: screenHeight * AppConstants.spacingSmall),
-                                Text(
-                                  '8',
-                                  style: TextStyle(
-                                    color: AppColors.textPrimary,
-                                    fontSize: screenHeight * AppConstants.fontSizeXLarge,
-                                    fontWeight: FontWeight.bold,
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(screenWidth * AppConstants.widthPaddingMedium),
+                              decoration: BoxDecoration(
+                                color: AppColors.backgroundGrey,
+                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.favorite,
+                                    color: AppColors.iconPrimary,
+                                    size: screenHeight * AppConstants.iconSizeLarge,
                                   ),
-                                ),
-                                Text(
-                                  'Favorit',
-                                  style: AppTextStyles.subtitle(context),
-                                ),
-                              ],
+                                  SizedBox(height: screenHeight * AppConstants.spacingSmall),
+                                  Text(
+                                    '8',
+                                    style: TextStyle(
+                                      color: AppColors.textPrimary,
+                                      fontSize: screenHeight * AppConstants.fontSizeXLarge,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Favorit',
+                                    style: AppTextStyles.subtitle(context),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
