@@ -12,8 +12,13 @@ import 'package:rent_app/config/app_text_styles.dart';
 
 class DashboardPage extends StatefulWidget {
   final VoidCallback? onNavigateToSearch;
+  final VoidCallback? onNavigateToProfile;
 
-  const DashboardPage({super.key, this.onNavigateToSearch});
+  const DashboardPage({
+    super.key,
+    this.onNavigateToSearch,
+    this.onNavigateToProfile,
+  });
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();
@@ -127,30 +132,38 @@ class _DashboardPageState extends State<DashboardPage> {
                               ],
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: AppColors.textWhite,
-                                width: AppConstants.avatarBorderWidth,
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to profile tab
+                              if (widget.onNavigateToProfile != null) {
+                                widget.onNavigateToProfile!();
+                              }
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: AppColors.textWhite,
+                                  width: AppConstants.avatarBorderWidth,
+                                ),
                               ),
-                            ),
-                            child: CircleAvatar(
-                              radius: screenWidth * 0.075,
-                              backgroundColor: Colors.grey[300],
-                              child: ClipOval(
-                                child: Image.asset(
-                                  'assets/images/avatar.jpg',
-                                  fit: BoxFit.cover,
-                                  width: screenWidth * 0.15,
-                                  height: screenWidth * 0.15,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Icon(
-                                      Icons.person,
-                                      size: screenWidth * 0.1,
-                                      color: Colors.grey[600],
-                                    );
-                                  },
+                              child: CircleAvatar(
+                                radius: screenWidth * 0.075,
+                                backgroundColor: Colors.grey[300],
+                                child: ClipOval(
+                                  child: Image.asset(
+                                    'assets/images/avatar.jpg',
+                                    fit: BoxFit.cover,
+                                    width: screenWidth * 0.15,
+                                    height: screenWidth * 0.15,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Icon(
+                                        Icons.person,
+                                        size: screenWidth * 0.1,
+                                        color: Colors.grey[600],
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ),

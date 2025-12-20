@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rent_app/pages/login_page.dart';
+import 'package:rent_app/pages/edit_profile_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -42,25 +43,52 @@ class ProfilePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                            icon: const Icon(
-                              Icons.arrow_back,
-                              color: AppColors.textWhite,
+                          GestureDetector(
+                            onTap: onBackToDashboard,
+                            child: Container(
+                              padding: EdgeInsets.all(screenWidth * 0.028),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: AppColors.textWhite.withOpacity(0.3),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: AppColors.textWhite,
+                                size: screenHeight * 0.022,
+                              ),
                             ),
-                            onPressed: onBackToDashboard,
                           ),
                           Text(
                             'Profile',
                             style: AppTextStyles.titleMedium(context),
                           ),
-                          IconButton(
-                            icon: const Icon(
-                              Icons.edit_outlined,
-                              color: AppColors.textWhite,
-                            ),
-                            onPressed: () {
-                              // Action untuk edit profile
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const EditProfilePage(),
+                                ),
+                              );
                             },
+                            child: Container(
+                              padding: EdgeInsets.all(screenWidth * 0.028),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: AppColors.textWhite.withOpacity(0.3),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Icon(
+                                Icons.edit_outlined,
+                                color: AppColors.textWhite,
+                                size: screenHeight * 0.022,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -113,28 +141,10 @@ class ProfilePage extends StatelessWidget {
                       
                       // NIM
                       Text(
-                        'NIM: 236760152',
+                        '20 Tahun, Semarang',
                         style: AppTextStyles.subtitleWhite(context),
                       ),
-                      SizedBox(height: screenHeight * AppConstants.spacingXSmall),
-                      
-                      // Email
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.email_outlined,
-                            color: AppColors.textWhite.withValues(alpha: AppConstants.alphaLow),
-                            size: screenHeight * AppConstants.spacingLarge,
-                          ),
-                          SizedBox(width: screenWidth * AppConstants.spacingLarge),
-                          Text(
-                            'wahyucahyos380@gmail.com',
-                            style: AppTextStyles.bodyWhite(context),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: screenHeight * AppConstants.spacingMedium),
+                      SizedBox(height: screenHeight * AppConstants.spacingXLarge),
                       
                       // (Prodi - Semester)
                       Container(
@@ -150,32 +160,16 @@ class ProfilePage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(
-                              Icons.school_outlined,
+                              Icons.card_membership_outlined,
                               color: AppColors.textWhite,
                               size: screenHeight * AppConstants.spacingLarge,
                             ),
                             SizedBox(width: screenWidth * AppConstants.spacingMedium),
                             Text(
-                              'Teknik Informatika',
+                              'Platinum Membership',
                               style: AppTextStyles.labelMedium(context),
                             ),
                             SizedBox(width: screenWidth * AppConstants.widthPaddingSmall),
-                            Container(
-                              width: 1,
-                              height: screenHeight * AppConstants.spacingMedium,
-                              color: AppColors.textWhite.withValues(alpha: AppConstants.alphaVeryLow),
-                            ),
-                            SizedBox(width: screenWidth * AppConstants.widthPaddingSmall),
-                            Icon(
-                              Icons.calendar_today_outlined,
-                              color: AppColors.textWhite,
-                              size: screenHeight * AppConstants.iconSizeSmall,
-                            ),
-                            SizedBox(width: screenWidth * AppConstants.spacingMedium),
-                            Text(
-                              'Semester 5',
-                              style: AppTextStyles.labelMedium(context),
-                            ),
                           ],
                         ),
                       ),
@@ -290,7 +284,14 @@ class ProfilePage extends StatelessWidget {
                       icon: Icons.person_outline,
                       title: 'Edit Profile',
                       subtitle: 'Ubah informasi pribadi Anda',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const EditProfilePage(),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       context,

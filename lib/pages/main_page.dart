@@ -26,8 +26,17 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+  void _navigateToProfile() {
+    setState(() {
+      _currentIndex = 3;
+    });
+  }
+
   List<Widget> get _pages => [
-    DashboardPage(onNavigateToSearch: _navigateToSearch),
+    DashboardPage(
+      onNavigateToSearch: _navigateToSearch,
+      onNavigateToProfile: _navigateToProfile,
+    ),
     const SearchProductPage(isEmbedded: true),
     const Center(child: Text('Lokasi Page')),
     ProfilePage(onBackToDashboard: _navigateToDashboard),
