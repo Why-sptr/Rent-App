@@ -6,6 +6,7 @@ import 'package:rent_app/pages/about_app_page.dart';
 import 'package:rent_app/pages/notification_page.dart';
 import 'package:rent_app/pages/favorite_page.dart';
 import 'package:rent_app/pages/history_page.dart';
+import 'package:rent_app/pages/forgot_password_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -323,7 +324,14 @@ class ProfilePage extends StatelessWidget {
                       icon: Icons.lock_outline,
                       title: 'Ubah Password',
                       subtitle: 'Perbarui kata sandi Anda',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ForgotPasswordPage(isFromProfile: true),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       context,

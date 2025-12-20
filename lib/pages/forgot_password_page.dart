@@ -5,7 +5,9 @@ import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({super.key});
+  final bool isFromProfile;
+  
+  const ForgotPasswordPage({super.key, this.isFromProfile = false});
 
   @override
   State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
@@ -76,7 +78,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Lupa Kata Sandi?',
+                        widget.isFromProfile ? 'Ubah Kata Sandi' : 'Lupa Kata Sandi?',
                         style: AppTextStyles.header(context).copyWith(
                           color: AppColors.textWhite,
                         ),
