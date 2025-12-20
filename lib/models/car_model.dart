@@ -4,6 +4,8 @@ class CarModel {
   final String transmission;
   final int price;
   final String image;
+  final int maxSpeed; // KM/J
+  final int capacity; // Orang
 
   CarModel({
     required this.name,
@@ -11,5 +13,7 @@ class CarModel {
     required this.transmission,
     required this.price,
     required this.image,
+    this.maxSpeed = 200,
+    this.capacity = 4,
   });
 }

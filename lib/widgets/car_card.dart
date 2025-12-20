@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/models/car_model.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
+import 'package:rent_app/pages/car_detail_page.dart';
 
 class CarCard extends StatelessWidget {
   final CarModel car;
@@ -29,7 +30,16 @@ class CarCard extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final radius = 18.0;
 
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CarDetailPage(car: car),
+          ),
+        );
+      },
+      child: Container(
       height: height ?? screenHeight * 0.26,
       margin: margin,
       decoration: BoxDecoration(
@@ -171,7 +181,6 @@ class CarCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      ),    ),    );
   }
 }

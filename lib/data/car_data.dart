@@ -8,6 +8,8 @@ class CarData {
       transmission: 'Matic',
       price: 150000,
       image: 'assets/images/car/BydSeal.png',
+      maxSpeed: 180,
+      capacity: 5,
     ),
     CarModel(
       name: 'Hyundai Plaiside',
@@ -15,6 +17,8 @@ class CarData {
       transmission: 'Manual',
       price: 200000,
       image: 'assets/images/car/HyundaiPalaside.png',
+      maxSpeed: 190,
+      capacity: 7,
     ),
     CarModel(
       name: 'Honda HRV',
@@ -22,6 +26,8 @@ class CarData {
       transmission: 'Matic',
       price: 180000,
       image: 'assets/images/car/HondaHRV.png',
+      maxSpeed: 185,
+      capacity: 5,
     ),
     CarModel(
       name: 'Toyota Rush',
@@ -29,6 +35,8 @@ class CarData {
       transmission: 'Manual',
       price: 170000,
       image: 'assets/images/car/ToyotaRush.png',
+      maxSpeed: 175,
+      capacity: 7,
     ),
   ];
 }
