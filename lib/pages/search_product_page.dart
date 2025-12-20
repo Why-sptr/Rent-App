@@ -74,9 +74,15 @@ class _SearchProductPageState extends State<SearchProductPage> {
                     child: TextField(
                       controller: searchController,
                       onChanged: filterCars,
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.0165,
+                      ),
+                      textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
                         hintText: 'Cari mobil',
-                        hintStyle: AppTextStyles.hintGrey(context),
+                        hintStyle: AppTextStyles.hintGrey(context).copyWith(
+                          fontSize: screenHeight * 0.0155,
+                        ),
                         prefixIcon: Icon(
                           Icons.search,
                           color: Colors.grey[400],

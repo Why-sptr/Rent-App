@@ -135,6 +135,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 TextFormField(
                                   controller: _emailController,
                                   keyboardType: TextInputType.emailAddress,
+                                  style: TextStyle(
+                                    fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                  ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Email tidak boleh kosong';
@@ -146,7 +149,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                   },
                                   decoration: InputDecoration(
                                     hintText: 'email@gmail.com',
-                                    hintStyle: AppTextStyles.hint(context),
+                                    hintStyle: AppTextStyles.hint(context).copyWith(
+                                      fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                    ),
                                     filled: true,
                                     fillColor: AppColors.backgroundLightGrey,
                                     border: OutlineInputBorder(

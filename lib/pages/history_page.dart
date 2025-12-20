@@ -17,6 +17,7 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   List<Map<String, dynamic>> _bookings = [];
+  List<Map<String, dynamic>> _filteredBookings = [];
   bool _isLoading = true;
   String _selectedFilter = 'Pending';
   final TextEditingController _searchController = TextEditingController();
@@ -25,6 +26,7 @@ class _HistoryPageState extends State<HistoryPage> {
   void initState() {
     super.initState();
     _loadHistory();
+    _searchController.addListener(_filterBookings);
   }
 
   @override
@@ -43,7 +45,19 @@ class _HistoryPageState extends State<HistoryPage> {
           .toList()
           .reversed
           .toList(); // Reverse to show newest first
+      _filterBookings();
       _isLoading = false;
+    });
+  }
+
+  void _filterBookings() {
+    String query = _searchController.text.toLowerCase();
+    setState(() {
+      _filteredBookings = _bookings.where((booking) {
+        String carName = booking['carName'].toString().toLowerCase();
+        String location = booking['location'].toString().toLowerCase();
+        return carName.contains(query) || location.contains(query);
+      }).toList();
     });
   }
 
@@ -169,11 +183,15 @@ class _HistoryPageState extends State<HistoryPage> {
                 ),
                 child: TextField(
                   controller: _searchController,
+                  style: TextStyle(
+                    fontSize: h * 0.0165,
+                  ),
+                  textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
                     hintText: 'Cari mobil',
                     hintStyle: TextStyle(
                       color: Colors.grey[500],
-                      fontSize: h * 0.016,
+                      fontSize: h * 0.0155,
                     ),
                     prefixIcon: Icon(
                       Icons.search,
@@ -208,7 +226,7 @@ class _HistoryPageState extends State<HistoryPage> {
               Expanded(
                 child: _isLoading
                     ? const Center(child: CircularProgressIndicator())
-                    : _bookings.isEmpty
+                    : _filteredBookings.isEmpty
                         ? Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -220,7 +238,9 @@ class _HistoryPageState extends State<HistoryPage> {
                                 ),
                                 SizedBox(height: h * 0.02),
                                 Text(
-                                  'Belum ada riwayat pesanan',
+                                  _searchController.text.isNotEmpty 
+                                      ? 'Tidak ada hasil pencarian' 
+                                      : 'Belum ada riwayat pesanan',
                                   style: TextStyle(
                                     fontSize: h * 0.018,
                                     color: Colors.grey[600],
@@ -233,10 +253,10 @@ class _HistoryPageState extends State<HistoryPage> {
                             onRefresh: _loadHistory,
                             child: ListView.separated(
                               physics: const AlwaysScrollableScrollPhysics(),
-                              itemCount: _bookings.length,
+                              itemCount: _filteredBookings.length,
                               separatorBuilder: (_, __) => SizedBox(height: h * 0.015),
                               itemBuilder: (context, index) {
-                                final booking = _bookings[index];
+                                final booking = _filteredBookings[index];
                                 return _shadowCard(
                                   child: SizedBox(
                                     height: h * 0.135,

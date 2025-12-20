@@ -178,6 +178,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                             TextFormField(
                                               controller: _emailController,
                                               keyboardType: TextInputType.emailAddress,
+                                              style: TextStyle(
+                                                fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                              ),
                                               validator: (value) {
                                                 if (value == null || value.isEmpty) {
                                                   return 'Email tidak boleh kosong';
@@ -189,7 +192,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                               },
                                               decoration: InputDecoration(
                                                 hintText: 'email@gmail.com',
-                                                hintStyle: AppTextStyles.hint(context),
+                                                hintStyle: AppTextStyles.hint(context).copyWith(
+                                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                                ),
                                                 filled: true,
                                                 fillColor: AppColors.backgroundLightGrey,
                                                 border: OutlineInputBorder(
@@ -232,6 +237,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                             TextFormField(
                                               controller: _passwordController,
                                               obscureText: !_isPasswordVisible,
+                                              style: TextStyle(
+                                                fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                              ),
                                               validator: (value) {
                                                 if (value == null || value.isEmpty) {
                                                   return 'Password tidak boleh kosong';
@@ -243,7 +251,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                               },
                                               decoration: InputDecoration(
                                                 hintText: '••••••••••••',
-                                                hintStyle: AppTextStyles.hint(context),
+                                                hintStyle: AppTextStyles.hint(context).copyWith(
+                                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                                ),
                                                 filled: true,
                                                 fillColor: AppColors.backgroundLightGrey,
                                                 border: OutlineInputBorder(
@@ -299,6 +309,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                             TextFormField(
                                               controller: _confirmPasswordController,
                                               obscureText: !_isConfirmPasswordVisible,
+                                              style: TextStyle(
+                                                fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                              ),
                                               validator: (value) {
                                                 if (value == null || value.isEmpty) {
                                                   return 'Konfirmasi password tidak boleh kosong';
@@ -310,7 +323,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                               },
                                               decoration: InputDecoration(
                                                 hintText: '••••••••••••',
-                                                hintStyle: AppTextStyles.hint(context),
+                                                hintStyle: AppTextStyles.hint(context).copyWith(
+                                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                                ),
                                                 filled: true,
                                                 fillColor: AppColors.backgroundLightGrey,
                                                 border: OutlineInputBorder(
@@ -370,6 +385,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                                   TextFormField(
                                                     controller: _ageController,
                                                     keyboardType: TextInputType.number,
+                                                    style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                                    ),
                                                     validator: (value) {
                                                       if (value == null || value.isEmpty) {
                                                         return 'Umur tidak boleh kosong';
@@ -382,7 +400,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                                     },
                                                     decoration: InputDecoration(
                                                       hintText: '18',
-                                                      hintStyle: AppTextStyles.hint(context),
+                                                      hintStyle: AppTextStyles.hint(context).copyWith(
+                                                        fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                                      ),
                                                       filled: true,
                                                       fillColor: AppColors.backgroundLightGrey,
                                                       border: OutlineInputBorder(
@@ -425,6 +445,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                                   SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
                                                   TextFormField(
                                                     controller: _cityController,
+                                                    style: TextStyle(
+                                                      fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                                    ),
                                                     validator: (value) {
                                                       if (value == null || value.isEmpty) {
                                                         return 'Domisili tidak boleh kosong';
@@ -433,7 +456,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                                     },
                                                     decoration: InputDecoration(
                                                       hintText: 'Kota/Kab',
-                                                      hintStyle: AppTextStyles.hint(context),
+                                                      hintStyle: AppTextStyles.hint(context).copyWith(
+                                                        fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                                      ),
                                                       filled: true,
                                                       fillColor: AppColors.backgroundLightGrey,
                                                       border: OutlineInputBorder(

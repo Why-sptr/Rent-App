@@ -174,6 +174,9 @@ class _LoginPageState extends State<LoginPage> {
                                           TextFormField(
                                             controller: _emailController,
                                             keyboardType: TextInputType.emailAddress,
+                                            style: TextStyle(
+                                              fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                            ),
                                             validator: (value) {
                                               if (value == null || value.isEmpty) {
                                                 return 'Email tidak boleh kosong';
@@ -185,7 +188,9 @@ class _LoginPageState extends State<LoginPage> {
                                             },
                                             decoration: InputDecoration(
                                               hintText: 'email@gmail.com',
-                                              hintStyle: AppTextStyles.hint(context),
+                                              hintStyle: AppTextStyles.hint(context).copyWith(
+                                                fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                              ),
                                               filled: true,
                                               fillColor: AppColors.backgroundLightGrey,
                                               border: OutlineInputBorder(
@@ -228,6 +233,9 @@ class _LoginPageState extends State<LoginPage> {
                                           TextFormField(
                                             controller: _passwordController,
                                             obscureText: !_isPasswordVisible,
+                                            style: TextStyle(
+                                              fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                            ),
                                             validator: (value) {
                                               if (value == null || value.isEmpty) {
                                                 return 'Password tidak boleh kosong';
@@ -239,7 +247,9 @@ class _LoginPageState extends State<LoginPage> {
                                             },
                                             decoration: InputDecoration(
                                               hintText: '••••••••••••',
-                                              hintStyle: AppTextStyles.hint(context),
+                                              hintStyle: AppTextStyles.hint(context).copyWith(
+                                                fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                              ),
                                               filled: true,
                                               fillColor: AppColors.backgroundLightGrey,
                                               border: OutlineInputBorder(

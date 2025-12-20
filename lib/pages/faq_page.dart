@@ -108,9 +108,15 @@ class _FaqPageState extends State<FaqPage> {
                   borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                 ),
                 child: TextField(
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.0165,
+                  ),
+                  textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
                     hintText: 'Cari pertanyaan',
-                    hintStyle: AppTextStyles.hint(context),
+                    hintStyle: AppTextStyles.hint(context).copyWith(
+                      fontSize: screenHeight * 0.0155,
+                    ),
                     prefixIcon: Icon(
                       Icons.search,
                       color: Colors.grey[400],

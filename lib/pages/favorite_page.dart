@@ -174,6 +174,10 @@ class _FavoritePageState extends State<FavoritePage> {
                   child: TextField(
                     controller: searchController,
                     onChanged: filterCars,
+                    style: TextStyle(
+                      fontSize: screenHeight * 0.0165,
+                    ),
+                    textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
                       hintText: 'Cari mobil',
                       hintStyle: TextStyle(

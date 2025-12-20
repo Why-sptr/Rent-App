@@ -135,6 +135,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                 TextFormField(
                                   controller: _passwordController,
                                   obscureText: !_isPasswordVisible,
+                                  style: TextStyle(
+                                    fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                  ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Password tidak boleh kosong';
@@ -146,7 +149,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                   },
                                   decoration: InputDecoration(
                                     hintText: '••••••••••••',
-                                    hintStyle: AppTextStyles.hint(context),
+                                    hintStyle: AppTextStyles.hint(context).copyWith(
+                                      fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                    ),
                                     filled: true,
                                     fillColor: AppColors.backgroundLightGrey,
                                     border: OutlineInputBorder(
@@ -202,6 +207,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                 TextFormField(
                                   controller: _confirmPasswordController,
                                   obscureText: !_isConfirmPasswordVisible,
+                                  style: TextStyle(
+                                    fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                  ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Konfirmasi password tidak boleh kosong';
@@ -213,7 +221,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                   },
                                   decoration: InputDecoration(
                                     hintText: '••••••••••••',
-                                    hintStyle: AppTextStyles.hint(context),
+                                    hintStyle: AppTextStyles.hint(context).copyWith(
+                                      fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                    ),
                                     filled: true,
                                     fillColor: AppColors.backgroundLightGrey,
                                     border: OutlineInputBorder(
