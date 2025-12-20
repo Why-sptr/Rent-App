@@ -18,63 +18,55 @@ class CheckInPage extends StatelessWidget {
             // Header
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
-                vertical: MediaQuery.of(context).size.height * 0.015,
+                horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
               ),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
-                          decoration: BoxDecoration(
-                            color: AppColors.backgroundWhite,
-                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                            border: Border.all(
-                              color: Colors.grey[300]!,
-                              width: AppConstants.containerBorderWidth,
-                            ),
-                          ),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: AppColors.textBlack,
-                            size: MediaQuery.of(context).size.height * 0.022,
-                          ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Back Button
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
+                      decoration: BoxDecoration(
+                        color: AppColors.backgroundWhite,
+                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                        border: Border.all(
+                          color: AppColors.borderGrey,
+                          width: AppConstants.containerBorderWidth,
                         ),
                       ),
-                    ),
-                    Center(
-                      child: Text(
-                        'Check In',
-                        style: AppTextStyles.titleBlack(context),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: AppColors.textBlack,
+                        size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.12),
-                    ),
-                  ],
-                ),
+                  ),
+                  // Title
+                  Text(
+                    'Check In',
+                    style: AppTextStyles.titleBlack(context),
+                  ),
+                  // Empty space for alignment
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.12),
+                ],
               ),
             ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
             // QR Code Section
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   child: Column(
                     children: [
                       // Info Card
                       Container(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                         decoration: BoxDecoration(
                           color: AppColors.backgroundGrey,
                           borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
@@ -83,19 +75,14 @@ class CheckInPage extends StatelessWidget {
                           children: [
                             Text(
                               'Scan QR Code untuk Check In',
-                              style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.height * 0.018,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.textBlack,
-                              ),
+                              style: AppTextStyles.titleBlack(context),
                               textAlign: TextAlign.center,
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                             Text(
                               'Tunjukkan QR Code ini ke petugas untuk melakukan check in',
-                              style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.height * 0.014,
-                                color: Colors.grey[600],
+                              style: AppTextStyles.bodySmall(context).copyWith(
+                                color: AppColors.iconGrey,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -103,7 +90,7 @@ class CheckInPage extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
                       // QR Code
                       Container(
@@ -112,8 +99,8 @@ class CheckInPage extends StatelessWidget {
                           color: AppColors.backgroundWhite,
                           borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
                           border: Border.all(
-                            color: Colors.grey[300]!,
-                            width: 1,
+                            color: AppColors.borderGrey,
+                            width: AppConstants.containerBorderWidth,
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -142,11 +129,11 @@ class CheckInPage extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
                       // Booking Info
                       Container(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                         decoration: BoxDecoration(
                           color: AppColors.backgroundGrey,
                           borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
@@ -158,19 +145,19 @@ class CheckInPage extends StatelessWidget {
                               'Mobil',
                               booking['carName'],
                             ),
-                            Divider(height: MediaQuery.of(context).size.height * 0.03),
+                            Divider(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
                             _buildInfoRow(
                               context,
                               'Durasi',
                               booking['duration'],
                             ),
-                            Divider(height: MediaQuery.of(context).size.height * 0.03),
+                            Divider(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
                             _buildInfoRow(
                               context,
                               'Lokasi',
                               booking['location'],
                             ),
-                            Divider(height: MediaQuery.of(context).size.height * 0.03),
+                            Divider(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
                             _buildInfoRow(
                               context,
                               'Booking ID',
@@ -180,7 +167,7 @@ class CheckInPage extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
                     ],
                   ),
                 ),
@@ -198,17 +185,14 @@ class CheckInPage extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.height * 0.015,
-            color: Colors.grey[600],
+          style: AppTextStyles.bodyMedium(context).copyWith(
+            color: AppColors.iconGrey,
           ),
         ),
         Text(
           value,
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.height * 0.015,
+          style: AppTextStyles.bodyMedium(context).copyWith(
             fontWeight: FontWeight.w600,
-            color: AppColors.textBlack,
           ),
         ),
       ],

@@ -9,8 +9,8 @@ import 'package:rent_app/config/app_text_styles.dart';
 import 'package:rent_app/pages/brand_detail_page.dart';
 
 class SearchProductPage extends StatefulWidget {
-  final String? searchType; // 'brands', 'best_selling', 'available', or null
-  final bool? isEmbedded; // true jika embedded di main_page, false jika pushed
+  final String? searchType;
+  final bool? isEmbedded;
 
   const SearchProductPage({
     super.key,
@@ -56,7 +56,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
             // Search Bar and Filter
             Padding(
             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
@@ -71,18 +71,14 @@ class _SearchProductPageState extends State<SearchProductPage> {
                     child: TextField(
                       controller: searchController,
                       onChanged: filterCars,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
-                      ),
+                      style: AppTextStyles.bodyLarge(context),
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
                         hintText: 'Cari mobil',
-                        hintStyle: AppTextStyles.hintGrey(context).copyWith(
-                          fontSize: MediaQuery.of(context).size.height * 0.0155,
-                        ),
+                        hintStyle: AppTextStyles.hintGrey(context),
                         prefixIcon: Icon(
                           Icons.search,
-                          color: Colors.grey[400],
+                          color: AppColors.iconGrey,
                           size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                         ),
                         border: InputBorder.none,
@@ -96,12 +92,12 @@ class _SearchProductPageState extends State<SearchProductPage> {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                 Container(
-                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.034),
+                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   decoration: BoxDecoration(
                     color: AppColors.backgroundWhite,
                     borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                     border: Border.all(
-                      color: Colors.grey[300]!,
+                      color: AppColors.borderGrey,
                       width: AppConstants.containerBorderWidth,
                     ),
                   ),
@@ -115,7 +111,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
             ),
           ),
 
-          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
           // Brands Section
           Padding(
@@ -127,15 +123,15 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   'Semua Brand',
                   style: AppTextStyles.titleBlack(context),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                 // Brand Grid
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: MediaQuery.of(context).size.width * 0.04,
-                    mainAxisSpacing: MediaQuery.of(context).size.height * 0.02,
+                    crossAxisSpacing: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                    mainAxisSpacing: MediaQuery.of(context).size.height * AppConstants.spacingLarge,
                     childAspectRatio: 1.0,
                   ),
                   itemCount: BrandData.brands.length,
@@ -154,7 +150,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                           border: Border.all(
-                            color: Colors.grey[300]!,
+                            color: AppColors.borderGrey,
                             width: AppConstants.containerBorderWidth,
                           ),
                           color: AppColors.backgroundWhite,
@@ -177,17 +173,15 @@ class _SearchProductPageState extends State<SearchProductPage> {
                                 return Icon(
                                   Icons.directions_car,
                                   size: MediaQuery.of(context).size.height * 0.08,
-                                  color: Colors.grey[400],
+                                  color: AppColors.iconGrey,
                                 );
                               },
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                             Text(
                               brand.name,
-                              style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.height * AppConstants.fontSizeXSmall,
+                              style: AppTextStyles.bodySmall(context).copyWith(
                                 fontWeight: FontWeight.w600,
-                                color: AppColors.textBlack,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -198,14 +192,14 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   },
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
                 // Mobil Tersedia Section
                 Text(
                   'Mobil Tersedia',
                   style: AppTextStyles.titleBlack(context),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                 // Cars Grid
                 if (displayedCars.isNotEmpty)
@@ -214,8 +208,8 @@ class _SearchProductPageState extends State<SearchProductPage> {
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: MediaQuery.of(context).size.width * 0.06,
-                      mainAxisSpacing: MediaQuery.of(context).size.width * 0.06,
+                      crossAxisSpacing: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
+                      mainAxisSpacing: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
                       childAspectRatio: (MediaQuery.of(context).size.width * 0.42) / (MediaQuery.of(context).size.height * 0.24),
                     ),
                     itemCount: displayedCars.length,
@@ -236,9 +230,9 @@ class _SearchProductPageState extends State<SearchProductPage> {
                           Icon(
                             Icons.directions_car_outlined,
                             size: MediaQuery.of(context).size.height * 0.08,
-                            color: Colors.grey[300],
+                            color: AppColors.iconGrey,
                           ),
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
                           Text(
                             'Mobil tidak ditemukan',
                             style: AppTextStyles.hintGrey(context),
@@ -251,7 +245,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
             ),
           ),
 
-          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
         ],
       ),
     ),

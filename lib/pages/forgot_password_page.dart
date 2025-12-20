@@ -69,8 +69,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               // Title Section
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.08,
-                  vertical: MediaQuery.of(context).size.height * 0.02,
+                  horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingXLarge,
+                  vertical: MediaQuery.of(context).size.height * AppConstants.spacingLarge,
                 ),
                 child: SizedBox(
                   width: double.infinity,
@@ -84,7 +84,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                       Text(
                         'Masukkan email untuk verifikasi',
                         style: AppTextStyles.bodyMedium(context).copyWith(
@@ -97,7 +97,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
               // White Card
               Expanded(
@@ -115,13 +115,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       key: _formKey,
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.08,
-                          vertical: MediaQuery.of(context).size.height * 0.03,
+                          horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingXLarge,
+                          vertical: MediaQuery.of(context).size.height * AppConstants.spacingXLarge,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
                             
                             // Email Field
                             Column(
@@ -135,9 +135,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 TextFormField(
                                   controller: _emailController,
                                   keyboardType: TextInputType.emailAddress,
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.height * 0.0165,
-                                  ),
+                                  style: AppTextStyles.bodyMedium(context),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Email tidak boleh kosong';
@@ -149,9 +147,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                   },
                                   decoration: InputDecoration(
                                     hintText: 'email@gmail.com',
-                                    hintStyle: AppTextStyles.hint(context).copyWith(
-                                      fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                    ),
+                                    hintStyle: AppTextStyles.hint(context),
                                     filled: true,
                                     fillColor: AppColors.backgroundLightGrey,
                                     border: OutlineInputBorder(
@@ -173,15 +169,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                       ),
                                     ),
                                     contentPadding: EdgeInsets.symmetric(
-                                      horizontal: AppConstants.paddingLarge,
-                                      vertical: MediaQuery.of(context).size.height * 0.018,
+                                      horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                                      vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
 
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
                             // Send OTP Button
                             SizedBox(
@@ -197,7 +193,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                     backgroundColor: Colors.transparent,
                                     shadowColor: Colors.transparent,
                                     padding: EdgeInsets.symmetric(
-                                      vertical: MediaQuery.of(context).size.height * 0.016,
+                                      vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                                     ),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),

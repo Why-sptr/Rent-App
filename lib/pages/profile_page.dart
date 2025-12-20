@@ -49,18 +49,18 @@ class ProfilePage extends StatelessWidget {
                           GestureDetector(
                             onTap: onBackToDashboard,
                             child: Container(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: AppColors.textWhite.withOpacity(0.3),
-                                  width: 1,
+                                  color: AppColors.borderGrey.withOpacity(0.3),
+                                  width: AppConstants.containerBorderWidth,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                               ),
                               child: Icon(
                                 Icons.arrow_back,
                                 color: AppColors.textWhite,
-                                size: MediaQuery.of(context).size.height * 0.022,
+                                size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                               ),
                             ),
                           ),
@@ -73,23 +73,23 @@ class ProfilePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const EditProfilePage(),
+                                  builder: (context) => const NotificationPage(),
                                 ),
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: AppColors.textWhite.withOpacity(0.3),
-                                  width: 1,
+                                  color: AppColors.borderGrey.withOpacity(0.3),
+                                  width: AppConstants.containerBorderWidth,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                               ),
                               child: Icon(
-                                Icons.edit_outlined,
+                                Icons.notifications_outlined,
                                 color: AppColors.textWhite,
-                                size: MediaQuery.of(context).size.height * 0.022,
+                                size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                               ),
                             ),
                           ),

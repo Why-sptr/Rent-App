@@ -58,8 +58,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
               // Header
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.04,
-                  vertical: MediaQuery.of(context).size.height * 0.02,
+                  horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                  vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,30 +67,31 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     GestureDetector(
                       onTap: () => Navigator.pop(context),
                       child: Container(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.grey[300]!,
-                            width: 1,
+                            color: AppColors.borderGrey,
+                            width: AppConstants.containerBorderWidth,
                           ),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                         ),
                         child: Icon(
                           Icons.arrow_back,
                           color: AppColors.textBlack,
-                          size: MediaQuery.of(context).size.height * 0.022,
+                          size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                         ),
                       ),
                     ),
                     Text(
-                      'Edit Profile',style: AppTextStyles.titleBlack(context),
+                      'Edit Profile',
+                      style: AppTextStyles.titleBlack(context),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.height * 0.03),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.11),
                   ],
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
               // Avatar Section
               Center(
@@ -152,36 +153,28 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
               // Informasi Umum Section
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Informasi Umum',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.022,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textBlack,
-                      ),
+                      style: AppTextStyles.titleBlack(context),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                     // Nama Lengkap
                     Text(
                       'Nama Lengkap',
                       style: AppTextStyles.label(context),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                     TextField(
                       controller: namaController,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
-                      ),
+                      style: AppTextStyles.bodyMedium(context),
                       decoration: InputDecoration(
                         hintText: 'Masukkan nama lengkap',
-                        hintStyle: AppTextStyles.hint(context).copyWith(
-                          fontSize: MediaQuery.of(context).size.height * 0.0155,
-                        ),
+                        hintStyle: AppTextStyles.hint(context),
                         filled: true,
                         fillColor: AppColors.backgroundLightGrey,
                         border: OutlineInputBorder(
@@ -189,29 +182,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: EdgeInsets.symmetric(
-                          horizontal: AppConstants.paddingLarge,
-                          vertical: MediaQuery.of(context).size.height * 0.016,
+                          horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                          vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                     // Email
                     Text(
                       'Email',
                       style: AppTextStyles.label(context),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                     TextField(
                       controller: emailController,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
-                      ),
+                      style: AppTextStyles.bodyMedium(context),
                       decoration: InputDecoration(
                         hintText: 'email@gmail.com',
-                        hintStyle: AppTextStyles.hint(context).copyWith(
-                          fontSize: MediaQuery.of(context).size.height * 0.0155,
-                        ),
+                        hintStyle: AppTextStyles.hint(context),
                         filled: true,
                         fillColor: AppColors.backgroundLightGrey,
                         border: OutlineInputBorder(
@@ -219,12 +208,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: EdgeInsets.symmetric(
-                          horizontal: AppConstants.paddingLarge,
-                          vertical: MediaQuery.of(context).size.height * 0.016,
+                          horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                          vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                     // Umur and Domisili Row
                     Row(
@@ -238,18 +227,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 'Umur',
                                 style: AppTextStyles.label(context),
                               ),
-                              SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                               TextField(
                                 controller: umurController,
                                 keyboardType: TextInputType.number,
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.0165,
-                                ),
+                                style: AppTextStyles.bodyMedium(context),
                                 decoration: InputDecoration(
                                   hintText: '18',
-                                  hintStyle: AppTextStyles.hint(context).copyWith(
-                                    fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                  ),
+                                  hintStyle: AppTextStyles.hint(context),
                                   filled: true,
                                   fillColor: AppColors.backgroundLightGrey,
                                   border: OutlineInputBorder(
@@ -257,15 +242,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                     borderSide: BorderSide.none,
                                   ),
                                   contentPadding: EdgeInsets.symmetric(
-                                    horizontal: AppConstants.paddingLarge,
-                                    vertical: MediaQuery.of(context).size.height * 0.016,
+                                    horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                                    vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+                        SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                         // Domisili Field
                         Expanded(
                           child: Column(
@@ -275,17 +260,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 'Domisili',
                                 style: AppTextStyles.label(context),
                               ),
-                              SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                               TextField(
                                 controller: domisiliController,
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.0165,
-                                ),
+                                style: AppTextStyles.bodyMedium(context),
                                 decoration: InputDecoration(
                                   hintText: 'Kota/Kab',
-                                  hintStyle: AppTextStyles.hint(context).copyWith(
-                                    fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                  ),
+                                  hintStyle: AppTextStyles.hint(context),
                                   filled: true,
                                   fillColor: AppColors.backgroundLightGrey,
                                   border: OutlineInputBorder(
@@ -293,8 +274,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                     borderSide: BorderSide.none,
                                   ),
                                   contentPadding: EdgeInsets.symmetric(
-                                    horizontal: AppConstants.paddingLarge,
-                                    vertical: MediaQuery.of(context).size.height * 0.016,
+                                    horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                                    vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                                   ),
                                 ),
                               ),
@@ -313,14 +294,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.008),
                     TextField(
                       controller: teleponController,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
-                      ),
+                      style: AppTextStyles.bodyMedium(context),
                       decoration: InputDecoration(
                         hintText: '081234567890',
-                        hintStyle: AppTextStyles.hint(context).copyWith(
-                          fontSize: MediaQuery.of(context).size.height * 0.0155,
-                        ),
+                        hintStyle: AppTextStyles.hint(context),
                         filled: true,
                         fillColor: AppColors.backgroundLightGrey,
                         border: OutlineInputBorder(
@@ -328,29 +305,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: EdgeInsets.symmetric(
-                          horizontal: AppConstants.paddingLarge,
-                          vertical: MediaQuery.of(context).size.height * 0.016,
+                          horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                          vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                     // Gender
                     Text(
                       'Gender',
                       style: AppTextStyles.label(context),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                     TextField(
                       controller: genderController,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
-                      ),
+                      style: AppTextStyles.bodyMedium(context),
                       decoration: InputDecoration(
                         hintText: 'Pilih gender',
-                        hintStyle: AppTextStyles.hint(context).copyWith(
-                          fontSize: MediaQuery.of(context).size.height * 0.0155,
-                        ),
+                        hintStyle: AppTextStyles.hint(context),
                         filled: true,
                         fillColor: AppColors.backgroundLightGrey,
                         border: OutlineInputBorder(
@@ -358,8 +331,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: EdgeInsets.symmetric(
-                          horizontal: AppConstants.paddingLarge,
-                          vertical: MediaQuery.of(context).size.height * 0.016,
+                          horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                          vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                         ),
                       ),
                     ),
@@ -367,33 +340,29 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.028),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
               // Dokumen Section
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Dokumen',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.022,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textBlack,
-                      ),
+                      style: AppTextStyles.titleBlack(context),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                     // Document 1
                     Container(
-                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                       decoration: BoxDecoration(
                         color: AppColors.backgroundLightGrey,
                         borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                         border: Border.all(
-                          color: Colors.grey[300]!,
-                          width: 1,
+                          color: AppColors.borderGrey,
+                          width: AppConstants.containerBorderWidth,
                         ),
                       ),
                       child: Row(
@@ -441,17 +410,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.012),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
 
                     // Document 2
                     Container(
-                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                       decoration: BoxDecoration(
                         color: AppColors.backgroundLightGrey,
                         borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                         border: Border.all(
-                          color: Colors.grey[300]!,
-                          width: 1,
+                          color: AppColors.borderGrey,
+                          width: AppConstants.containerBorderWidth,
                         ),
                       ),
                       child: Row(
@@ -475,18 +444,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               children: [
                                 Text(
                                   'KTP_Wahyu_Cahyo_Saputra',
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.height * 0.0155,
+                                  style: AppTextStyles.bodySmall(context).copyWith(
                                     fontWeight: FontWeight.w600,
-                                    color: AppColors.textBlack,
                                   ),
                                 ),
                                 Text(
-                                  '1.8 MB',
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.height * 0.013,
-                                    color: Colors.grey[600],
-                                  ),
+                                  '2.4 MB',
+                                  style: AppTextStyles.hint(context),
                                 ),
                               ],
                             ),
@@ -503,23 +467,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.028),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
               // Peta Lokasi Section
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Peta Lokasi',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.022,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textBlack,
-                      ),
+                      style: AppTextStyles.titleBlack(context),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.22,
                       decoration: BoxDecoration(
@@ -571,34 +531,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.028),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
               // Detail Alamat Section
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Detail Alamat',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.022,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textBlack,
-                      ),
+                      style: AppTextStyles.titleBlack(context),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                     TextField(
                       controller: alamatController,
                       maxLines: 3,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
-                      ),
+                      style: AppTextStyles.bodyMedium(context),
                       decoration: InputDecoration(
                         hintText: 'Masukkan alamat lengkap',
-                        hintStyle: AppTextStyles.hint(context).copyWith(
-                          fontSize: MediaQuery.of(context).size.height * 0.0155,
-                        ),
+                        hintStyle: AppTextStyles.hint(context),
                         filled: true,
                         fillColor: AppColors.backgroundLightGrey,
                         border: OutlineInputBorder(
@@ -615,11 +567,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.028),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
               // Action Buttons
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                 child: Row(
                   children: [
                     // Batalkan Button
@@ -706,7 +658,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
             ],
           ),
         ),

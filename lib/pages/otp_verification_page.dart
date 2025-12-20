@@ -103,8 +103,8 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
               // Title Section
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.08,
-                  vertical: MediaQuery.of(context).size.height * 0.02,
+                  horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingXLarge,
+                  vertical: MediaQuery.of(context).size.height * AppConstants.spacingLarge,
                 ),
                 child: SizedBox(
                   width: double.infinity,
@@ -118,7 +118,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                       RichText(
                         textAlign: TextAlign.left,
                         text: TextSpan(
@@ -143,7 +143,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
               // White Card
               Expanded(
@@ -159,13 +159,13 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.08,
-                        vertical: MediaQuery.of(context).size.height * 0.03,
+                        horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingXLarge,
+                        vertical: MediaQuery.of(context).size.height * AppConstants.spacingXLarge,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
                           
                           // Title
                           Text(
@@ -174,7 +174,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                             textAlign: TextAlign.center,
                           ),
 
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge * 2),
 
                           // OTP Input Boxes
                           Row(
@@ -189,10 +189,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                                   textAlign: TextAlign.center,
                                   keyboardType: TextInputType.number,
                                   maxLength: 1,
-                                  style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: AppTextStyles.titleLarge(context),
                                   inputFormatters: [
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
@@ -224,7 +221,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                             }),
                           ),
 
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge * 2),
 
                           // Confirm Button
                           SizedBox(
@@ -240,7 +237,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                                   backgroundColor: Colors.transparent,
                                   shadowColor: Colors.transparent,
                                   padding: EdgeInsets.symmetric(
-                                    vertical: MediaQuery.of(context).size.height * 0.016,
+                                    vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -254,7 +251,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                             ),
                           ),
 
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                           // Resend OTP
                           Center(

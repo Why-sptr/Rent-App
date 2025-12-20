@@ -69,8 +69,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               // Title Section
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.08,
-                  vertical: MediaQuery.of(context).size.height * 0.02,
+                  horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingXLarge,
+                  vertical: MediaQuery.of(context).size.height * AppConstants.spacingLarge,
                 ),
                 child: SizedBox(
                   width: double.infinity,
@@ -84,7 +84,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                       Text(
                         'Silahkan buat kata sandi baru untuk masuk ke akun kamu',
                         style: AppTextStyles.bodyMedium(context).copyWith(
@@ -97,7 +97,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 ),
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
               // White Card
               Expanded(
@@ -115,13 +115,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       key: _formKey,
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.08,
-                          vertical: MediaQuery.of(context).size.height * 0.03,
+                          horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingXLarge,
+                          vertical: MediaQuery.of(context).size.height * AppConstants.spacingXLarge,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
                             
                             // Password Baru Field
                             Column(
@@ -135,9 +135,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                 TextFormField(
                                   controller: _passwordController,
                                   obscureText: !_isPasswordVisible,
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.height * 0.0165,
-                                  ),
+                                  style: AppTextStyles.bodyMedium(context),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Password tidak boleh kosong';
@@ -193,7 +191,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                             // Konfirmasi Password Field
                             Column(
@@ -207,9 +205,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                 TextFormField(
                                   controller: _confirmPasswordController,
                                   obscureText: !_isConfirmPasswordVisible,
-                                  style: TextStyle(
-                                    fontSize: MediaQuery.of(context).size.height * 0.0165,
-                                  ),
+                                  style: AppTextStyles.bodyMedium(context),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Konfirmasi password tidak boleh kosong';
@@ -266,7 +262,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                               ],
                             ),
 
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
                             // Change Password Button
                             SizedBox(
@@ -282,7 +278,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                     backgroundColor: Colors.transparent,
                                     shadowColor: Colors.transparent,
                                     padding: EdgeInsets.symmetric(
-                                      vertical: MediaQuery.of(context).size.height * 0.016,
+                                      vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                                     ),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),

@@ -34,6 +34,12 @@ class AppTextStyles {
     color: AppColors.textBlack,
   );
   
+  static TextStyle titleLarge(BuildContext context) => TextStyle(
+    fontSize: _getResponsiveFontSize(context, AppConstants.fontSizeXLarge),
+    fontWeight: FontWeight.bold,
+    color: AppColors.textBlack,
+  );
+  
   static TextStyle titleMedium(BuildContext context) => TextStyle(
     fontSize: _getResponsiveFontSize(context, AppConstants.fontSizeXLarge),
     fontWeight: FontWeight.bold,

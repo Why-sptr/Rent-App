@@ -44,55 +44,52 @@ class BookingPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
+              horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
               vertical: MediaQuery.of(context).size.height * 0.015,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header: back + centered title + optional right space
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
-                  child: Stack(
-                    alignment: Alignment.center,
+                // Header
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: Container(
-                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
-                            decoration: BoxDecoration(
-                              color: AppColors.backgroundWhite,
-                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                              border: Border.all(
-                                color: Colors.grey[300]!,
-                                width: AppConstants.containerBorderWidth,
-                              ),
+                      // Back Button
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
+                          decoration: BoxDecoration(
+                            color: AppColors.backgroundWhite,
+                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                            border: Border.all(
+                              color: AppColors.borderGrey,
+                              width: AppConstants.containerBorderWidth,
                             ),
-                            child: Icon(
-                              Icons.arrow_back,
-                              color: AppColors.textBlack,
-                              size: MediaQuery.of(context).size.height * 0.022,
-                            ),
+                          ),
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: AppColors.textBlack,
+                            size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                           ),
                         ),
                       ),
-                      Center(
-                        child: Text(
-                          'Rincian',
-                          style: AppTextStyles.titleBlack(context),
-                        ),
+                      // Title
+                      Text(
+                        'Rincian',
+                        style: AppTextStyles.titleBlack(context),
                       ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: SizedBox(width: MediaQuery.of(context).size.width * 0.13),
-                      ),
+                      // Empty space for alignment
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.13),
                     ],
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                 // Car info tile (no card wrapper)
                 Row(
@@ -113,12 +110,12 @@ class BookingPage extends StatelessWidget {
                           errorBuilder: (_, __, ___) => Icon(
                             Icons.directions_car,
                             size: MediaQuery.of(context).size.height * 0.06,
-                            color: Colors.grey[400],
+                            color: AppColors.iconGrey,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+                    SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,21 +123,16 @@ class BookingPage extends StatelessWidget {
                         children: [
                           Text(
                             car.name,
-                            style: TextStyle(
+                            style: AppTextStyles.titleBlack(context).copyWith(
                               fontSize: MediaQuery.of(context).size.height * 0.0195,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textBlack,
                             ),
                           ),
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.006),
+                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall),
                           Text(
                             '${car.transmission}, ${car.maxSpeed} KM/J, ${car.capacity} Orang',
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.height * 0.0135,
-                              color: Colors.grey[600],
-                            ),
+                            style: AppTextStyles.label(context),
                           ),
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                           Container(
                             padding: EdgeInsets.symmetric(
                               horizontal: MediaQuery.of(context).size.width * 0.025,
@@ -152,11 +144,7 @@ class BookingPage extends StatelessWidget {
                             ),
                             child: Text(
                               'SUV',
-                              style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.height * 0.0115,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textWhite,
-                              ),
+                              style: AppTextStyles.buttonSmall(context),
                             ),
                           ),
                         ],
@@ -165,7 +153,7 @@ class BookingPage extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                 // Detail Pesanan card
                 _shadowCard(
@@ -177,13 +165,11 @@ class BookingPage extends StatelessWidget {
                       children: [
                         Text(
                           'Detail Pesanan',
-                          style: TextStyle(
+                          style: AppTextStyles.titleBlack(context).copyWith(
                             fontSize: MediaQuery.of(context).size.height * 0.0195,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textBlack,
                           ),
                         ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -193,27 +179,22 @@ class BookingPage extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Durasi Sewa',
-                                    style: TextStyle(
+                                    style: AppTextStyles.bodyLarge(context).copyWith(
                                       fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.textBlack,
                                     ),
                                   ),
                                   SizedBox(height: MediaQuery.of(context).size.height * 0.003),
                                   Text(
                                     '2 Hari',
-                                    style: TextStyle(
-                                      fontSize: MediaQuery.of(context).size.height * 0.0135,
-                                      color: Colors.grey[600],
-                                    ),
+                                    style: AppTextStyles.label(context),
                                   ),
                                 ],
                               ),
                             ),
-                            Icon(Icons.edit_outlined, color: AppColors.textBlack, size: MediaQuery.of(context).size.height * 0.02),
+                            Icon(Icons.edit_outlined, color: AppColors.textBlack, size: MediaQuery.of(context).size.height * AppConstants.iconSizeSmall),
                           ],
                         ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -223,24 +204,19 @@ class BookingPage extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Lokasi Penjemputan',
-                                    style: TextStyle(
+                                    style: AppTextStyles.bodyLarge(context).copyWith(
                                       fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.textBlack,
                                     ),
                                   ),
                                   SizedBox(height: MediaQuery.of(context).size.height * 0.003),
                                   Text(
                                     car.location,
-                                    style: TextStyle(
-                                      fontSize: MediaQuery.of(context).size.height * 0.0135,
-                                      color: Colors.grey[600],
-                                    ),
+                                    style: AppTextStyles.label(context),
                                   ),
                                 ],
                               ),
                             ),
-                            Icon(Icons.edit_outlined, color: AppColors.textBlack, size: MediaQuery.of(context).size.height * 0.02),
+                            Icon(Icons.edit_outlined, color: AppColors.textBlack, size: MediaQuery.of(context).size.height * AppConstants.iconSizeSmall),
                           ],
                         ),
                       ],
@@ -248,7 +224,7 @@ class BookingPage extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                 // Rincian Pembayaran card
                 _shadowCard(
@@ -260,30 +236,23 @@ class BookingPage extends StatelessWidget {
                       children: [
                         Text(
                           'Rincian Pembayaran',
-                          style: TextStyle(
+                          style: AppTextStyles.titleBlack(context).copyWith(
                             fontSize: MediaQuery.of(context).size.height * 0.0195,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textBlack,
                           ),
                         ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                         Row(
                           children: [
                             Expanded(
                               child: Text(
                                 '2 Hari X  Rp. ${car.price ~/ 1000}.000',
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.0135,
-                                  color: Colors.grey[600],
-                                ),
+                                style: AppTextStyles.label(context),
                               ),
                             ),
                             Text(
                               _formatPrice(car.price * 2),
-                              style: TextStyle(
+                              style: AppTextStyles.bodyLarge(context).copyWith(
                                 fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textBlack,
                               ),
                             ),
                           ],
@@ -294,18 +263,12 @@ class BookingPage extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 'Admin',
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.0135,
-                                  color: Colors.grey[600],
-                                ),
+                                style: AppTextStyles.label(context),
                               ),
                             ),
                             Text(
                               'Rp. 2.500',
-                              style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.height * 0.0135,
-                                color: Colors.grey[600],
-                              ),
+                              style: AppTextStyles.label(context),
                             ),
                           ],
                         ),
@@ -315,19 +278,15 @@ class BookingPage extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 'Total',
-                                style: TextStyle(
+                                style: AppTextStyles.bodyLarge(context).copyWith(
                                   fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textBlack,
                                 ),
                               ),
                             ),
                             Text(
                               _formatPrice(car.price * 2 + 2500),
-                              style: TextStyle(
+                              style: AppTextStyles.bodyLarge(context).copyWith(
                                 fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textBlack,
                               ),
                             ),
                           ],
@@ -349,6 +308,10 @@ class BookingPage extends StatelessWidget {
                       ],
                     ),
                     borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.transparent,
+                      width: 2,
+                    ),
                   ),
                   child: Material(
                     color: Colors.transparent,
@@ -367,11 +330,7 @@ class BookingPage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             'Lanjutkan',
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.height * 0.0175,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textWhite,
-                            ),
+                            style: AppTextStyles.button(context),
                           ),
                         ),
                       ),

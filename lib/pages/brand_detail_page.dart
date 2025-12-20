@@ -55,14 +55,14 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
               // Header dengan back button
               Padding(
                 padding: EdgeInsets.fromLTRB(
                   MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
-                  MediaQuery.of(context).size.height * 0.02,
+                  MediaQuery.of(context).size.height * AppConstants.spacingLarge,
                   MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
-                  MediaQuery.of(context).size.height * 0.02,
+                  MediaQuery.of(context).size.height * AppConstants.spacingLarge,
                 ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,24 +71,24 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                       decoration: BoxDecoration(
                         color: AppColors.backgroundWhite,
                         borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                         border: Border.all(
-                          color: Colors.grey[300]!,
+                          color: AppColors.borderGrey,
                           width: AppConstants.containerBorderWidth,
                         ),
                       ),
                       child: Icon(
                         Icons.arrow_back,
                         color: AppColors.textBlack,
-                        size: MediaQuery.of(context).size.height * 0.024,
+                        size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                       ),
                     ),
                   ),
 
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                   // Brand Image Container and Info Row
                   Row(
@@ -96,7 +96,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                     children: [
                       // Brand Image Container
                       Container(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                         decoration: BoxDecoration(
                           color: AppColors.backgroundGrey,
                           borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -110,12 +110,12 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                             return Icon(
                               Icons.directions_car,
                               size: MediaQuery.of(context).size.height * 0.12,
-                              color: Colors.grey[400],
+                              color: AppColors.iconGrey,
                             );
                           },
                         ),
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+                      SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
 
                       // Brand Info
                       Expanded(
@@ -126,18 +126,18 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                               widget.brand.name,
                               style: AppTextStyles.titleBlack(context),
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
                             Text(
                               widget.brand.description,
                               style: AppTextStyles.bodySmall(context),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.012),
+                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                             Container(
                               padding: EdgeInsets.symmetric(
-                                horizontal: MediaQuery.of(context).size.width * 0.04,
-                                vertical: MediaQuery.of(context).size.height * 0.007,
+                                horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                                vertical: MediaQuery.of(context).size.height * AppConstants.spacingSmall,
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.primaryBlue,
@@ -145,11 +145,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                               ),
                               child: Text(
                                 'Tersedia',
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.013,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textWhite,
-                                ),
+                                style: AppTextStyles.buttonSmall(context),
                               ),
                             ),
                           ],
@@ -161,7 +157,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
               ),
             ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
             // Search Bar and Filter
             Padding(
@@ -177,12 +173,14 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                       child: TextField(
                         controller: searchController,
                         onChanged: filterCars,
+                        style: AppTextStyles.bodyLarge(context),
+                        textAlignVertical: TextAlignVertical.center,
                         decoration: InputDecoration(
                           hintText: 'Cari mobil',
                           hintStyle: AppTextStyles.hintGrey(context),
                           prefixIcon: Icon(
                             Icons.search,
-                            color: Colors.grey[400],
+                            color: AppColors.iconGrey,
                             size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                           ),
                           border: InputBorder.none,
@@ -196,12 +194,12 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                   Container(
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.034),
+                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                     decoration: BoxDecoration(
                       color: AppColors.backgroundWhite,
                       borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                       border: Border.all(
-                        color: Colors.grey[300]!,
+                        color: AppColors.borderGrey,
                         width: AppConstants.containerBorderWidth,
                       ),
                     ),
@@ -215,7 +213,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
               ),
             ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
             // Filter Buttons
             Padding(
@@ -226,7 +224,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                   scrollDirection: Axis.horizontal,
                   children: ['Semua', 'MPV', 'Sedan'].map((filter) {
                     return Padding(
-                      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.02),
+                      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * AppConstants.spacingLarge),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -235,8 +233,8 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.of(context).size.width * 0.04,
-                            vertical: MediaQuery.of(context).size.height * 0.008,
+                            horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                            vertical: MediaQuery.of(context).size.height * AppConstants.spacingSmall,
                           ),
                           decoration: BoxDecoration(
                             color: _selectedFilter == filter
@@ -245,15 +243,14 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                             border: Border.all(
                               color: _selectedFilter == filter
                                   ? AppColors.primaryBlue
-                                  : Colors.grey[400]!,
+                                  : AppColors.borderGrey,
                               width: AppConstants.containerBorderWidth,
                             ),
                             borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
                           ),
                           child: Text(
                             filter,
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.height * 0.015,
+                            style: AppTextStyles.bodySmall(context).copyWith(
                               fontWeight: FontWeight.w600,
                               color: _selectedFilter == filter
                                   ? AppColors.textWhite
@@ -268,7 +265,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
               ),
             ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
             // Cars Grid
             Padding(
@@ -278,8 +275,8 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: MediaQuery.of(context).size.width * 0.06,
-                  mainAxisSpacing: MediaQuery.of(context).size.width * 0.06,
+                  crossAxisSpacing: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
+                  mainAxisSpacing: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
                   childAspectRatio: (MediaQuery.of(context).size.width * 0.42) / (MediaQuery.of(context).size.height * 0.24),
                 ),
                 itemCount: filteredCars.length,
@@ -293,7 +290,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> {
               ),
             ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
           ],
         ),
         ),

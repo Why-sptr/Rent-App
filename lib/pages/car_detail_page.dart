@@ -86,8 +86,8 @@ class _CarDetailPageState extends State<CarDetailPage> {
                   bottom: false,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.04,
-                      vertical: MediaQuery.of(context).size.height * 0.015,
+                      horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                      vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,48 +96,44 @@ class _CarDetailPageState extends State<CarDetailPage> {
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
                           child: Container(
-                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                             decoration: BoxDecoration(
                               color: AppColors.backgroundWhite,
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                               border: Border.all(
-                                color: Colors.grey[300]!,
-                                width: 1,
+                                color: AppColors.borderGrey,
+                                width: AppConstants.containerBorderWidth,
                               ),
                             ),
                             child: Icon(
                               Icons.arrow_back,
                               color: AppColors.textBlack,
-                              size: MediaQuery.of(context).size.height * 0.022,
+                              size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                             ),
                           ),
                         ),
                         // Title
                         Text(
                           'Detail Mobil',
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.height * 0.027,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textBlack,
-                          ),
+                          style: AppTextStyles.titleBlack(context),
                         ),
                         // Heart Button
                         GestureDetector(
                           onTap: _toggleFavorite,
                           child: Container(
-                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                             decoration: BoxDecoration(
                               color: AppColors.backgroundWhite,
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                               border: Border.all(
-                                color: Colors.grey[300]!,
-                                width: 1,
+                                color: AppColors.borderGrey,
+                                width: AppConstants.containerBorderWidth,
                               ),
                             ),
                             child: Icon(
                               isFavorite ? Icons.favorite : Icons.favorite_border,
-                              color: isFavorite ? Colors.red : AppColors.textBlack,
-                              size: MediaQuery.of(context).size.height * 0.022,
+                              color: isFavorite ? AppColors.redAccent : AppColors.textBlack,
+                              size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                             ),
                           ),
                         ),
@@ -146,19 +142,19 @@ class _CarDetailPageState extends State<CarDetailPage> {
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                 // Car Image
                 Container(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.28,
-                  margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                  margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   decoration: BoxDecoration(
                     color: AppColors.backgroundGrey,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                     child: Image.asset(
                       widget.car.image,
                       fit: BoxFit.contain,
@@ -167,7 +163,7 @@ class _CarDetailPageState extends State<CarDetailPage> {
                           child: Icon(
                             Icons.directions_car,
                             size: MediaQuery.of(context).size.height * 0.08,
-                            color: Colors.grey[400],
+                            color: AppColors.iconGrey,
                           ),
                         );
                       },
@@ -175,50 +171,42 @@ class _CarDetailPageState extends State<CarDetailPage> {
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.022),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                 // Car Name
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   child: Text(
                     widget.car.name,
-                    style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.024,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textBlack,
-                    ),
+                    style: AppTextStyles.titleLarge(context),
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                 // Horizontal Line Divider
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   child: Divider(
-                    color: Colors.grey[300],
-                    thickness: 1,
+                    color: AppColors.borderGrey,
+                    thickness: AppConstants.containerBorderWidth,
                     height: 0,
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                 // Spesifikasi Section
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Spesifikasi',
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * 0.022,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textBlack,
-                        ),
+                        style: AppTextStyles.titleBlack(context),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
 
                       // Spec Cards Row
                       Row(
@@ -228,7 +216,7 @@ class _CarDetailPageState extends State<CarDetailPage> {
                             label: 'Transmisi',
                             value: widget.car.transmission,
                           ),
-                          SizedBox(width: MediaQuery.of(context).size.width * 0.03),
+                          SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                           SpecCard(
                             icon: Icons.speed,
                             label: 'Maks. Kecepatan',
@@ -246,34 +234,30 @@ class _CarDetailPageState extends State<CarDetailPage> {
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
                 // Lokasi Pickup Section
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Lokasi Pickup',
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * 0.022,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textBlack,
-                        ),
+                        style: AppTextStyles.titleBlack(context),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.016),
+                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.24,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusSmall + 2),
                           border: Border.all(
-                            color: Colors.grey[300]!,
-                            width: 1,
+                            color: AppColors.borderGrey,
+                            width: AppConstants.containerBorderWidth,
                           ),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusSmall + 2),
                           child: FlutterMap(
                             options: MapOptions(
                               initialCenter: const LatLng(-6.2088, 106.8456),
@@ -301,7 +285,7 @@ class _CarDetailPageState extends State<CarDetailPage> {
                                     child: Icon(
                                       Icons.location_on,
                                       color: AppColors.primaryBlue,
-                                      size: MediaQuery.of(context).size.height * 0.035,
+                                      size: MediaQuery.of(context).size.height * AppConstants.iconSizeLarge,
                                     ),
                                   ),
                                 ],
@@ -326,8 +310,8 @@ class _CarDetailPageState extends State<CarDetailPage> {
             right: 0,
             child: Container(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.04,
-                vertical: MediaQuery.of(context).size.height * 0.016,
+                horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
               ),
               decoration: BoxDecoration(
                 color: AppColors.backgroundWhite,
@@ -348,25 +332,19 @@ class _CarDetailPageState extends State<CarDetailPage> {
                       children: [
                         Text(
                           'Harga Rental',
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.height * 0.0135,
-                            color: Colors.grey[600],
+                          style: AppTextStyles.label(context).copyWith(
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.006),
+                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall),
                         Text(
                           '${_formatPrice(widget.car.price)}/hari',
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.height * 0.021,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textBlack,
-                          ),
+                          style: AppTextStyles.titleBlack(context),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+                  SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
@@ -376,7 +354,11 @@ class _CarDetailPageState extends State<CarDetailPage> {
                             AppColors.gradientEnd1,
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusSmall + 2),
+                        border: Border.all(
+                          color: Colors.transparent,
+                          width: 2,
+                        ),
                       ),
                       child: Material(
                         color: Colors.transparent,
@@ -390,17 +372,13 @@ class _CarDetailPageState extends State<CarDetailPage> {
                               ),
                             );
                           },
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(AppConstants.borderRadiusSmall + 2),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.016),
+                            padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
                             child: Center(
                               child: Text(
                                 'Rental Sekarang',
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.0175,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textWhite,
-                                ),
+                                style: AppTextStyles.button(context),
                               ),
                             ),
                           ),

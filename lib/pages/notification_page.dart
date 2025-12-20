@@ -90,12 +90,13 @@ class _NotificationPageState extends State<NotificationPage> {
       backgroundColor: AppColors.backgroundWhite,
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
+          padding: EdgeInsets.zero,
           children: [
             // Header
             Padding(
               padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height * 0.015,
+                horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium,
+                vertical: MediaQuery.of(context).size.height * AppConstants.spacingMedium,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,60 +104,58 @@ class _NotificationPageState extends State<NotificationPage> {
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.grey[300]!,
-                          width: 1,
+                          color: AppColors.borderGrey,
+                          width: AppConstants.containerBorderWidth,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                       ),
                       child: Icon(
                         Icons.arrow_back,
                         color: AppColors.textBlack,
-                        size: MediaQuery.of(context).size.height * 0.022,
+                        size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                       ),
                     ),
                   ),
                   Text(
                     'Notifikasi',
-                    style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.027,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textBlack,
-                    ),
+                    style: AppTextStyles.titleBlack(context),
                   ),
                   Container(
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
+                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.grey[300]!,
-                        width: 1,
+                        color: AppColors.borderGrey,
+                        width: AppConstants.containerBorderWidth,
                       ),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                     ),
                     child: Icon(
                       Icons.tune,
                       color: AppColors.textBlack,
-                      size: MediaQuery.of(context).size.height * 0.022,
+                      size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                     ),
                   ),
                 ],
               ),
             ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
             // Tabs
-            Row(
-              children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
+              child: Row(
+                children: [
                 // Semua Tab
                 GestureDetector(
                   onTap: () => setState(() => selectedTab = 0),
                   child: Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width * 0.06,
-                      vertical: MediaQuery.of(context).size.height * 0.012,
+                      vertical: MediaQuery.of(context).size.height * AppConstants.spacingSmall,
                     ),
                     decoration: BoxDecoration(
                       color: selectedTab == 0 ? AppColors.primaryBlue : AppColors.backgroundLightGrey,
@@ -164,8 +163,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                     child: Text(
                       'Semua',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
+                      style: AppTextStyles.bodyMedium(context).copyWith(
                         fontWeight: FontWeight.w600,
                         color: selectedTab == 0 ? AppColors.textWhite : AppColors.textBlack,
                       ),
@@ -180,7 +178,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   child: Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width * 0.06,
-                      vertical: MediaQuery.of(context).size.height * 0.012,
+                      vertical: MediaQuery.of(context).size.height * AppConstants.spacingSmall,
                     ),
                     decoration: BoxDecoration(
                       color: selectedTab == 1 ? AppColors.primaryBlue : AppColors.backgroundLightGrey,
@@ -188,8 +186,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                     child: Text(
                       'Order',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
+                      style: AppTextStyles.bodyMedium(context).copyWith(
                         fontWeight: FontWeight.w600,
                         color: selectedTab == 1 ? AppColors.textWhite : AppColors.textBlack,
                       ),
@@ -204,7 +201,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   child: Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width * 0.06,
-                      vertical: MediaQuery.of(context).size.height * 0.012,
+                      vertical: MediaQuery.of(context).size.height * AppConstants.spacingSmall,
                     ),
                     decoration: BoxDecoration(
                       color: selectedTab == 2 ? AppColors.primaryBlue : AppColors.backgroundLightGrey,
@@ -212,8 +209,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     ),
                     child: Text(
                       'Aplikasi',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.0165,
+                      style: AppTextStyles.bodyMedium(context).copyWith(
                         fontWeight: FontWeight.w600,
                         color: selectedTab == 2 ? AppColors.textWhite : AppColors.textBlack,
                       ),
@@ -222,67 +218,70 @@ class _NotificationPageState extends State<NotificationPage> {
                 ),
               ],
             ),
+          ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
             // Terbaru Header
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Terbaru',
-                  style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.height * 0.0195,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textBlack,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // Action untuk baca semua
-                  },
-                  child: Text(
-                    'Baca Semua',
-                    style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.0155,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryBlue,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Terbaru',
+                    style: AppTextStyles.bodyLarge(context).copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: MediaQuery.of(context).size.height * 0.015),
-
-            // Notification Items
-            ...List.generate(filteredNotifications.length, (index) {
-              final notification = filteredNotifications[index];
-              final showDateDivider = index == 0 ||
-                  filteredNotifications[index]['date'] !=
-                      filteredNotifications[index - 1]['date'];
-
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Date Divider
-                  if (showDateDivider)
-                    Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.015),
-                      child: Text(
-                        notification['date']!,
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * 0.0165,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textBlack,
-                        ),
+                  GestureDetector(
+                    onTap: () {
+                      // Action untuk baca semua
+                    },
+                    child: Text(
+                      'Baca Semua',
+                      style: AppTextStyles.bodySmall(context).copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryBlue,
                       ),
                     ),
+                  ),
+                ],
+              ),
+            ),
 
-                  // Notification Item
-                  Container(
-                    margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.015),
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
+
+            // Notification Items
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: List.generate(filteredNotifications.length, (index) {
+                  final notification = filteredNotifications[index];
+                  final showDateDivider = index == 0 ||
+                      filteredNotifications[index]['date'] !=
+                          filteredNotifications[index - 1]['date'];
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Date Divider
+                      if (showDateDivider)
+                        Padding(
+                          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
+                          child: Text(
+                            notification['date']!,
+                            style: AppTextStyles.bodyMedium(context).copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+
+                      // Notification Item
+                      Container(
+                        margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
                     decoration: BoxDecoration(
                       color: notification['isRead'] == true
                           ? AppColors.backgroundWhite
@@ -302,18 +301,18 @@ class _NotificationPageState extends State<NotificationPage> {
                       children: [
                         // Bell Icon
                         Container(
-                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                           decoration: BoxDecoration(
                             color: AppColors.primaryBlue.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
                           ),
                           child: Icon(
                             Icons.notifications_outlined,
                             color: AppColors.primaryBlue,
-                            size: MediaQuery.of(context).size.height * 0.026,
+                            size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                           ),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+                        SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingMedium),
 
                         // Content
                         Expanded(
@@ -322,18 +321,15 @@ class _NotificationPageState extends State<NotificationPage> {
                             children: [
                               Text(
                                 notification['title']!,
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.0175,
+                                style: AppTextStyles.bodyMedium(context).copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color: AppColors.textBlack,
                                 ),
                               ),
-                              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
+                              SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
                               Text(
                                 notification['description']!,
-                                style: TextStyle(
-                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                  color: Colors.grey[600],
+                                style: AppTextStyles.bodySmall(context).copyWith(
+                                  color: AppColors.iconGrey,
                                 ),
                               ),
                             ],
@@ -345,8 +341,10 @@ class _NotificationPageState extends State<NotificationPage> {
                 ],
               );
             }),
+              ),
+            ),
 
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
           ],
         ),
       ),
