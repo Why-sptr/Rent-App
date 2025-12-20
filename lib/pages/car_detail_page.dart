@@ -8,6 +8,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:rent_app/widgets/spec_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:rent_app/pages/booking_page.dart';
 
 class CarDetailPage extends StatefulWidget {
   final CarModel car;
@@ -384,10 +385,11 @@ class _CarDetailPageState extends State<CarDetailPage> {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Rental ${widget.car.name} - Coming Soon!'),
-                                backgroundColor: AppColors.primaryBlue,
+                            // Navigate to booking page
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookingPage(car: widget.car),
                               ),
                             );
                           },
