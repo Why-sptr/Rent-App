@@ -6,6 +6,7 @@ import 'package:rent_app/widgets/brand_list.dart';
 import 'package:rent_app/widgets/car_card.dart';
 import 'package:rent_app/widgets/cars_list.dart';
 import 'package:rent_app/widgets/promo_banner.dart';
+import 'package:rent_app/pages/notification_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -78,34 +79,44 @@ class _DashboardPageState extends State<DashboardPage> {
                             ],
                           ),
                           // Notification Icon
-                          Container(
-                            padding: EdgeInsets.all(screenWidth * 0.025),
-                            decoration: BoxDecoration(
-                              color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
-                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                            ),
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Icon(
-                                  Icons.notifications_outlined,
-                                  color: AppColors.textWhite,
-                                  size: screenHeight * AppConstants.iconSizeMedium,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const NotificationPage(),
                                 ),
-                                // Notification badge
-                                Positioned(
-                                  right: -2,
-                                  top: -2,
-                                  child: Container(
-                                    width: 8,
-                                    height: 8,
-                                    decoration: const BoxDecoration(
-                                      color: AppColors.redAccent,
-                                      shape: BoxShape.circle,
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(screenWidth * 0.025),
+                              decoration: BoxDecoration(
+                                color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
+                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                              ),
+                              child: Stack(
+                                clipBehavior: Clip.none,
+                                children: [
+                                  Icon(
+                                    Icons.notifications_outlined,
+                                    color: AppColors.textWhite,
+                                    size: screenHeight * AppConstants.iconSizeMedium,
+                                  ),
+                                  // Notification badge
+                                  Positioned(
+                                    right: -2,
+                                    top: -2,
+                                    child: Container(
+                                      width: 8,
+                                      height: 8,
+                                      decoration: const BoxDecoration(
+                                        color: AppColors.redAccent,
+                                        shape: BoxShape.circle,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ],

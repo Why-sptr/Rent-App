@@ -3,6 +3,7 @@ import 'package:rent_app/pages/login_page.dart';
 import 'package:rent_app/pages/edit_profile_page.dart';
 import 'package:rent_app/pages/faq_page.dart';
 import 'package:rent_app/pages/about_app_page.dart';
+import 'package:rent_app/pages/notification_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -307,7 +308,14 @@ class ProfilePage extends StatelessWidget {
                       icon: Icons.notifications_outlined,
                       title: 'Notifikasi',
                       subtitle: 'Atur preferensi notifikasi',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NotificationPage(),
+                          ),
+                        );
+                      },
                     ),
                     
                     SizedBox(height: screenHeight * AppConstants.spacingLarge),
