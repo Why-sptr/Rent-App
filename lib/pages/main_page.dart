@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rent_app/pages/dashboard_page.dart';
 import 'package:rent_app/pages/profile_page.dart';
+import 'package:rent_app/pages/search_product_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 
 class MainPage extends StatefulWidget {
@@ -19,9 +20,15 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+  void _navigateToSearch() {
+    setState(() {
+      _currentIndex = 1;
+    });
+  }
+
   List<Widget> get _pages => [
-    const DashboardPage(),
-    const Center(child: Text('Notifikasi Page')),
+    DashboardPage(onNavigateToSearch: _navigateToSearch),
+    const SearchProductPage(isEmbedded: true),
     const Center(child: Text('Lokasi Page')),
     ProfilePage(onBackToDashboard: _navigateToDashboard),
   ];
@@ -64,9 +71,9 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                _currentIndex == 1 ? Icons.notifications : Icons.notifications_outlined,
+                _currentIndex == 1 ? Icons.search : Icons.search_outlined,
               ),
-              label: 'Notifikasi',
+              label: 'Search',
             ),
             BottomNavigationBarItem(
               icon: Icon(

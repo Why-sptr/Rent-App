@@ -11,7 +11,9 @@ import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
 
 class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+  final VoidCallback? onNavigateToSearch;
+
+  const DashboardPage({super.key, this.onNavigateToSearch});
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();
@@ -237,18 +239,23 @@ class _DashboardPageState extends State<DashboardPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Brands',
-                                style: AppTextStyles.titleBlack(context),
-                              ),
-                              Text(
-                                'Lihat Semua',
-                                style: AppTextStyles.linkText(context),
-                              ),
-                            ],
+                          GestureDetector(
+                            onTap: () {
+                              widget.onNavigateToSearch?.call();
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Brands',
+                                  style: AppTextStyles.titleBlack(context),
+                                ),
+                                Text(
+                                  'Lihat Semua',
+                                  style: AppTextStyles.linkText(context),
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(height: screenHeight * 0.018),
 
@@ -263,18 +270,23 @@ class _DashboardPageState extends State<DashboardPage> {
                     // Best Selling Cars
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Mobil Terlaris',
-                            style: AppTextStyles.titleBlack(context),
-                          ),
-                          Text(
-                            'Lihat Semua',
-                            style: AppTextStyles.linkText(context),
-                          ),
-                        ],
+                      child: GestureDetector(
+                        onTap: () {
+                          widget.onNavigateToSearch?.call();
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Mobil Terlaris',
+                              style: AppTextStyles.titleBlack(context),
+                            ),
+                            Text(
+                              'Lihat Semua',
+                              style: AppTextStyles.linkText(context),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
 
@@ -309,18 +321,23 @@ class _DashboardPageState extends State<DashboardPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Mobil Tersedia',
-                                style: AppTextStyles.titleBlack(context),
-                              ),
-                              Text(
-                                'Lihat Semua',
-                                style: AppTextStyles.linkText(context),
-                              ),
-                            ],
+                          child: GestureDetector(
+                            onTap: () {
+                              widget.onNavigateToSearch?.call();
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Mobil Tersedia',
+                                  style: AppTextStyles.titleBlack(context),
+                                ),
+                                Text(
+                                  'Lihat Semua',
+                                  style: AppTextStyles.linkText(context),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: screenHeight * 0.018),
