@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rent_app/pages/login_page.dart';
 import 'package:rent_app/pages/edit_profile_page.dart';
+import 'package:rent_app/pages/faq_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -330,7 +331,14 @@ class ProfilePage extends StatelessWidget {
                       icon: Icons.help_outline,
                       title: 'Bantuan & Dukungan',
                       subtitle: 'FAQ dan layanan bantuan',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FaqPage(),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       context,
