@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:rent_app/models/car_model.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
-import 'package:rent_app/pages/payment_method_page.dart';
+import 'package:rent_app/widgets/spec_card.dart';
+import 'package:rent_app/pages/check_in_page.dart';
 
-class BookingPage extends StatelessWidget {
-  final CarModel car;
-  const BookingPage({super.key, required this.car});
+class HistoryDetailPage extends StatelessWidget {
+  final Map<String, dynamic> booking;
+  
+  const HistoryDetailPage({
+    super.key,
+    required this.booking,
+  });
 
   String _formatPrice(int price) {
     final s = price.toString().replaceAllMapped(
@@ -53,7 +57,7 @@ class BookingPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header: back + centered title + optional right space
+                // Header
                 SizedBox(
                   height: screenHeight * 0.06,
                   child: Stack(
@@ -83,7 +87,7 @@ class BookingPage extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          'Rincian',
+                          'Detail Pesanan',
                           style: AppTextStyles.titleBlack(context),
                         ),
                       ),
@@ -97,7 +101,7 @@ class BookingPage extends StatelessWidget {
 
                 SizedBox(height: screenHeight * 0.02),
 
-                // Car info tile (no card wrapper)
+                // Car info tile
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -111,7 +115,7 @@ class BookingPage extends StatelessWidget {
                       clipBehavior: Clip.antiAlias,
                       child: Center(
                         child: Image.asset(
-                          car.image,
+                          booking['carImage'],
                           fit: BoxFit.contain,
                           errorBuilder: (_, __, ___) => Icon(
                             Icons.directions_car,
@@ -128,7 +132,7 @@ class BookingPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            car.name,
+                            booking['carName'],
                             style: TextStyle(
                               fontSize: screenHeight * 0.0195,
                               fontWeight: FontWeight.bold,
@@ -137,7 +141,7 @@ class BookingPage extends StatelessWidget {
                           ),
                           SizedBox(height: screenHeight * 0.006),
                           Text(
-                            '${car.transmission}, ${car.maxSpeed} KM/J, ${car.capacity} Orang',
+                            '${booking['transmission']}, ${booking['maxSpeed']} KM/J, ${booking['capacity']} Orang',
                             style: TextStyle(
                               fontSize: screenHeight * 0.0135,
                               color: Colors.grey[600],
@@ -164,6 +168,31 @@ class BookingPage extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: screenHeight * 0.02),
+
+                // Spec Cards
+                Row(
+                  children: [
+                    SpecCard(
+                      icon: Icons.settings_outlined,
+                      label: 'Transmisi',
+                      value: booking['transmission'],
+                    ),
+                    SizedBox(width: screenWidth * 0.03),
+                    SpecCard(
+                      icon: Icons.speed,
+                      label: 'Maks. Kecepatan',
+                      value: '${booking['maxSpeed']} KM/J',
+                    ),
+                    SizedBox(width: screenWidth * 0.03),
+                    SpecCard(
+                      icon: Icons.airline_seat_recline_normal,
+                      label: 'Kapasitas',
+                      value: '${booking['capacity']} Orang',
                     ),
                   ],
                 ),
@@ -204,7 +233,7 @@ class BookingPage extends StatelessWidget {
                                   ),
                                   SizedBox(height: screenHeight * 0.003),
                                   Text(
-                                    '2 Hari',
+                                    booking['duration'],
                                     style: TextStyle(
                                       fontSize: screenHeight * 0.0135,
                                       color: Colors.grey[600],
@@ -213,7 +242,6 @@ class BookingPage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Icon(Icons.edit_outlined, color: AppColors.textBlack, size: screenHeight * 0.02),
                           ],
                         ),
                         SizedBox(height: screenHeight * 0.018),
@@ -234,7 +262,7 @@ class BookingPage extends StatelessWidget {
                                   ),
                                   SizedBox(height: screenHeight * 0.003),
                                   Text(
-                                    car.location,
+                                    booking['location'],
                                     style: TextStyle(
                                       fontSize: screenHeight * 0.0135,
                                       color: Colors.grey[600],
@@ -243,7 +271,6 @@ class BookingPage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Icon(Icons.edit_outlined, color: AppColors.textBlack, size: screenHeight * 0.02),
                           ],
                         ),
                       ],
@@ -274,7 +301,7 @@ class BookingPage extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Text(
-                                '2 Hari X  Rp. ${car.price ~/ 1000}.000',
+                                booking['priceDetail'],
                                 style: TextStyle(
                                   fontSize: screenHeight * 0.0135,
                                   color: Colors.grey[600],
@@ -282,7 +309,7 @@ class BookingPage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              _formatPrice(car.price * 2),
+                              _formatPrice(booking['subtotal']),
                               style: TextStyle(
                                 fontSize: screenHeight * 0.0155,
                                 fontWeight: FontWeight.w600,
@@ -326,11 +353,36 @@ class BookingPage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              _formatPrice(car.price * 2 + 2500),
+                              _formatPrice(booking['total']),
                               style: TextStyle(
                                 fontSize: screenHeight * 0.0155,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.textBlack,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: screenHeight * 0.016),
+                        Divider(height: screenHeight * 0.010, thickness: 1),
+                        SizedBox(height: screenHeight * 0.016),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Metode Pembayaran',
+                                style: TextStyle(
+                                  fontSize: screenHeight * 0.0155,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textBlack,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              booking['paymentMethod'],
+                              style: TextStyle(
+                                fontSize: screenHeight * 0.0155,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.primaryBlue,
                               ),
                             ),
                           ],
@@ -342,44 +394,141 @@ class BookingPage extends StatelessWidget {
 
                 SizedBox(height: screenHeight * 0.026),
 
-                // Bottom Gradient Button
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        AppColors.gradientStart1,
-                        AppColors.gradientEnd1,
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PaymentMethodPage(car: car),
+                // Buttons Row
+                Row(
+                  children: [
+                    // Cancel button
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundWhite,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: AppColors.primaryBlue,
+                            width: 2,
                           ),
-                        );
-                      },
-                      borderRadius: BorderRadius.circular(12),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
-                        child: Center(
-                          child: Text(
-                            'Lanjutkan',
-                            style: TextStyle(
-                              fontSize: screenHeight * 0.0175,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textWhite,
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              // Show confirmation dialog
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
+                                  ),
+                                  title: Text(
+                                    'Batalkan Pesanan?',
+                                    style: AppTextStyles.titleBlack(context),
+                                  ),
+                                  content: Text(
+                                    'Apakah Anda yakin ingin membatalkan pesanan ini?',
+                                    style: AppTextStyles.bodyLarge(context).copyWith(
+                                      color: Colors.grey[700],
+                                    ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text(
+                                        'Tidak',
+                                        style: AppTextStyles.bodyMedium(context).copyWith(
+                                          color: Colors.grey[600],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        gradient: AppColors.buttonGradient,
+                                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusSmall),
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context); // Close dialog
+                                          Navigator.pop(context); // Back to previous page
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            const SnackBar(
+                                              content: Text('Pesanan dibatalkan'),
+                                              backgroundColor: Colors.red,
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          'Ya, Batalkan',
+                                          style: AppTextStyles.bodyMedium(context).copyWith(
+                                            color: AppColors.textWhite,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(12),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
+                              child: Center(
+                                child: Text(
+                                  'Batalkan',
+                                  style: TextStyle(
+                                    fontSize: screenHeight * 0.0175,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.primaryBlue,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
+                    SizedBox(width: screenWidth * 0.03),
+                    // Check In button
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              AppColors.gradientStart1,
+                              AppColors.gradientEnd1,
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CheckInPage(booking: booking),
+                                ),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(12),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: screenHeight * 0.018),
+                              child: Center(
+                                child: Text(
+                                  'Check In',
+                                  style: TextStyle(
+                                    fontSize: screenHeight * 0.0175,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.textWhite,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

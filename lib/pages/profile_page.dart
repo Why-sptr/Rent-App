@@ -5,6 +5,7 @@ import 'package:rent_app/pages/faq_page.dart';
 import 'package:rent_app/pages/about_app_page.dart';
 import 'package:rent_app/pages/notification_page.dart';
 import 'package:rent_app/pages/favorite_page.dart';
+import 'package:rent_app/pages/history_page.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
@@ -208,32 +209,42 @@ class ProfilePage extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: Container(
-                            padding: EdgeInsets.all(screenWidth * AppConstants.widthPaddingMedium),
-                            decoration: BoxDecoration(
-                              gradient: AppColors.buttonGradient,
-                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
-                            ),
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.directions_car,
-                                  color: AppColors.textWhite,
-                                  size: screenHeight * AppConstants.iconSizeLarge,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HistoryPage(),
                                 ),
-                                SizedBox(height: screenHeight * AppConstants.spacingSmall),
-                                Text(
-                                  '12',
-                                  style: AppTextStyles.titleMedium(context),
-                                ),
-                                Text(
-                                  'Mobil Disewa',
-                                  style: TextStyle(
-                                    color: AppColors.textWhite.withValues(alpha: AppConstants.alphaHigh),
-                                    fontSize: screenHeight * AppConstants.fontSizeXSmall,
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(screenWidth * AppConstants.widthPaddingMedium),
+                              decoration: BoxDecoration(
+                                gradient: AppColors.buttonGradient,
+                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.directions_car,
+                                    color: AppColors.textWhite,
+                                    size: screenHeight * AppConstants.iconSizeLarge,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: screenHeight * AppConstants.spacingSmall),
+                                  Text(
+                                    '12',
+                                    style: AppTextStyles.titleMedium(context),
+                                  ),
+                                  Text(
+                                    'Mobil Disewa',
+                                    style: TextStyle(
+                                      color: AppColors.textWhite.withValues(alpha: AppConstants.alphaHigh),
+                                      fontSize: screenHeight * AppConstants.fontSizeXSmall,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -344,7 +355,14 @@ class ProfilePage extends StatelessWidget {
                       icon: Icons.history,
                       title: 'Riwayat Transaksi',
                       subtitle: 'Lihat semua transaksi Anda',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HistoryPage(),
+                          ),
+                        );
+                      },
                     ),
                     _buildMenuItem(
                       context,

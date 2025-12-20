@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:rent_app/config/app_colors.dart';
 import 'package:rent_app/config/app_constants.dart';
 import 'package:rent_app/config/app_text_styles.dart';
+import 'package:rent_app/models/car_model.dart';
+import 'package:rent_app/pages/history_detail_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class PaymentMethodPage extends StatefulWidget {
-  const PaymentMethodPage({super.key});
+  final CarModel car;
+  
+  const PaymentMethodPage({super.key, required this.car});
 
   @override
   State<PaymentMethodPage> createState() => _PaymentMethodPageState();
@@ -190,13 +196,39 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Bayar ${_selected} diproses...'),
-                          backgroundColor: AppColors.primaryBlue,
-                        ),
-                      );
+                    onTap: () async {
+                      // Create booking data
+                      final bookingData = {
+                        'id': DateTime.now().millisecondsSinceEpoch.toString(),
+                        'carName': widget.car.name,
+                        'carImage': widget.car.image,
+                        'transmission': widget.car.transmission,
+                        'maxSpeed': widget.car.maxSpeed,
+                        'capacity': widget.car.capacity,
+                        'duration': '2 Hari',
+                        'location': widget.car.location,
+                        'priceDetail': '2 Hari X  Rp. ${widget.car.price ~/ 1000}.000',
+                        'subtotal': widget.car.price * 2,
+                        'total': widget.car.price * 2 + 2500,
+                        'paymentMethod': _selected,
+                        'date': DateTime.now().toIso8601String(),
+                      };
+
+                      // Save to local storage
+                      final prefs = await SharedPreferences.getInstance();
+                      List<String> history = prefs.getStringList('booking_history') ?? [];
+                      history.add(jsonEncode(bookingData));
+                      await prefs.setStringList('booking_history', history);
+
+                      // Navigate to history detail
+                      if (context.mounted) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HistoryDetailPage(booking: bookingData),
+                          ),
+                        );
+                      }
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: Padding(
