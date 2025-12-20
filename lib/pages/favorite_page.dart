@@ -84,8 +84,7 @@ class _FavoritePageState extends State<FavoritePage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    
 
     return Scaffold(
       backgroundColor: AppColors.backgroundWhite,
@@ -97,11 +96,11 @@ class _FavoritePageState extends State<FavoritePage> {
               // Header with Back Button (non-sticky as part of scroll)
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth * 0.04,
-                  vertical: screenHeight * 0.015,
+                  horizontal: MediaQuery.of(context).size.width * 0.04,
+                  vertical: MediaQuery.of(context).size.height * 0.015,
                 ),
                 child: SizedBox(
-                  height: screenHeight * 0.06,
+                  height: MediaQuery.of(context).size.height * 0.06,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
@@ -110,7 +109,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         child: GestureDetector(
                           onTap: () => Navigator.pop(context),
                           child: Container(
-                            padding: EdgeInsets.all(screenWidth * 0.028),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
                             decoration: BoxDecoration(
                               color: AppColors.backgroundWhite,
                               borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -122,7 +121,7 @@ class _FavoritePageState extends State<FavoritePage> {
                             child: Icon(
                               Icons.arrow_back,
                               color: AppColors.textBlack,
-                              size: screenHeight * 0.022,
+                              size: MediaQuery.of(context).size.height * 0.022,
                             ),
                           ),
                         ),
@@ -131,7 +130,7 @@ class _FavoritePageState extends State<FavoritePage> {
                         child: Text(
                           'Favorit',
                           style: TextStyle(
-                            fontSize: screenHeight * 0.027,
+                            fontSize: MediaQuery.of(context).size.height * 0.027,
                             fontWeight: FontWeight.bold,
                             color: AppColors.textBlack,
                           ),
@@ -140,7 +139,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: Container(
-                          padding: EdgeInsets.all(screenWidth * 0.028),
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
                           decoration: BoxDecoration(
                             color: AppColors.backgroundWhite,
                             borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -152,7 +151,7 @@ class _FavoritePageState extends State<FavoritePage> {
                           child: Icon(
                             Icons.tune,
                             color: AppColors.textBlack,
-                            size: screenHeight * 0.022,
+                            size: MediaQuery.of(context).size.height * 0.022,
                           ),
                         ),
                       ),
@@ -161,11 +160,11 @@ class _FavoritePageState extends State<FavoritePage> {
                 ),
               ),
 
-              SizedBox(height: screenHeight * 0.015),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.015),
 
               // Search bar (wired to controller and filter)
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
                 child: Container(
                   decoration: BoxDecoration(
                     color: AppColors.backgroundLightGrey,
@@ -175,14 +174,14 @@ class _FavoritePageState extends State<FavoritePage> {
                     controller: searchController,
                     onChanged: filterCars,
                     style: TextStyle(
-                      fontSize: screenHeight * 0.0165,
+                      fontSize: MediaQuery.of(context).size.height * 0.0165,
                     ),
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
                       hintText: 'Cari mobil',
                       hintStyle: TextStyle(
                         color: Colors.grey[400],
-                        fontSize: screenHeight * 0.0155,
+                        fontSize: MediaQuery.of(context).size.height * 0.0155,
                       ),
                       prefixIcon: Icon(
                         Icons.search,
@@ -190,21 +189,21 @@ class _FavoritePageState extends State<FavoritePage> {
                       ),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(
-                        horizontal: screenWidth * 0.04,
-                        vertical: screenHeight * 0.012,
+                        horizontal: MediaQuery.of(context).size.width * 0.04,
+                        vertical: MediaQuery.of(context).size.height * 0.012,
                       ),
                     ),
                   ),
                 ),
               ),
 
-              SizedBox(height: screenHeight * 0.02),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
               // Content (scrolls together with header)
               if (isLoading)
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.only(top: screenHeight * 0.1),
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
                     child: CircularProgressIndicator(
                       color: AppColors.primaryBlue,
                     ),
@@ -212,30 +211,30 @@ class _FavoritePageState extends State<FavoritePage> {
                 )
               else if (favoriteCars.isEmpty)
                 Padding(
-                  padding: EdgeInsets.only(top: screenHeight * 0.12),
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.12),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.favorite_border,
-                          size: screenHeight * 0.1,
+                          size: MediaQuery.of(context).size.height * 0.1,
                           color: Colors.grey[300],
                         ),
-                        SizedBox(height: screenHeight * 0.02),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                         Text(
                           'Belum ada favorit',
                           style: TextStyle(
-                            fontSize: screenHeight * 0.0195,
+                            fontSize: MediaQuery.of(context).size.height * 0.0195,
                             fontWeight: FontWeight.w600,
                             color: Colors.grey[600],
                           ),
                         ),
-                        SizedBox(height: screenHeight * 0.01),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                         Text(
                           'Tambahkan mobil favorit Anda',
                           style: TextStyle(
-                            fontSize: screenHeight * 0.0155,
+                            fontSize: MediaQuery.of(context).size.height * 0.0155,
                             color: Colors.grey[500],
                           ),
                         ),
@@ -248,14 +247,14 @@ class _FavoritePageState extends State<FavoritePage> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.04,
-                    vertical: screenHeight * 0.015,
+                    horizontal: MediaQuery.of(context).size.width * 0.04,
+                    vertical: MediaQuery.of(context).size.height * 0.015,
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 0.55,
-                    crossAxisSpacing: screenWidth * 0.03,
-                    mainAxisSpacing: screenHeight * 0.015,
+                    crossAxisSpacing: MediaQuery.of(context).size.width * 0.03,
+                    mainAxisSpacing: MediaQuery.of(context).size.height * 0.015,
                   ),
                   itemCount: filteredCars.length,
                   itemBuilder: (context, index) {
@@ -264,14 +263,14 @@ class _FavoritePageState extends State<FavoritePage> {
                       children: [
                         CarCard(car: car),
                         Positioned(
-                          top: screenHeight * 0.01,
-                          right: screenWidth * 0.02,
+                          top: MediaQuery.of(context).size.height * 0.01,
+                          right: MediaQuery.of(context).size.width * 0.02,
                           child: GestureDetector(
                             onTap: () {
                               _removeFavorite(car.id);
                             },
                             child: Container(
-                              padding: EdgeInsets.all(screenWidth * 0.025),
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
                               decoration: BoxDecoration(
                                 color: AppColors.backgroundWhite,
                                 shape: BoxShape.circle,
@@ -286,7 +285,7 @@ class _FavoritePageState extends State<FavoritePage> {
                               child: Icon(
                                 Icons.favorite,
                                 color: Colors.red,
-                                size: screenHeight * 0.024,
+                                size: MediaQuery.of(context).size.height * 0.024,
                               ),
                             ),
                           ),
@@ -302,3 +301,4 @@ class _FavoritePageState extends State<FavoritePage> {
     );
   }
 }
+

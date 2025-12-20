@@ -30,10 +30,8 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     const double curveLift = AppConstants.curveLift;
-    final double contentGap = screenHeight * AppConstants.heightContentGap;
+    final double contentGap = MediaQuery.of(context).size.height * AppConstants.heightContentGap;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundWhite,
@@ -49,9 +47,9 @@ class _DashboardPageState extends State<DashboardPage> {
                 bottom: false,
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(
-                    screenWidth * AppConstants.widthPaddingLarge,
-                    screenHeight * AppConstants.spacingLarge,
-                    screenWidth * AppConstants.widthPaddingLarge,
+                    MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
+                    MediaQuery.of(context).size.height * AppConstants.spacingLarge,
+                    MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
                     contentGap + curveLift,
                   ),
                   child: Column(
@@ -66,12 +64,12 @@ class _DashboardPageState extends State<DashboardPage> {
                             children: [
                               Image.asset(
                                 'assets/images/logo_rentku.png',
-                                height: screenHeight * 0.045,
+                                height: MediaQuery.of(context).size.height * 0.045,
                                 fit: BoxFit.contain,
                                 errorBuilder: (context, error, stackTrace) {
                                   return Icon(
                                     Icons.directions_car_rounded,
-                                    size: screenHeight * 0.04,
+                                    size: MediaQuery.of(context).size.height * 0.04,
                                     color: Colors.white,
                                   );
                                 },
@@ -89,7 +87,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.all(screenWidth * 0.025),
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
                               decoration: BoxDecoration(
                                 color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
                                 borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -100,7 +98,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                   Icon(
                                     Icons.notifications_outlined,
                                     color: AppColors.textWhite,
-                                    size: screenHeight * AppConstants.iconSizeMedium,
+                                    size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                                   ),
                                   // Notification badge
                                   Positioned(
@@ -121,7 +119,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                         ],
                       ),
-                      SizedBox(height: screenHeight * 0.025),
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.025),
                       // User Header
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,7 +133,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                   'Pagi, Wahyu',
                                   style: AppTextStyles.greetingText(context),
                                 ),
-                                SizedBox(height: screenHeight * AppConstants.spacingXSmall),
+                                SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall),
                                 Text(
                                   'Mobil mana yang Ingin kamu\nsewa hari ini?',
                                   style: AppTextStyles.descriptionText(context),
@@ -159,18 +157,18 @@ class _DashboardPageState extends State<DashboardPage> {
                                 ),
                               ),
                               child: CircleAvatar(
-                                radius: screenWidth * 0.075,
+                                radius: MediaQuery.of(context).size.width * 0.075,
                                 backgroundColor: Colors.grey[300],
                                 child: ClipOval(
                                   child: Image.asset(
                                     'assets/images/avatar.jpg',
                                     fit: BoxFit.cover,
-                                    width: screenWidth * 0.15,
-                                    height: screenWidth * 0.15,
+                                    width: MediaQuery.of(context).size.width * 0.15,
+                                    height: MediaQuery.of(context).size.width * 0.15,
                                     errorBuilder: (context, error, stackTrace) {
                                       return Icon(
                                         Icons.person,
-                                        size: screenWidth * 0.1,
+                                        size: MediaQuery.of(context).size.width * 0.1,
                                         color: Colors.grey[600],
                                       );
                                     },
@@ -198,16 +196,16 @@ class _DashboardPageState extends State<DashboardPage> {
               transform: Matrix4.translationValues(0, -curveLift, 0),
               child: Padding(
                 padding: EdgeInsets.only(
-                  top: screenHeight * 0.03,
-                  bottom: screenHeight * 0.02
+                  top: MediaQuery.of(context).size.height * 0.03,
+                  bottom: MediaQuery.of(context).size.height * 0.02
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: screenHeight * 0.02),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                     // Search Bar
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
                       child: Row(
                         children: [
                           Expanded(
@@ -218,31 +216,31 @@ class _DashboardPageState extends State<DashboardPage> {
                               ),
                               child: TextField(
                                 style: TextStyle(
-                                  fontSize: screenHeight * 0.0165,
+                                  fontSize: MediaQuery.of(context).size.height * 0.0165,
                                 ),
                                 textAlignVertical: TextAlignVertical.center,
                                 decoration: InputDecoration(
                                   hintText: 'Cari mobil',
                                   hintStyle: AppTextStyles.hintGrey(context).copyWith(
-                                    fontSize: screenHeight * 0.0155,
+                                    fontSize: MediaQuery.of(context).size.height * 0.0155,
                                   ),
                                   prefixIcon: Icon(
                                     Icons.search,
                                     color: Colors.grey[400],
-                                    size: screenHeight * AppConstants.iconSizeMedium,
+                                    size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                                   ),
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: AppConstants.paddingLarge,
-                                    vertical: screenHeight * 0.018,
+                                    vertical: MediaQuery.of(context).size.height * 0.018,
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(width: screenWidth * AppConstants.widthPaddingSmall),
+                          SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                           Container(
-                            padding: EdgeInsets.all(screenWidth * 0.034),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.034),
                             decoration: BoxDecoration(
                               color: AppColors.backgroundWhite,
                               borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -254,18 +252,18 @@ class _DashboardPageState extends State<DashboardPage> {
                             child: Icon(
                               Icons.tune,
                               color: AppColors.textBlack,
-                              size: screenHeight * AppConstants.iconSizeMedium,
+                              size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                             ),
                           ),
                         ],
                       ),
                     ),
 
-                    SizedBox(height: screenHeight * AppConstants.spacingXLarge),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXLarge),
 
                     // Brands Section
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -287,7 +285,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               ],
                             ),
                           ),
-                          SizedBox(height: screenHeight * 0.018),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.018),
 
                           // Brand Grid
                           BrandList(brands: BrandData.brands),
@@ -295,11 +293,11 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
 
-                    SizedBox(height: screenHeight * AppConstants.spacingLarge),
+                    SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
 
                     // Best Selling Cars
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
                       child: GestureDetector(
                         onTap: () {
                           widget.onNavigateToSearch?.call();
@@ -320,16 +318,16 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
 
-                    SizedBox(height: screenHeight * 0.018),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.018),
 
                     // Cars Horizontal List
                     CarsList(cars: CarData.availableCars),
 
-                    SizedBox(height: screenHeight * 0.018),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.018),
 
                     // Promo Section
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -337,20 +335,20 @@ class _DashboardPageState extends State<DashboardPage> {
                             'Promo',
                             style: AppTextStyles.titleBlack(context),
                           ),
-                          SizedBox(height: screenHeight * 0.018),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.018),
                           const PromoBanner(),
                         ],
                       ),
                     ),
 
-                    SizedBox(height: screenHeight * 0.018),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.018),
 
                     // Available Cars Grid
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
                           child: GestureDetector(
                             onTap: () {
                               widget.onNavigateToSearch?.call();
@@ -370,25 +368,25 @@ class _DashboardPageState extends State<DashboardPage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: screenHeight * 0.018),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.018),
                         
                         // Grid View
                         GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            crossAxisSpacing: screenWidth * 0.06,
-                            mainAxisSpacing: screenWidth * 0.06,
-                            childAspectRatio: (screenWidth * 0.42) / (screenHeight * 0.24),
+                            crossAxisSpacing: MediaQuery.of(context).size.width * 0.06,
+                            mainAxisSpacing: MediaQuery.of(context).size.width * 0.06,
+                            childAspectRatio: (MediaQuery.of(context).size.width * 0.42) / (MediaQuery.of(context).size.height * 0.24),
                           ),
                           itemCount: CarData.availableCars.length,
                           itemBuilder: (context, index) {
                             final car = CarData.availableCars[index];
                             return CarCard(
                               car: car,
-                              height: screenHeight * 0.24,
+                              height: MediaQuery.of(context).size.height * 0.24,
                             );
                           },
                         ),

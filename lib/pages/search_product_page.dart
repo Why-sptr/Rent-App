@@ -52,17 +52,14 @@ class _SearchProductPageState extends State<SearchProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
     final body = SafeArea(
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: screenHeight * 0.03),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             // Search Bar and Filter
             Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
             child: Row(
               children: [
                 Expanded(
@@ -75,31 +72,31 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       controller: searchController,
                       onChanged: filterCars,
                       style: TextStyle(
-                        fontSize: screenHeight * 0.0165,
+                        fontSize: MediaQuery.of(context).size.height * 0.0165,
                       ),
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
                         hintText: 'Cari mobil',
                         hintStyle: AppTextStyles.hintGrey(context).copyWith(
-                          fontSize: screenHeight * 0.0155,
+                          fontSize: MediaQuery.of(context).size.height * 0.0155,
                         ),
                         prefixIcon: Icon(
                           Icons.search,
                           color: Colors.grey[400],
-                          size: screenHeight * AppConstants.iconSizeMedium,
+                          size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                         ),
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: AppConstants.paddingLarge,
-                          vertical: screenHeight * 0.018,
+                          vertical: MediaQuery.of(context).size.height * 0.018,
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: screenWidth * AppConstants.widthPaddingSmall),
+                SizedBox(width: MediaQuery.of(context).size.width * AppConstants.widthPaddingSmall),
                 Container(
-                  padding: EdgeInsets.all(screenWidth * 0.034),
+                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.034),
                   decoration: BoxDecoration(
                     color: AppColors.backgroundWhite,
                     borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -111,18 +108,18 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   child: Icon(
                     Icons.tune,
                     color: AppColors.textBlack,
-                    size: screenHeight * AppConstants.iconSizeMedium,
+                    size: MediaQuery.of(context).size.height * AppConstants.iconSizeMedium,
                   ),
                 ),
               ],
             ),
           ),
 
-          SizedBox(height: screenHeight * 0.03),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
 
           // Brands Section
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenWidth * AppConstants.widthPaddingLarge),
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -130,15 +127,15 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   'Semua Brand',
                   style: AppTextStyles.titleBlack(context),
                 ),
-                SizedBox(height: screenHeight * 0.018),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.018),
                 // Brand Grid
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: screenWidth * 0.04,
-                    mainAxisSpacing: screenHeight * 0.02,
+                    crossAxisSpacing: MediaQuery.of(context).size.width * 0.04,
+                    mainAxisSpacing: MediaQuery.of(context).size.height * 0.02,
                     childAspectRatio: 1.0,
                   ),
                   itemCount: BrandData.brands.length,
@@ -174,21 +171,21 @@ class _SearchProductPageState extends State<SearchProductPage> {
                           children: [
                             Image.asset(
                               brand.image,
-                              height: screenHeight * 0.08,
+                              height: MediaQuery.of(context).size.height * 0.08,
                               fit: BoxFit.contain,
                               errorBuilder: (context, error, stackTrace) {
                                 return Icon(
                                   Icons.directions_car,
-                                  size: screenHeight * 0.08,
+                                  size: MediaQuery.of(context).size.height * 0.08,
                                   color: Colors.grey[400],
                                 );
                               },
                             ),
-                            SizedBox(height: screenHeight * 0.01),
+                            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                             Text(
                               brand.name,
                               style: TextStyle(
-                                fontSize: screenHeight * AppConstants.fontSizeXSmall,
+                                fontSize: MediaQuery.of(context).size.height * AppConstants.fontSizeXSmall,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.textBlack,
                               ),
@@ -201,14 +198,14 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   },
                 ),
 
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
 
                 // Mobil Tersedia Section
                 Text(
                   'Mobil Tersedia',
                   style: AppTextStyles.titleBlack(context),
                 ),
-                SizedBox(height: screenHeight * 0.018),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.018),
 
                 // Cars Grid
                 if (displayedCars.isNotEmpty)
@@ -217,31 +214,31 @@ class _SearchProductPageState extends State<SearchProductPage> {
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: screenWidth * 0.06,
-                      mainAxisSpacing: screenWidth * 0.06,
-                      childAspectRatio: (screenWidth * 0.42) / (screenHeight * 0.24),
+                      crossAxisSpacing: MediaQuery.of(context).size.width * 0.06,
+                      mainAxisSpacing: MediaQuery.of(context).size.width * 0.06,
+                      childAspectRatio: (MediaQuery.of(context).size.width * 0.42) / (MediaQuery.of(context).size.height * 0.24),
                     ),
                     itemCount: displayedCars.length,
                     itemBuilder: (context, index) {
                       final car = displayedCars[index];
                       return CarCard(
                         car: car,
-                        height: screenHeight * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.24,
                       );
                     },
                   )
                 else
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.1),
+                      padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.1),
                       child: Column(
                         children: [
                           Icon(
                             Icons.directions_car_outlined,
-                            size: screenHeight * 0.08,
+                            size: MediaQuery.of(context).size.height * 0.08,
                             color: Colors.grey[300],
                           ),
-                          SizedBox(height: screenHeight * 0.02),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                           Text(
                             'Mobil tidak ditemukan',
                             style: AppTextStyles.hintGrey(context),
@@ -254,7 +251,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
             ),
           ),
 
-          SizedBox(height: screenHeight * 0.03),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
         ],
       ),
     ),

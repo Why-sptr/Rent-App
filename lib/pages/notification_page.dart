@@ -84,20 +84,18 @@ class _NotificationPageState extends State<NotificationPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     final filteredNotifications = getFilteredNotifications();
 
     return Scaffold(
       backgroundColor: AppColors.backgroundWhite,
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
+          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
           children: [
             // Header
             Padding(
               padding: EdgeInsets.symmetric(
-                vertical: screenHeight * 0.015,
+                vertical: MediaQuery.of(context).size.height * 0.015,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,7 +103,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      padding: EdgeInsets.all(screenWidth * 0.028),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.grey[300]!,
@@ -116,20 +114,20 @@ class _NotificationPageState extends State<NotificationPage> {
                       child: Icon(
                         Icons.arrow_back,
                         color: AppColors.textBlack,
-                        size: screenHeight * 0.022,
+                        size: MediaQuery.of(context).size.height * 0.022,
                       ),
                     ),
                   ),
                   Text(
                     'Notifikasi',
                     style: TextStyle(
-                      fontSize: screenHeight * 0.027,
+                      fontSize: MediaQuery.of(context).size.height * 0.027,
                       fontWeight: FontWeight.bold,
                       color: AppColors.textBlack,
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(screenWidth * 0.028),
+                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.grey[300]!,
@@ -140,14 +138,14 @@ class _NotificationPageState extends State<NotificationPage> {
                     child: Icon(
                       Icons.tune,
                       color: AppColors.textBlack,
-                      size: screenHeight * 0.022,
+                      size: MediaQuery.of(context).size.height * 0.022,
                     ),
                   ),
                 ],
               ),
             ),
 
-            SizedBox(height: screenHeight * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
             // Tabs
             Row(
@@ -157,8 +155,8 @@ class _NotificationPageState extends State<NotificationPage> {
                   onTap: () => setState(() => selectedTab = 0),
                   child: Container(
                     padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth * 0.06,
-                      vertical: screenHeight * 0.012,
+                      horizontal: MediaQuery.of(context).size.width * 0.06,
+                      vertical: MediaQuery.of(context).size.height * 0.012,
                     ),
                     decoration: BoxDecoration(
                       color: selectedTab == 0 ? AppColors.primaryBlue : AppColors.backgroundLightGrey,
@@ -167,22 +165,22 @@ class _NotificationPageState extends State<NotificationPage> {
                     child: Text(
                       'Semua',
                       style: TextStyle(
-                        fontSize: screenHeight * 0.0165,
+                        fontSize: MediaQuery.of(context).size.height * 0.0165,
                         fontWeight: FontWeight.w600,
                         color: selectedTab == 0 ? AppColors.textWhite : AppColors.textBlack,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: screenWidth * 0.025),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.025),
 
                 // Order Tab
                 GestureDetector(
                   onTap: () => setState(() => selectedTab = 1),
                   child: Container(
                     padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth * 0.06,
-                      vertical: screenHeight * 0.012,
+                      horizontal: MediaQuery.of(context).size.width * 0.06,
+                      vertical: MediaQuery.of(context).size.height * 0.012,
                     ),
                     decoration: BoxDecoration(
                       color: selectedTab == 1 ? AppColors.primaryBlue : AppColors.backgroundLightGrey,
@@ -191,22 +189,22 @@ class _NotificationPageState extends State<NotificationPage> {
                     child: Text(
                       'Order',
                       style: TextStyle(
-                        fontSize: screenHeight * 0.0165,
+                        fontSize: MediaQuery.of(context).size.height * 0.0165,
                         fontWeight: FontWeight.w600,
                         color: selectedTab == 1 ? AppColors.textWhite : AppColors.textBlack,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: screenWidth * 0.025),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.025),
 
                 // Aplikasi Tab
                 GestureDetector(
                   onTap: () => setState(() => selectedTab = 2),
                   child: Container(
                     padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth * 0.06,
-                      vertical: screenHeight * 0.012,
+                      horizontal: MediaQuery.of(context).size.width * 0.06,
+                      vertical: MediaQuery.of(context).size.height * 0.012,
                     ),
                     decoration: BoxDecoration(
                       color: selectedTab == 2 ? AppColors.primaryBlue : AppColors.backgroundLightGrey,
@@ -215,7 +213,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     child: Text(
                       'Aplikasi',
                       style: TextStyle(
-                        fontSize: screenHeight * 0.0165,
+                        fontSize: MediaQuery.of(context).size.height * 0.0165,
                         fontWeight: FontWeight.w600,
                         color: selectedTab == 2 ? AppColors.textWhite : AppColors.textBlack,
                       ),
@@ -225,7 +223,7 @@ class _NotificationPageState extends State<NotificationPage> {
               ],
             ),
 
-            SizedBox(height: screenHeight * 0.025),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
             // Terbaru Header
             Row(
@@ -234,7 +232,7 @@ class _NotificationPageState extends State<NotificationPage> {
                 Text(
                   'Terbaru',
                   style: TextStyle(
-                    fontSize: screenHeight * 0.0195,
+                    fontSize: MediaQuery.of(context).size.height * 0.0195,
                     fontWeight: FontWeight.bold,
                     color: AppColors.textBlack,
                   ),
@@ -246,7 +244,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   child: Text(
                     'Baca Semua',
                     style: TextStyle(
-                      fontSize: screenHeight * 0.0155,
+                      fontSize: MediaQuery.of(context).size.height * 0.0155,
                       fontWeight: FontWeight.w600,
                       color: AppColors.primaryBlue,
                     ),
@@ -255,7 +253,7 @@ class _NotificationPageState extends State<NotificationPage> {
               ],
             ),
 
-            SizedBox(height: screenHeight * 0.015),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.015),
 
             // Notification Items
             ...List.generate(filteredNotifications.length, (index) {
@@ -270,11 +268,11 @@ class _NotificationPageState extends State<NotificationPage> {
                   // Date Divider
                   if (showDateDivider)
                     Padding(
-                      padding: EdgeInsets.only(bottom: screenHeight * 0.015),
+                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.015),
                       child: Text(
                         notification['date']!,
                         style: TextStyle(
-                          fontSize: screenHeight * 0.0165,
+                          fontSize: MediaQuery.of(context).size.height * 0.0165,
                           fontWeight: FontWeight.bold,
                           color: AppColors.textBlack,
                         ),
@@ -283,8 +281,8 @@ class _NotificationPageState extends State<NotificationPage> {
 
                   // Notification Item
                   Container(
-                    margin: EdgeInsets.only(bottom: screenHeight * 0.015),
-                    padding: EdgeInsets.all(screenWidth * 0.04),
+                    margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.015),
+                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
                     decoration: BoxDecoration(
                       color: notification['isRead'] == true
                           ? AppColors.backgroundWhite
@@ -304,7 +302,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       children: [
                         // Bell Icon
                         Container(
-                          padding: EdgeInsets.all(screenWidth * 0.03),
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           decoration: BoxDecoration(
                             color: AppColors.primaryBlue.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(8),
@@ -312,10 +310,10 @@ class _NotificationPageState extends State<NotificationPage> {
                           child: Icon(
                             Icons.notifications_outlined,
                             color: AppColors.primaryBlue,
-                            size: screenHeight * 0.026,
+                            size: MediaQuery.of(context).size.height * 0.026,
                           ),
                         ),
-                        SizedBox(width: screenWidth * 0.04),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.04),
 
                         // Content
                         Expanded(
@@ -325,16 +323,16 @@ class _NotificationPageState extends State<NotificationPage> {
                               Text(
                                 notification['title']!,
                                 style: TextStyle(
-                                  fontSize: screenHeight * 0.0175,
+                                  fontSize: MediaQuery.of(context).size.height * 0.0175,
                                   fontWeight: FontWeight.w600,
                                   color: AppColors.textBlack,
                                 ),
                               ),
-                              SizedBox(height: screenHeight * 0.005),
+                              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
                               Text(
                                 notification['description']!,
                                 style: TextStyle(
-                                  fontSize: screenHeight * 0.0155,
+                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
                                   color: Colors.grey[600],
                                 ),
                               ),
@@ -348,10 +346,11 @@ class _NotificationPageState extends State<NotificationPage> {
               );
             }),
 
-            SizedBox(height: screenHeight * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
           ],
         ),
       ),
     );
   }
 }
+

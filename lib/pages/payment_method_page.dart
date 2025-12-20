@@ -74,23 +74,20 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
 
   @override
   Widget build(BuildContext context) {
-    final h = MediaQuery.of(context).size.height;
-    final w = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: AppColors.backgroundWhite,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: w * AppConstants.widthPaddingLarge,
-            vertical: h * 0.015,
+            horizontal: MediaQuery.of(context).size.width * AppConstants.widthPaddingLarge,
+            vertical: MediaQuery.of(context).size.height * 0.015,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
               SizedBox(
-                height: h * 0.06,
+                height: MediaQuery.of(context).size.height * 0.06,
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
@@ -99,7 +96,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                       child: GestureDetector(
                         onTap: () => Navigator.pop(context),
                         child: Container(
-                          padding: EdgeInsets.all(w * 0.028),
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
                           decoration: BoxDecoration(
                             color: AppColors.backgroundWhite,
                             borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -111,7 +108,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                           child: Icon(
                             Icons.arrow_back,
                             color: AppColors.textBlack,
-                            size: h * 0.022,
+                            size: MediaQuery.of(context).size.height * 0.022,
                           ),
                         ),
                       ),
@@ -124,19 +121,19 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                     ),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: SizedBox(width: w * 0.12),
+                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.12),
                     ),
                   ],
                 ),
               ),
 
-              SizedBox(height: h * 0.02),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
               // List of payment items
               Expanded(
                 child: ListView.separated(
                   itemCount: _items.length,
-                  separatorBuilder: (_, __) => SizedBox(height: h * 0.012),
+                  separatorBuilder: (_, __) => SizedBox(height: MediaQuery.of(context).size.height * 0.012),
                   itemBuilder: (context, index) {
                     final item = _items[index];
                     final selected = item.name == _selected;
@@ -146,18 +143,18 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                         onTap: () => setState(() => _selected = item.name),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                            horizontal: w * 0.04,
-                            vertical: h * 0.016,
+                            horizontal: MediaQuery.of(context).size.width * 0.04,
+                            vertical: MediaQuery.of(context).size.height * 0.016,
                           ),
                           child: Row(
                             children: [
-                              _radioCircle(selected, h * 0.026),
-                              SizedBox(width: w * 0.03),
+                              _radioCircle(selected, MediaQuery.of(context).size.height * 0.026),
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                               Expanded(
                                 child: Text(
                                   item.name,
                                   style: TextStyle(
-                                    fontSize: h * 0.016,
+                                    fontSize: MediaQuery.of(context).size.height * 0.016,
                                     color: AppColors.textBlack,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -165,11 +162,11 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                               ),
                               Image.asset(
                                 item.assetPath,
-                                height: h * 0.04,
+                                height: MediaQuery.of(context).size.height * 0.04,
                                 errorBuilder: (_, __, ___) => Text(
                                   item.name,
                                   style: TextStyle(
-                                    fontSize: h * 0.014,
+                                    fontSize: MediaQuery.of(context).size.height * 0.014,
                                     color: Colors.grey[600],
                                   ),
                                 ),
@@ -183,7 +180,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                 ),
               ),
 
-              SizedBox(height: h * 0.01),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
               // Pay Now button
               Container(
@@ -232,12 +229,12 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: h * 0.018),
+                      padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.018),
                       child: Center(
                         child: Text(
                           'Bayar Sekarang',
                           style: TextStyle(
-                            fontSize: h * 0.0175,
+                            fontSize: MediaQuery.of(context).size.height * 0.0175,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textWhite,
                           ),

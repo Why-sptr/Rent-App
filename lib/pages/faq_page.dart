@@ -46,9 +46,7 @@ class _FaqPageState extends State<FaqPage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
+    
     return Scaffold(
       backgroundColor: AppColors.backgroundWhite,
       body: SafeArea(
@@ -58,15 +56,15 @@ class _FaqPageState extends State<FaqPage> {
             // Header
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: screenWidth * 0.04,
-                vertical: screenHeight * 0.015,
+                horizontal: MediaQuery.of(context).size.width * 0.04,
+                vertical: MediaQuery.of(context).size.height * 0.015,
               ),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      padding: EdgeInsets.all(screenWidth * 0.028),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.028),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.grey[300]!,
@@ -77,7 +75,7 @@ class _FaqPageState extends State<FaqPage> {
                       child: Icon(
                         Icons.arrow_back,
                         color: AppColors.textBlack,
-                        size: screenHeight * 0.022,
+                        size: MediaQuery.of(context).size.height * 0.022,
                       ),
                     ),
                   ),
@@ -86,22 +84,22 @@ class _FaqPageState extends State<FaqPage> {
                       'FAQ',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: screenHeight * 0.027,
+                        fontSize: MediaQuery.of(context).size.height * 0.027,
                         fontWeight: FontWeight.bold,
                         color: AppColors.textBlack,
                       ),
                     ),
                   ),
-                  SizedBox(width: screenWidth * 0.11),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.11),
                 ],
               ),
             ),
 
-            SizedBox(height: screenHeight * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
             // Search Bar
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.backgroundLightGrey,
@@ -109,40 +107,40 @@ class _FaqPageState extends State<FaqPage> {
                 ),
                 child: TextField(
                   style: TextStyle(
-                    fontSize: screenHeight * 0.0165,
+                    fontSize: MediaQuery.of(context).size.height * 0.0165,
                   ),
                   textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
                     hintText: 'Cari pertanyaan',
                     hintStyle: AppTextStyles.hint(context).copyWith(
-                      fontSize: screenHeight * 0.0155,
+                      fontSize: MediaQuery.of(context).size.height * 0.0155,
                     ),
                     prefixIcon: Icon(
                       Icons.search,
                       color: Colors.grey[400],
-                      size: screenHeight * 0.028,
+                      size: MediaQuery.of(context).size.height * 0.028,
                     ),
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.symmetric(
-                      vertical: screenHeight * 0.016,
+                      vertical: MediaQuery.of(context).size.height * 0.016,
                     ),
                   ),
                 ),
               ),
             ),
 
-            SizedBox(height: screenHeight * 0.025),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
             // FAQ Items
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.04),
               child: Column(
                 children: [
                   // FAQ Items
                   ...List.generate(faqItems.length, (index) {
                     final isExpanded = expandedIndex == index;
                     return Container(
-                      margin: EdgeInsets.only(bottom: screenHeight * 0.015),
+                      margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.015),
                       decoration: BoxDecoration(
                         color: AppColors.backgroundWhite,
                         borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -157,13 +155,13 @@ class _FaqPageState extends State<FaqPage> {
                         ),
                         child: ExpansionTile(
                           tilePadding: EdgeInsets.symmetric(
-                            horizontal: screenWidth * 0.04,
-                            vertical: screenHeight * 0.005,
+                            horizontal: MediaQuery.of(context).size.width * 0.04,
+                            vertical: MediaQuery.of(context).size.height * 0.005,
                           ),
                           title: Text(
                             faqItems[index]['question']!,
                             style: TextStyle(
-                              fontSize: screenHeight * 0.0175,
+                              fontSize: MediaQuery.of(context).size.height * 0.0175,
                               fontWeight: FontWeight.w600,
                               color: AppColors.textBlack,
                             ),
@@ -171,7 +169,7 @@ class _FaqPageState extends State<FaqPage> {
                           trailing: Icon(
                             isExpanded ? Icons.remove : Icons.add,
                             color: AppColors.textBlack,
-                            size: screenHeight * 0.024,
+                            size: MediaQuery.of(context).size.height * 0.024,
                           ),
                           onExpansionChanged: (expanded) {
                             setState(() {
@@ -181,15 +179,15 @@ class _FaqPageState extends State<FaqPage> {
                           children: [
                             Padding(
                               padding: EdgeInsets.fromLTRB(
-                                screenWidth * 0.04,
+                                MediaQuery.of(context).size.width * 0.04,
                                 0,
-                                screenWidth * 0.04,
-                                screenHeight * 0.02,
+                                MediaQuery.of(context).size.width * 0.04,
+                                MediaQuery.of(context).size.height * 0.02,
                               ),
                               child: Text(
                                 faqItems[index]['answer']!,
                                 style: TextStyle(
-                                  fontSize: screenHeight * 0.016,
+                                  fontSize: MediaQuery.of(context).size.height * 0.016,
                                   color: Colors.grey[600],
                                   height: 1.5,
                                 ),
@@ -201,14 +199,14 @@ class _FaqPageState extends State<FaqPage> {
                     );
                   }),
 
-                  SizedBox(height: screenHeight * 0.02),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                   // Bottom Section - Punya pertanyaan lainnya
                   Container(
-                    margin: EdgeInsets.only(bottom: screenHeight * 0.03),
+                    margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.03),
                     padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth * 0.045,
-                      vertical: screenHeight * 0.022,
+                      horizontal: MediaQuery.of(context).size.width * 0.045,
+                      vertical: MediaQuery.of(context).size.height * 0.022,
                     ),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
@@ -224,12 +222,12 @@ class _FaqPageState extends State<FaqPage> {
                         Text(
                           'Punya pertanyaan lainnya?',
                           style: TextStyle(
-                            fontSize: screenHeight * 0.019,
+                            fontSize: MediaQuery.of(context).size.height * 0.019,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textWhite,
                           ),
                         ),
-                        SizedBox(height: screenHeight * 0.015),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.015),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
@@ -245,7 +243,7 @@ class _FaqPageState extends State<FaqPage> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.backgroundWhite,
                               padding: EdgeInsets.symmetric(
-                                vertical: screenHeight * 0.016,
+                                vertical: MediaQuery.of(context).size.height * 0.016,
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -254,7 +252,7 @@ class _FaqPageState extends State<FaqPage> {
                             child: Text(
                               'Hubungi Admin',
                               style: TextStyle(
-                                fontSize: screenHeight * 0.019,
+                                fontSize: MediaQuery.of(context).size.height * 0.019,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.textBlack,
                               ),
@@ -273,3 +271,4 @@ class _FaqPageState extends State<FaqPage> {
     );
   }
 }
+
