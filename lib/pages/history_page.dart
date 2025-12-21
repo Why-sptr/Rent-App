@@ -126,13 +126,20 @@ class _HistoryPageState extends State<HistoryPage> {
                 // Header dan Search Bar
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal:
-                          MediaQuery.of(context).size.width *
-                          AppConstants.widthPaddingMedium,
-                      vertical:
+                    padding: EdgeInsets.only(
+                      top:
+                          MediaQuery.of(context).padding.top +
+                          MediaQuery.of(context).size.height *
+                              AppConstants.spacingLarge,
+                      bottom:
                           MediaQuery.of(context).size.height *
                           AppConstants.spacingMedium,
+                      left:
+                          MediaQuery.of(context).size.width *
+                          AppConstants.widthPaddingMedium,
+                      right:
+                          MediaQuery.of(context).size.width *
+                          AppConstants.widthPaddingMedium,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,8 +315,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           right:
                               MediaQuery.of(context).size.width *
                               AppConstants.widthPaddingMedium,
-                          bottom:
-                              MediaQuery.of(context).size.height * 0.12,
+                          bottom: MediaQuery.of(context).size.height * 0.12,
                         ),
                         sliver: SliverList(
                           delegate: SliverChildBuilderDelegate((
