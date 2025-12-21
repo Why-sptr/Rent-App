@@ -42,3 +42,9 @@ android {
 flutter {
     source = "../.."
 }
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "RentKu-${variant.name}.apk"
+    }
+}
