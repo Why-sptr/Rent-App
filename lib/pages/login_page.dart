@@ -31,9 +31,7 @@ class _LoginPageState extends State<LoginPage> {
       // Jika validasi berhasil, navigasi ke MainPage
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (context) => const MainPage(),
-        ),
+        MaterialPageRoute(builder: (context) => const MainPage()),
       );
     }
   }
@@ -42,9 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppColors.loginGradient,
-        ),
+        decoration: const BoxDecoration(gradient: AppColors.loginGradient),
         child: SafeArea(
           child: Column(
             children: [
@@ -55,7 +51,10 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.arrow_back, color: AppColors.textWhite),
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: AppColors.textWhite,
+                      ),
                       onPressed: () {},
                     ),
                     Row(
@@ -80,8 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                               vertical: AppConstants.paddingXSmall,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
-                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                              color: AppColors.textWhite.withValues(
+                                alpha: AppConstants.alphaButton,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                AppConstants.borderRadiusMedium,
+                              ),
                             ),
                             child: const Text(
                               'Daftar',
@@ -118,7 +121,9 @@ class _LoginPageState extends State<LoginPage> {
                     color: AppColors.backgroundWhite,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(AppConstants.borderRadiusCurved),
-                      topRight: Radius.circular(AppConstants.borderRadiusCurved),
+                      topRight: Radius.circular(
+                        AppConstants.borderRadiusCurved,
+                      ),
                     ),
                   ),
                   child: LayoutBuilder(
@@ -133,301 +138,530 @@ class _LoginPageState extends State<LoginPage> {
                               key: _formKey,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                  horizontal: MediaQuery.of(context).size.width * 0.08,
-                                  vertical: MediaQuery.of(context).size.height * 0.03,
+                                  horizontal:
+                                      MediaQuery.of(context).size.width * 0.08,
+                                  vertical:
+                                      MediaQuery.of(context).size.height * 0.03,
                                 ),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                  // Top Section - Title
-                                  Column(
-                                    children: [
-                                      Text(
-                                        'Selamat Datang',
-                                        style: AppTextStyles.header(context),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall),
-                                      Text(
-                                        'Masukkan detail Anda di bawah ini',
-                                        style: AppTextStyles.bodyMedium(context),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-
-                                  // Middle Section - Form Fields
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
-                                      // Email Field
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Email',
-                                            style: AppTextStyles.label(context),
-                                          ),
-                                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
-                                          TextFormField(
-                                            controller: _emailController,
-                                            keyboardType: TextInputType.emailAddress,
-                                            style: TextStyle(
-                                              fontSize: MediaQuery.of(context).size.height * 0.0165,
-                                            ),
-                                            validator: (value) {
-                                              if (value == null || value.isEmpty) {
-                                                return 'Email tidak boleh kosong';
-                                              }
-                                              if (!value.contains('@')) {
-                                                return 'Email tidak valid';
-                                              }
-                                              return null;
-                                            },
-                                            decoration: InputDecoration(
-                                              hintText: 'email@gmail.com',
-                                              hintStyle: AppTextStyles.hint(context).copyWith(
-                                                fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                              ),
-                                              filled: true,
-                                              fillColor: AppColors.backgroundLightGrey,
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                borderSide: BorderSide.none,
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                borderSide: const BorderSide(
-                                                  color: AppColors.borderRed,
-                                                  width: AppConstants.containerBorderWidth,
-                                                ),
-                                              ),
-                                              focusedErrorBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                borderSide: const BorderSide(
-                                                  color: AppColors.borderRed,
-                                                  width: AppConstants.buttonBorderWidth,
-                                                ),
-                                              ),
-                                              contentPadding: EdgeInsets.symmetric(
-                                                horizontal: AppConstants.paddingLarge,
-                                                vertical: MediaQuery.of(context).size.height * 0.018,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: MediaQuery.of(context).size.height * 0.018),
-
-                                      // Password Field
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Password',
-                                            style: AppTextStyles.label(context),
-                                          ),
-                                          SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
-                                          TextFormField(
-                                            controller: _passwordController,
-                                            obscureText: !_isPasswordVisible,
-                                            style: TextStyle(
-                                              fontSize: MediaQuery.of(context).size.height * 0.0165,
-                                            ),
-                                            validator: (value) {
-                                              if (value == null || value.isEmpty) {
-                                                return 'Password tidak boleh kosong';
-                                              }
-                                              if (value.length < 6) {
-                                                return 'Password minimal 6 karakter';
-                                              }
-                                              return null;
-                                            },
-                                            decoration: InputDecoration(
-                                              hintText: '••••••••••••',
-                                              hintStyle: AppTextStyles.hint(context).copyWith(
-                                                fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                              ),
-                                              filled: true,
-                                              fillColor: AppColors.backgroundLightGrey,
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                borderSide: BorderSide.none,
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                borderSide: const BorderSide(
-                                                  color: AppColors.borderRed,
-                                                  width: AppConstants.containerBorderWidth,
-                                                ),
-                                              ),
-                                              focusedErrorBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                borderSide: const BorderSide(
-                                                  color: AppColors.borderRed,
-                                                  width: AppConstants.buttonBorderWidth,
-                                                ),
-                                              ),
-                                              contentPadding: EdgeInsets.symmetric(
-                                                horizontal: AppConstants.paddingLarge,
-                                                vertical: MediaQuery.of(context).size.height * 0.018,
-                                              ),
-                                              suffixIcon: IconButton(
-                                                icon: Icon(
-                                                  _isPasswordVisible
-                                                      ? Icons.visibility_outlined
-                                                      : Icons.visibility_off_outlined,
-                                                  color: AppColors.textSecondary,
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    _isPasswordVisible = !_isPasswordVisible;
-                                                  });
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
-                                    ],
-                                  ),
-
-                                  // Bottom Section - Buttons
-                                  Column(
-                                    children: [
-                                      // Sign In Button
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            gradient: AppColors.buttonGradient,
-                                            borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                          ),
-                                          child: ElevatedButton(
-                                            onPressed: _handleLogin,
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.transparent,
-                                              shadowColor: Colors.transparent,
-                                              padding: EdgeInsets.symmetric(
-                                                vertical: MediaQuery.of(context).size.height * 0.016,
-                                              ),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                              ),
-                                            ),
-                                            child: Text(
-                                              'Masuk',
-                                              style: AppTextStyles.button(context),
-                                            ),
-                                          ),
+                                    // Top Section - Title
+                                    Column(
+                                      children: [
+                                        Text(
+                                          'Selamat Datang',
+                                          style: AppTextStyles.header(context),
+                                          textAlign: TextAlign.center,
                                         ),
-                                      ),
-                                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
-
-                                      // Forgot Password
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingXSmall,
+                                        ),
+                                        Text(
+                                          'Masukkan detail Anda di bawah ini',
+                                          style: AppTextStyles.bodyMedium(
                                             context,
-                                            MaterialPageRoute(
-                                              builder: (context) => const ForgotPasswordPage(),
-                                            ),
-                                          );
-                                        },
-                                        child: Text(
-                                          'Lupa kata sandi?',
-                                          style: AppTextStyles.bodySmall(context),
+                                          ),
+                                          textAlign: TextAlign.center,
                                         ),
-                                      ),
-                                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingSmall),
+                                      ],
+                                    ),
 
-                                      // Divider
-                                      Row(
-                                        children: [
-                                          const Expanded(child: Divider(color: AppColors.borderGrey)),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: AppConstants.paddingMedium),
-                                            child: Text(
-                                              'Atau masuk dengan',
-                                              style: AppTextStyles.label(context),
+                                    // Middle Section - Form Fields
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingLarge,
+                                        ),
+                                        // Email Field
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Email',
+                                              style: AppTextStyles.label(
+                                                context,
+                                              ),
                                             ),
-                                          ),
-                                          const Expanded(child: Divider(color: AppColors.borderGrey)),
-                                        ],
-                                      ),
-                                      SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
+                                            SizedBox(
+                                              height:
+                                                  MediaQuery.of(
+                                                    context,
+                                                  ).size.height *
+                                                  AppConstants.spacingXSmall /
+                                                  2,
+                                            ),
+                                            TextFormField(
+                                              controller: _emailController,
+                                              keyboardType:
+                                                  TextInputType.emailAddress,
+                                              style: TextStyle(
+                                                fontSize:
+                                                    MediaQuery.of(
+                                                      context,
+                                                    ).size.height *
+                                                    0.0165,
+                                              ),
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Email tidak boleh kosong';
+                                                }
+                                                if (!value.contains('@')) {
+                                                  return 'Email tidak valid';
+                                                }
+                                                return null;
+                                              },
+                                              decoration: InputDecoration(
+                                                hintText: 'email@gmail.com',
+                                                hintStyle:
+                                                    AppTextStyles.hint(
+                                                      context,
+                                                    ).copyWith(
+                                                      fontSize:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.0155,
+                                                    ),
+                                                filled: true,
+                                                fillColor: AppColors
+                                                    .backgroundLightGrey,
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
+                                                  borderSide: BorderSide.none,
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
+                                                  borderSide: const BorderSide(
+                                                    color: AppColors.borderRed,
+                                                    width: AppConstants
+                                                        .containerBorderWidth,
+                                                  ),
+                                                ),
+                                                focusedErrorBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
+                                                  borderSide: const BorderSide(
+                                                    color: AppColors.borderRed,
+                                                    width: AppConstants
+                                                        .buttonBorderWidth,
+                                                  ),
+                                                ),
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                      horizontal: AppConstants
+                                                          .paddingLarge,
+                                                      vertical:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.018,
+                                                    ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              0.018,
+                                        ),
 
-                                      // Social Buttons
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: OutlinedButton.icon(
-                                              onPressed: () {},
-                                              icon: Image.network(
-                                                'https://www.google.com/favicon.ico',
-                                                width: 18,
-                                                height: 18,
+                                        // Password Field
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Password',
+                                              style: AppTextStyles.label(
+                                                context,
                                               ),
-                                              label: Text(
-                                                'Google',
-                                                style: AppTextStyles.buttonSmall(context).copyWith(
-                                                  color: AppColors.textPrimary,
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  MediaQuery.of(
+                                                    context,
+                                                  ).size.height *
+                                                  AppConstants.spacingXSmall /
+                                                  2,
+                                            ),
+                                            TextFormField(
+                                              controller: _passwordController,
+                                              obscureText: !_isPasswordVisible,
+                                              style: TextStyle(
+                                                fontSize:
+                                                    MediaQuery.of(
+                                                      context,
+                                                    ).size.height *
+                                                    0.0165,
+                                              ),
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Password tidak boleh kosong';
+                                                }
+                                                if (value.length < 6) {
+                                                  return 'Password minimal 6 karakter';
+                                                }
+                                                return null;
+                                              },
+                                              decoration: InputDecoration(
+                                                hintText: '••••••••••••',
+                                                hintStyle:
+                                                    AppTextStyles.hint(
+                                                      context,
+                                                    ).copyWith(
+                                                      fontSize:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.0155,
+                                                    ),
+                                                filled: true,
+                                                fillColor: AppColors
+                                                    .backgroundLightGrey,
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
+                                                  borderSide: BorderSide.none,
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
+                                                  borderSide: const BorderSide(
+                                                    color: AppColors.borderRed,
+                                                    width: AppConstants
+                                                        .containerBorderWidth,
+                                                  ),
+                                                ),
+                                                focusedErrorBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
+                                                  borderSide: const BorderSide(
+                                                    color: AppColors.borderRed,
+                                                    width: AppConstants
+                                                        .buttonBorderWidth,
+                                                  ),
+                                                ),
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                      horizontal: AppConstants
+                                                          .paddingLarge,
+                                                      vertical:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.018,
+                                                    ),
+                                                suffixIcon: IconButton(
+                                                  icon: Icon(
+                                                    _isPasswordVisible
+                                                        ? Icons
+                                                              .visibility_outlined
+                                                        : Icons
+                                                              .visibility_off_outlined,
+                                                    color:
+                                                        AppColors.textSecondary,
+                                                  ),
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      _isPasswordVisible =
+                                                          !_isPasswordVisible;
+                                                    });
+                                                  },
                                                 ),
                                               ),
-                                              style: OutlinedButton.styleFrom(
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingLarge,
+                                        ),
+                                      ],
+                                    ),
+
+                                    // Bottom Section - Buttons
+                                    Column(
+                                      children: [
+                                        // Sign In Button
+                                        SizedBox(
+                                          width: double.infinity,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              gradient:
+                                                  AppColors.buttonGradient,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                    AppConstants
+                                                        .borderRadiusMedium,
+                                                  ),
+                                            ),
+                                            child: ElevatedButton(
+                                              onPressed: _handleLogin,
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                shadowColor: Colors.transparent,
                                                 padding: EdgeInsets.symmetric(
-                                                  vertical: MediaQuery.of(context).size.height * 0.014,
-                                                ),
-                                                side: const BorderSide(
-                                                  color: AppColors.borderGrey,
+                                                  vertical:
+                                                      MediaQuery.of(
+                                                        context,
+                                                      ).size.height *
+                                                      0.016,
                                                 ),
                                                 shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
+                                                ),
+                                              ),
+                                              child: Text(
+                                                'Masuk',
+                                                style: AppTextStyles.button(
+                                                  context,
                                                 ),
                                               ),
                                             ),
                                           ),
-                                          const SizedBox(width: 15),
-                                          Expanded(
-                                            child: OutlinedButton.icon(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons.facebook,
-                                                color: AppColors.facebookBlue,
-                                                size: 18,
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingXSmall /
+                                              2,
+                                        ),
+
+                                        // Forgot Password
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const ForgotPasswordPage(),
                                               ),
-                                              label: Text(
-                                                'Facebook',
-                                                style: AppTextStyles.buttonSmall(context).copyWith(
+                                            );
+                                          },
+                                          child: Text(
+                                            'Lupa kata sandi?',
+                                            style: AppTextStyles.bodySmall(
+                                              context,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingSmall,
+                                        ),
+
+                                        // Divider
+                                        Row(
+                                          children: [
+                                            const Expanded(
+                                              child: Divider(
+                                                color: AppColors.borderGrey,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: AppConstants
+                                                        .paddingMedium,
+                                                  ),
+                                              child: Text(
+                                                'Atau masuk dengan',
+                                                style: AppTextStyles.label(
+                                                  context,
+                                                ),
+                                              ),
+                                            ),
+                                            const Expanded(
+                                              child: Divider(
+                                                color: AppColors.borderGrey,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingMedium,
+                                        ),
+
+                                        // Social Buttons
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: OutlinedButton.icon(
+                                                onPressed: () {},
+                                                icon: Image.network(
+                                                  'https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png',
+                                                  width: 18,
+                                                  height: 18,
+                                                  errorBuilder:
+                                                      (
+                                                        context,
+                                                        error,
+                                                        stackTrace,
+                                                      ) {
+                                                        return Container(
+                                                          width: 18,
+                                                          height: 18,
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius.circular(
+                                                                  2,
+                                                                ),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              'G',
+                                                              style: TextStyle(
+                                                                color: AppColors
+                                                                    .textPrimary,
+                                                                fontSize: 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                ),
+                                                label: Text(
+                                                  'Google',
+                                                  style:
+                                                      AppTextStyles.buttonSmall(
+                                                        context,
+                                                      ).copyWith(
+                                                        color: AppColors
+                                                            .textPrimary,
+                                                      ),
+                                                ),
+                                                style: OutlinedButton.styleFrom(
+                                                  padding: EdgeInsets.symmetric(
+                                                    vertical:
+                                                        MediaQuery.of(
+                                                          context,
+                                                        ).size.height *
+                                                        0.014,
+                                                  ),
+                                                  side: const BorderSide(
+                                                    color: AppColors.borderGrey,
+                                                  ),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          AppConstants
+                                                              .borderRadiusMedium,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 15),
+                                            Expanded(
+                                              child: OutlinedButton.icon(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  Icons.facebook,
                                                   color: AppColors.facebookBlue,
+                                                  size: 18,
                                                 ),
-                                              ),
-                                              style: OutlinedButton.styleFrom(
-                                                padding: EdgeInsets.symmetric(
-                                                  vertical: MediaQuery.of(context).size.height * 0.014,
+                                                label: Text(
+                                                  'Facebook',
+                                                  style:
+                                                      AppTextStyles.buttonSmall(
+                                                        context,
+                                                      ).copyWith(
+                                                        color: AppColors
+                                                            .facebookBlue,
+                                                      ),
                                                 ),
-                                                side: const BorderSide(
-                                                  color: AppColors.borderGrey,
-                                                ),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                style: OutlinedButton.styleFrom(
+                                                  padding: EdgeInsets.symmetric(
+                                                    vertical:
+                                                        MediaQuery.of(
+                                                          context,
+                                                        ).size.height *
+                                                        0.014,
+                                                  ),
+                                                  side: const BorderSide(
+                                                    color: AppColors.borderGrey,
+                                                  ),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          AppConstants
+                                                              .borderRadiusMedium,
+                                                        ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
                       );
                     },
                   ),

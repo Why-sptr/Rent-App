@@ -37,9 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
       // Jika validasi berhasil, navigasi ke MainPage
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (context) => const MainPage(),
-        ),
+        MaterialPageRoute(builder: (context) => const MainPage()),
       );
     }
   }
@@ -48,9 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppColors.loginGradient,
-        ),
+        decoration: const BoxDecoration(gradient: AppColors.loginGradient),
         child: SafeArea(
           child: Column(
             children: [
@@ -61,7 +57,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.arrow_back, color: AppColors.textWhite),
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: AppColors.textWhite,
+                      ),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -83,8 +82,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               vertical: AppConstants.paddingXSmall,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.textWhite.withValues(alpha: AppConstants.alphaButton),
-                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                              color: AppColors.textWhite.withValues(
+                                alpha: AppConstants.alphaButton,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                AppConstants.borderRadiusMedium,
+                              ),
                             ),
                             child: const Text(
                               'Masuk',
@@ -121,7 +124,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: AppColors.backgroundWhite,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(AppConstants.borderRadiusCurved),
-                      topRight: Radius.circular(AppConstants.borderRadiusCurved),
+                      topRight: Radius.circular(
+                        AppConstants.borderRadiusCurved,
+                      ),
                     ),
                   ),
                   child: LayoutBuilder(
@@ -136,12 +141,16 @@ class _RegisterPageState extends State<RegisterPage> {
                               key: _formKey,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                  horizontal: MediaQuery.of(context).size.width * 0.08,
-                                  vertical: MediaQuery.of(context).size.height * 0.03,
+                                  horizontal:
+                                      MediaQuery.of(context).size.width * 0.08,
+                                  vertical:
+                                      MediaQuery.of(context).size.height * 0.03,
                                 ),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     // Top Section - Title
                                     Column(
@@ -151,10 +160,18 @@ class _RegisterPageState extends State<RegisterPage> {
                                           style: AppTextStyles.header(context),
                                           textAlign: TextAlign.center,
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingXSmall,
+                                        ),
                                         Text(
                                           'Lengkapi data Anda untuk mendaftar',
-                                          style: AppTextStyles.bodyMedium(context),
+                                          style: AppTextStyles.bodyMedium(
+                                            context,
+                                          ),
                                           textAlign: TextAlign.center,
                                         ),
                                       ],
@@ -162,27 +179,50 @@ class _RegisterPageState extends State<RegisterPage> {
 
                                     // Middle Section - Form Fields
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
-                                        
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingLarge,
+                                        ),
+
                                         // Email Field
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Email',
-                                              style: AppTextStyles.label(context),
+                                              style: AppTextStyles.label(
+                                                context,
+                                              ),
                                             ),
-                                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
+                                            SizedBox(
+                                              height:
+                                                  MediaQuery.of(
+                                                    context,
+                                                  ).size.height *
+                                                  AppConstants.spacingXSmall /
+                                                  2,
+                                            ),
                                             TextFormField(
                                               controller: _emailController,
-                                              keyboardType: TextInputType.emailAddress,
+                                              keyboardType:
+                                                  TextInputType.emailAddress,
                                               style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                                fontSize:
+                                                    MediaQuery.of(
+                                                      context,
+                                                    ).size.height *
+                                                    0.0165,
                                               ),
                                               validator: (value) {
-                                                if (value == null || value.isEmpty) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
                                                   return 'Email tidak boleh kosong';
                                                 }
                                                 if (!value.contains('@')) {
@@ -192,56 +232,105 @@ class _RegisterPageState extends State<RegisterPage> {
                                               },
                                               decoration: InputDecoration(
                                                 hintText: 'email@gmail.com',
-                                                hintStyle: AppTextStyles.hint(context).copyWith(
-                                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                                ),
+                                                hintStyle:
+                                                    AppTextStyles.hint(
+                                                      context,
+                                                    ).copyWith(
+                                                      fontSize:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.0155,
+                                                    ),
                                                 filled: true,
-                                                fillColor: AppColors.backgroundLightGrey,
+                                                fillColor: AppColors
+                                                    .backgroundLightGrey,
                                                 border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: BorderSide.none,
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: const BorderSide(
                                                     color: AppColors.borderRed,
-                                                    width: AppConstants.containerBorderWidth,
+                                                    width: AppConstants
+                                                        .containerBorderWidth,
                                                   ),
                                                 ),
                                                 focusedErrorBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: const BorderSide(
                                                     color: AppColors.borderRed,
-                                                    width: AppConstants.buttonBorderWidth,
+                                                    width: AppConstants
+                                                        .buttonBorderWidth,
                                                   ),
                                                 ),
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: AppConstants.paddingLarge,
-                                                  vertical: MediaQuery.of(context).size.height * 0.018,
-                                                ),
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                      horizontal: AppConstants
+                                                          .paddingLarge,
+                                                      vertical:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.018,
+                                                    ),
                                               ),
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              0.018,
+                                        ),
 
                                         // Password Field
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Password',
-                                              style: AppTextStyles.label(context),
+                                              style: AppTextStyles.label(
+                                                context,
+                                              ),
                                             ),
-                                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
+                                            SizedBox(
+                                              height:
+                                                  MediaQuery.of(
+                                                    context,
+                                                  ).size.height *
+                                                  AppConstants.spacingXSmall /
+                                                  2,
+                                            ),
                                             TextFormField(
                                               controller: _passwordController,
                                               obscureText: !_isPasswordVisible,
                                               style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                                fontSize:
+                                                    MediaQuery.of(
+                                                      context,
+                                                    ).size.height *
+                                                    0.0165,
                                               ),
                                               validator: (value) {
-                                                if (value == null || value.isEmpty) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
                                                   return 'Password tidak boleh kosong';
                                                 }
                                                 if (value.length < 6) {
@@ -251,43 +340,75 @@ class _RegisterPageState extends State<RegisterPage> {
                                               },
                                               decoration: InputDecoration(
                                                 hintText: '••••••••••••',
-                                                hintStyle: AppTextStyles.hint(context).copyWith(
-                                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                                ),
+                                                hintStyle:
+                                                    AppTextStyles.hint(
+                                                      context,
+                                                    ).copyWith(
+                                                      fontSize:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.0155,
+                                                    ),
                                                 filled: true,
-                                                fillColor: AppColors.backgroundLightGrey,
+                                                fillColor: AppColors
+                                                    .backgroundLightGrey,
                                                 border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: BorderSide.none,
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: const BorderSide(
                                                     color: AppColors.borderRed,
-                                                    width: AppConstants.containerBorderWidth,
+                                                    width: AppConstants
+                                                        .containerBorderWidth,
                                                   ),
                                                 ),
                                                 focusedErrorBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: const BorderSide(
                                                     color: AppColors.borderRed,
-                                                    width: AppConstants.buttonBorderWidth,
+                                                    width: AppConstants
+                                                        .buttonBorderWidth,
                                                   ),
                                                 ),
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: AppConstants.paddingLarge,
-                                                  vertical: MediaQuery.of(context).size.height * 0.018,
-                                                ),
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                      horizontal: AppConstants
+                                                          .paddingLarge,
+                                                      vertical:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.018,
+                                                    ),
                                                 suffixIcon: IconButton(
                                                   icon: Icon(
                                                     _isPasswordVisible
-                                                        ? Icons.visibility_outlined
-                                                        : Icons.visibility_off_outlined,
-                                                    color: AppColors.textSecondary,
+                                                        ? Icons
+                                                              .visibility_outlined
+                                                        : Icons
+                                                              .visibility_off_outlined,
+                                                    color:
+                                                        AppColors.textSecondary,
                                                   ),
                                                   onPressed: () {
                                                     setState(() {
-                                                      _isPasswordVisible = !_isPasswordVisible;
+                                                      _isPasswordVisible =
+                                                          !_isPasswordVisible;
                                                     });
                                                   },
                                                 ),
@@ -295,71 +416,127 @@ class _RegisterPageState extends State<RegisterPage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              0.018,
+                                        ),
 
                                         // Confirm Password Field
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Konfirmasi Password',
-                                              style: AppTextStyles.label(context),
+                                              style: AppTextStyles.label(
+                                                context,
+                                              ),
                                             ),
-                                            SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
+                                            SizedBox(
+                                              height:
+                                                  MediaQuery.of(
+                                                    context,
+                                                  ).size.height *
+                                                  AppConstants.spacingXSmall /
+                                                  2,
+                                            ),
                                             TextFormField(
-                                              controller: _confirmPasswordController,
-                                              obscureText: !_isConfirmPasswordVisible,
+                                              controller:
+                                                  _confirmPasswordController,
+                                              obscureText:
+                                                  !_isConfirmPasswordVisible,
                                               style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                                fontSize:
+                                                    MediaQuery.of(
+                                                      context,
+                                                    ).size.height *
+                                                    0.0165,
                                               ),
                                               validator: (value) {
-                                                if (value == null || value.isEmpty) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
                                                   return 'Konfirmasi password tidak boleh kosong';
                                                 }
-                                                if (value != _passwordController.text) {
+                                                if (value !=
+                                                    _passwordController.text) {
                                                   return 'Password tidak cocok';
                                                 }
                                                 return null;
                                               },
                                               decoration: InputDecoration(
                                                 hintText: '••••••••••••',
-                                                hintStyle: AppTextStyles.hint(context).copyWith(
-                                                  fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                                ),
+                                                hintStyle:
+                                                    AppTextStyles.hint(
+                                                      context,
+                                                    ).copyWith(
+                                                      fontSize:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.0155,
+                                                    ),
                                                 filled: true,
-                                                fillColor: AppColors.backgroundLightGrey,
+                                                fillColor: AppColors
+                                                    .backgroundLightGrey,
                                                 border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: BorderSide.none,
                                                 ),
                                                 errorBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: const BorderSide(
                                                     color: AppColors.borderRed,
-                                                    width: AppConstants.containerBorderWidth,
+                                                    width: AppConstants
+                                                        .containerBorderWidth,
                                                   ),
                                                 ),
                                                 focusedErrorBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                   borderSide: const BorderSide(
                                                     color: AppColors.borderRed,
-                                                    width: AppConstants.buttonBorderWidth,
+                                                    width: AppConstants
+                                                        .buttonBorderWidth,
                                                   ),
                                                 ),
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: AppConstants.paddingLarge,
-                                                  vertical: MediaQuery.of(context).size.height * 0.018,
-                                                ),
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                      horizontal: AppConstants
+                                                          .paddingLarge,
+                                                      vertical:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.018,
+                                                    ),
                                                 suffixIcon: IconButton(
                                                   icon: Icon(
                                                     _isConfirmPasswordVisible
-                                                        ? Icons.visibility_outlined
-                                                        : Icons.visibility_off_outlined,
-                                                    color: AppColors.textSecondary,
+                                                        ? Icons
+                                                              .visibility_outlined
+                                                        : Icons
+                                                              .visibility_off_outlined,
+                                                    color:
+                                                        AppColors.textSecondary,
                                                   ),
                                                   onPressed: () {
                                                     setState(() {
-                                                      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                                                      _isConfirmPasswordVisible =
+                                                          !_isConfirmPasswordVisible;
                                                     });
                                                   },
                                                 ),
@@ -367,7 +544,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              0.018,
+                                        ),
 
                                         // Umur and Domisili Row
                                         Row(
@@ -375,58 +558,110 @@ class _RegisterPageState extends State<RegisterPage> {
                                             // Umur Field
                                             Expanded(
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Umur',
-                                                    style: AppTextStyles.label(context),
+                                                    style: AppTextStyles.label(
+                                                      context,
+                                                    ),
                                                   ),
-                                                  SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
+                                                  SizedBox(
+                                                    height:
+                                                        MediaQuery.of(
+                                                          context,
+                                                        ).size.height *
+                                                        AppConstants
+                                                            .spacingXSmall /
+                                                        2,
+                                                  ),
                                                   TextFormField(
                                                     controller: _ageController,
-                                                    keyboardType: TextInputType.number,
+                                                    keyboardType:
+                                                        TextInputType.number,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                                      fontSize:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.0165,
                                                     ),
                                                     validator: (value) {
-                                                      if (value == null || value.isEmpty) {
+                                                      if (value == null ||
+                                                          value.isEmpty) {
                                                         return 'Umur tidak boleh kosong';
                                                       }
-                                                      final age = int.tryParse(value);
-                                                      if (age == null || age < 17) {
+                                                      final age = int.tryParse(
+                                                        value,
+                                                      );
+                                                      if (age == null ||
+                                                          age < 17) {
                                                         return 'Minimal 17 tahun';
                                                       }
                                                       return null;
                                                     },
                                                     decoration: InputDecoration(
                                                       hintText: '18',
-                                                      hintStyle: AppTextStyles.hint(context).copyWith(
-                                                        fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                                      ),
+                                                      hintStyle:
+                                                          AppTextStyles.hint(
+                                                            context,
+                                                          ).copyWith(
+                                                            fontSize:
+                                                                MediaQuery.of(
+                                                                  context,
+                                                                ).size.height *
+                                                                0.0155,
+                                                          ),
                                                       filled: true,
-                                                      fillColor: AppColors.backgroundLightGrey,
+                                                      fillColor: AppColors
+                                                          .backgroundLightGrey,
                                                       border: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                        borderSide: BorderSide.none,
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              AppConstants
+                                                                  .borderRadiusMedium,
+                                                            ),
+                                                        borderSide:
+                                                            BorderSide.none,
                                                       ),
                                                       errorBorder: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              AppConstants
+                                                                  .borderRadiusMedium,
+                                                            ),
                                                         borderSide: const BorderSide(
-                                                          color: AppColors.borderRed,
-                                                          width: AppConstants.containerBorderWidth,
+                                                          color: AppColors
+                                                              .borderRed,
+                                                          width: AppConstants
+                                                              .containerBorderWidth,
                                                         ),
                                                       ),
                                                       focusedErrorBorder: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              AppConstants
+                                                                  .borderRadiusMedium,
+                                                            ),
                                                         borderSide: const BorderSide(
-                                                          color: AppColors.borderRed,
-                                                          width: AppConstants.buttonBorderWidth,
+                                                          color: AppColors
+                                                              .borderRed,
+                                                          width: AppConstants
+                                                              .buttonBorderWidth,
                                                         ),
                                                       ),
-                                                      contentPadding: EdgeInsets.symmetric(
-                                                        horizontal: AppConstants.paddingLarge,
-                                                        vertical: MediaQuery.of(context).size.height * 0.018,
-                                                      ),
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                            horizontal:
+                                                                AppConstants
+                                                                    .paddingLarge,
+                                                            vertical:
+                                                                MediaQuery.of(
+                                                                  context,
+                                                                ).size.height *
+                                                                0.018,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -436,53 +671,101 @@ class _RegisterPageState extends State<RegisterPage> {
                                             // Domisili Field
                                             Expanded(
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     'Domisili',
-                                                    style: AppTextStyles.label(context),
+                                                    style: AppTextStyles.label(
+                                                      context,
+                                                    ),
                                                   ),
-                                                  SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingXSmall / 2),
+                                                  SizedBox(
+                                                    height:
+                                                        MediaQuery.of(
+                                                          context,
+                                                        ).size.height *
+                                                        AppConstants
+                                                            .spacingXSmall /
+                                                        2,
+                                                  ),
                                                   TextFormField(
                                                     controller: _cityController,
                                                     style: TextStyle(
-                                                      fontSize: MediaQuery.of(context).size.height * 0.0165,
+                                                      fontSize:
+                                                          MediaQuery.of(
+                                                            context,
+                                                          ).size.height *
+                                                          0.0165,
                                                     ),
                                                     validator: (value) {
-                                                      if (value == null || value.isEmpty) {
+                                                      if (value == null ||
+                                                          value.isEmpty) {
                                                         return 'Domisili tidak boleh kosong';
                                                       }
                                                       return null;
                                                     },
                                                     decoration: InputDecoration(
                                                       hintText: 'Kota/Kab',
-                                                      hintStyle: AppTextStyles.hint(context).copyWith(
-                                                        fontSize: MediaQuery.of(context).size.height * 0.0155,
-                                                      ),
+                                                      hintStyle:
+                                                          AppTextStyles.hint(
+                                                            context,
+                                                          ).copyWith(
+                                                            fontSize:
+                                                                MediaQuery.of(
+                                                                  context,
+                                                                ).size.height *
+                                                                0.0155,
+                                                          ),
                                                       filled: true,
-                                                      fillColor: AppColors.backgroundLightGrey,
+                                                      fillColor: AppColors
+                                                          .backgroundLightGrey,
                                                       border: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
-                                                        borderSide: BorderSide.none,
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              AppConstants
+                                                                  .borderRadiusMedium,
+                                                            ),
+                                                        borderSide:
+                                                            BorderSide.none,
                                                       ),
                                                       errorBorder: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              AppConstants
+                                                                  .borderRadiusMedium,
+                                                            ),
                                                         borderSide: const BorderSide(
-                                                          color: AppColors.borderRed,
-                                                          width: AppConstants.containerBorderWidth,
+                                                          color: AppColors
+                                                              .borderRed,
+                                                          width: AppConstants
+                                                              .containerBorderWidth,
                                                         ),
                                                       ),
                                                       focusedErrorBorder: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              AppConstants
+                                                                  .borderRadiusMedium,
+                                                            ),
                                                         borderSide: const BorderSide(
-                                                          color: AppColors.borderRed,
-                                                          width: AppConstants.buttonBorderWidth,
+                                                          color: AppColors
+                                                              .borderRed,
+                                                          width: AppConstants
+                                                              .buttonBorderWidth,
                                                         ),
                                                       ),
-                                                      contentPadding: EdgeInsets.symmetric(
-                                                        horizontal: AppConstants.paddingLarge,
-                                                        vertical: MediaQuery.of(context).size.height * 0.018,
-                                                      ),
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                            horizontal:
+                                                                AppConstants
+                                                                    .paddingLarge,
+                                                            vertical:
+                                                                MediaQuery.of(
+                                                                  context,
+                                                                ).size.height *
+                                                                0.018,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -490,7 +773,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingLarge),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingLarge,
+                                        ),
                                       ],
                                     ),
 
@@ -502,45 +791,87 @@ class _RegisterPageState extends State<RegisterPage> {
                                           width: double.infinity,
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              gradient: AppColors.buttonGradient,
-                                              borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                              gradient:
+                                                  AppColors.buttonGradient,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                    AppConstants
+                                                        .borderRadiusMedium,
+                                                  ),
                                             ),
                                             child: ElevatedButton(
                                               onPressed: _handleRegister,
                                               style: ElevatedButton.styleFrom(
-                                                backgroundColor: Colors.transparent,
+                                                backgroundColor:
+                                                    Colors.transparent,
                                                 shadowColor: Colors.transparent,
                                                 padding: EdgeInsets.symmetric(
-                                                  vertical: MediaQuery.of(context).size.height * 0.016,
+                                                  vertical:
+                                                      MediaQuery.of(
+                                                        context,
+                                                      ).size.height *
+                                                      0.016,
                                                 ),
                                                 shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        AppConstants
+                                                            .borderRadiusMedium,
+                                                      ),
                                                 ),
                                               ),
                                               child: Text(
                                                 'Daftar',
-                                                style: AppTextStyles.button(context),
+                                                style: AppTextStyles.button(
+                                                  context,
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingMedium,
+                                        ),
 
                                         // Divider
                                         Row(
                                           children: [
-                                            const Expanded(child: Divider(color: AppColors.borderGrey)),
-                                            Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: AppConstants.paddingMedium),
-                                              child: Text(
-                                                'Atau daftar dengan',
-                                                style: AppTextStyles.label(context),
+                                            const Expanded(
+                                              child: Divider(
+                                                color: AppColors.borderGrey,
                                               ),
                                             ),
-                                            const Expanded(child: Divider(color: AppColors.borderGrey)),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: AppConstants
+                                                        .paddingMedium,
+                                                  ),
+                                              child: Text(
+                                                'Atau daftar dengan',
+                                                style: AppTextStyles.label(
+                                                  context,
+                                                ),
+                                              ),
+                                            ),
+                                            const Expanded(
+                                              child: Divider(
+                                                color: AppColors.borderGrey,
+                                              ),
+                                            ),
                                           ],
                                         ),
-                                        SizedBox(height: MediaQuery.of(context).size.height * AppConstants.spacingMedium),
+                                        SizedBox(
+                                          height:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.height *
+                                              AppConstants.spacingMedium,
+                                        ),
 
                                         // Social Buttons
                                         Row(
@@ -549,25 +880,68 @@ class _RegisterPageState extends State<RegisterPage> {
                                               child: OutlinedButton.icon(
                                                 onPressed: () {},
                                                 icon: Image.network(
-                                                  'https://www.google.com/favicon.ico',
+                                                  'https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png',
                                                   width: 18,
                                                   height: 18,
+                                                  errorBuilder:
+                                                      (
+                                                        context,
+                                                        error,
+                                                        stackTrace,
+                                                      ) {
+                                                        return Container(
+                                                          width: 18,
+                                                          height: 18,
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius.circular(
+                                                                  2,
+                                                                ),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              'G',
+                                                              style: TextStyle(
+                                                                color: AppColors
+                                                                    .textPrimary,
+                                                                fontSize: 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
                                                 ),
                                                 label: Text(
                                                   'Google',
-                                                  style: AppTextStyles.buttonSmall(context).copyWith(
-                                                    color: AppColors.textPrimary,
-                                                  ),
+                                                  style:
+                                                      AppTextStyles.buttonSmall(
+                                                        context,
+                                                      ).copyWith(
+                                                        color: AppColors
+                                                            .textPrimary,
+                                                      ),
                                                 ),
                                                 style: OutlinedButton.styleFrom(
                                                   padding: EdgeInsets.symmetric(
-                                                    vertical: MediaQuery.of(context).size.height * 0.014,
+                                                    vertical:
+                                                        MediaQuery.of(
+                                                          context,
+                                                        ).size.height *
+                                                        0.014,
                                                   ),
                                                   side: const BorderSide(
                                                     color: AppColors.borderGrey,
                                                   ),
                                                   shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          AppConstants
+                                                              .borderRadiusMedium,
+                                                        ),
                                                   ),
                                                 ),
                                               ),
@@ -583,19 +957,31 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 ),
                                                 label: Text(
                                                   'Facebook',
-                                                  style: AppTextStyles.buttonSmall(context).copyWith(
-                                                    color: AppColors.facebookBlue,
-                                                  ),
+                                                  style:
+                                                      AppTextStyles.buttonSmall(
+                                                        context,
+                                                      ).copyWith(
+                                                        color: AppColors
+                                                            .facebookBlue,
+                                                      ),
                                                 ),
                                                 style: OutlinedButton.styleFrom(
                                                   padding: EdgeInsets.symmetric(
-                                                    vertical: MediaQuery.of(context).size.height * 0.014,
+                                                    vertical:
+                                                        MediaQuery.of(
+                                                          context,
+                                                        ).size.height *
+                                                        0.014,
                                                   ),
                                                   side: const BorderSide(
                                                     color: AppColors.borderGrey,
                                                   ),
                                                   shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          AppConstants
+                                                              .borderRadiusMedium,
+                                                        ),
                                                   ),
                                                 ),
                                               ),
